@@ -38,10 +38,35 @@ class Class02
         add_filter('upload_dir', [$this, 'swap_featured_img_url']);
         add_filter('wp_get_attachment_url', [$this, 'swap_attachment_url']);
 
-        add_filter( 'wp_update_https_url', [$this,'update_url_to_https'] );        
+        add_filter( 'wp_update_https_url', [$this,'update_url_to_https'] );
+        add_filter( 'rest_url', [$this,'swap_rest_url'], 10, 4 );        
+        add_filter( 'woocommerce_api_request_url', [$this,'swap_content_url'] );
+        add_filter( 'woocommerce_get_asset_url', [$this,'swap_wo_asset_url'],10,2 );                
+        add_filter( "the_content", [$this,'swap_content'],1 );
+        
+        
     }
 
+    public function swap_content( $content) {
 
+      if ( is_singular() && in_the_loop() && is_main_query() ) {
+        $new_content = str_replace($this->siteurl, $this->new_siteurl, $content);
+        return $new_content;    
+      }
+
+       return $content;
+    }
+    
+    public function swap_wo_asset_url( $url, $path ) {
+        $new_url = str_replace($this->siteurl, $this->new_siteurl, $url);
+        return $new_url ;
+    }
+    
+    public function swap_rest_url( $url, $path, $blog_id, $scheme ) {
+        $new_url = str_replace($this->siteurl, $this->new_siteurl, $url);
+        return $new_url;
+    }
+    
     public function update_url_to_https( $url ) {
       return str_replace( 'http://', 'https://', $url );
     }
@@ -74,30 +99,29 @@ class Class02
     {
         $var = explode('/wp-content', $url);
 
-        $url = str_replace($var[0], $this->new_siteurl, $url);
+        $new_url = str_replace($var[0], $this->new_siteurl, $url);
 
-        return $url;
+        return $new_url;
     }
 
     public function swap_featured_img_url($url)
     {
-        $src = str_replace($this->siteurl, $this->new_siteurl, $url);
+        $new_url = str_replace($this->siteurl, $this->new_siteurl, $url);
 
-        return $url;
+        return $new_url;
     }
 
     public function swap_style_uri($url)
     {
-        $url = $this->swap_content_url($url);
+        $new_url = $this->swap_content_url($url);
 
-        return $url;
+        return $new_url;
     }
 
     public function swap_content_url($url)
     {
-        //        var_dump($url);
+        $new_url = $url;
         $src_parse = parse_url($url);
-
         if (isset($src_parse['host'])) {
             $host = $src_parse['scheme'].'://'.$src_parse['host'];
 
@@ -106,14 +130,14 @@ class Class02
             }
 
             if ($host == $this->siteurl) {
-                $url = str_replace($this->siteurl, $this->new_siteurl, $url);
+                $new_url = str_replace($this->siteurl, $this->new_siteurl, $url);
 
-                return $url;
+
             }
         }
-        $url = str_replace('http://', 'https://', $url);
+        $new_url = str_replace('http://', 'https://', $new_url);
 
-        return $url;
+        return $new_url;
     }
 
     public function swap_siteurl()
