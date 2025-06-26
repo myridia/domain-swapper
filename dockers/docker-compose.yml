@@ -10,11 +10,9 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs/_.app.local:/etc/nginx/certs
-
     networks:
       workgroup:
         ipv4_address: "10.5.0.2"
-
       
   nginx:
     container_name: nginx
@@ -30,7 +28,6 @@ services:
     networks:
       workgroup:
         ipv4_address: "10.5.0.3"
-        
   php:
     container_name: php
     image: myridia/php8.2fpm
@@ -40,7 +37,66 @@ services:
       workgroup:
         ipv4_address: "10.5.0.4"
 
-    
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_DATABASE: dbsql1
+      MYSQL_USER: dbsqlsql1
+      MYSQL_PASSWORD: passpass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    ports:
+     - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+      - "./log/mysql:/var/log/mysql"
+      - "./init/:/docker-entrypoint-initdb.d"
+
+    command: 'mysqld --general-log=1 --general-log-file=/var/log/mysql/mysql.log'
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.5"
+
+
+  wpcli:
+    image: wordpress:cli
+    container_name: wpcli
+    command: >
+      /bin/sh -c  '                                                                                            
+      sleep 3;                                                                                                 
+      tail -F anything '
+    user: root
+    links:
+      - db:mysql
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: dbsql1
+      WORDPRESS_DB_PASSWORD: passpass
+      WORDPRESS_DB_NAME: dbsql1
+    volumes:
+      - ../wordpress:/var/www/html
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.6"
+
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    #ports:
+    #  - "81:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: dbsql1
+      PMA_PASSWORD: passpass
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.7"
+    environment:
+      - VIRTUAL_HOST=phpmyadmin.local        
+        
 volumes:
   db:
 
