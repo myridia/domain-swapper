@@ -10,13 +10,44 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs/_.app.local:/etc/nginx/certs
+
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.2"
+
+      
   nginx:
     container_name: nginx
     image: nginx
     volumes:
       - ./wordpress/:/usr/share/nginx/html/
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d      
     tty: true
+    links:
+      - php
     environment:
-      - VIRTUAL_HOST=www.app.local,ww1.app.local,ww2.app.local,ww3.app.local    
+      - VIRTUAL_HOST=www.app.local,ww1.app.local,ww2.app.local,ww3.app.local
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.3"
+        
+  php:
+    container_name: php
+    image: myridia/php8.2fpm
+    volumes:
+      - ../wordpress/:/usr/share/nginx/html/
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.4"
 
+    
+volumes:
+  db:
 
+networks:
+  workgroup:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
