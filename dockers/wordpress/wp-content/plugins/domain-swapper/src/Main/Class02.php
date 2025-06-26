@@ -29,8 +29,10 @@ class Class02
         }
 
         // error_log(print_r($o));
+
         if (isset($o['activate'])) {
             if ($this->new_siteurl != $this->siteurl) {
+                error_log('....start swapping');
                 add_filter('option_siteurl', [$this, 'swap_siteurl']);
                 add_filter('style_loader_src', [$this, 'swap_style_loader_src'], 10, 4);
                 add_filter('script_loader_src', [$this, 'swap_script_loader_src'], 10, 4);
@@ -42,9 +44,12 @@ class Class02
                 add_filter('site_url', [$this, 'swap_site_url'], 10, 4);
                 add_filter('wp_setup_nav_menu_item', [$this, 'swap_wp_setup_nav_menu_item']);
                 add_filter('plugins_url', [$this, 'swap_plugin_url']);
+                add_filter('wp_resource_hints', [$this, 'swap_prefetch_resource'], 10, 2);
 
-                //                add_filter('woocommerce_api_request_url', [$this, 'swap_content_url']);
-                //                add_filter('woocommerce_get_asset_url', [$this, 'swap_wo_asset_url'], 10, 2);
+                // add_filter('woocommerce_get_endpoint_url', [$this, 'swap_woocommerce_get_endpoint_url'], 10, 4);
+
+                // add_filter('woocommerce_api_request_url', [$this, 'swap_content_url']);
+                // add_filter('woocommerce_get_asset_url', [$this, 'swap_wo_asset_url'], 10, 2);
 
                 /*
                 add_filter('do_shortcode_tag', [$this, 'swap_do_shortcode_tag'], 10, 4);
@@ -76,6 +81,19 @@ class Class02
                 // add_filter('option_home', [$this, 'swap_content_url']);
             }
         }
+    }
+
+    public function swap_prefetch_resource($urls, $relation_type)
+    {
+        // https://developer.wordpress.org/reference/hooks/prefetch_resource
+        if ('prefetch' === $relation_type) {
+            foreach ($urls as $k => $v) {
+                $urls[$k]['href'] = str_replace($this->siteurl, $this->new_siteurl, $v['href']);
+                // error_log($v['href']);
+            }
+        }
+
+        return $urls;
     }
 
     public function swap_style_loader_src($url)
