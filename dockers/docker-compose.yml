@@ -9,7 +9,7 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./certs:/etc/nginx/certs
+      - ./certs/_.app.local:/etc/nginx/certs
   nginx:
     container_name: nginx
     image: nginx
@@ -17,6 +17,6 @@ services:
       - ./wordpress/:/usr/share/nginx/html/
     tty: true
     environment:
-      - VIRTUAL_HOST=*.app.local    
+      - VIRTUAL_HOST=www.app.local,ww1.app.local,ww2.app.local,ww3.app.local    
 
 
