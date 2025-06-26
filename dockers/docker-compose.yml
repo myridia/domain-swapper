@@ -25,6 +25,8 @@ services:
       - php
     environment:
       - VIRTUAL_HOST=www.app.local,ww1.app.local,ww2.app.local,ww3.app.local
+      - VIRTUAL_PROTO=https
+      - VIRTUAL_PORT=443
     networks:
       workgroup:
         ipv4_address: "10.5.0.3"
@@ -32,7 +34,7 @@ services:
     container_name: php
     image: myridia/php8.2fpm
     volumes:
-      - ../wordpress/:/usr/share/nginx/html/
+      - ./wordpress/:/usr/share/nginx/html/
     networks:
       workgroup:
         ipv4_address: "10.5.0.4"
@@ -44,7 +46,7 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: dbsql1
-      MYSQL_USER: dbsqlsql1
+      MYSQL_USER: dbsql1
       MYSQL_PASSWORD: passpass
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     ports:
@@ -76,7 +78,7 @@ services:
       WORDPRESS_DB_PASSWORD: passpass
       WORDPRESS_DB_NAME: dbsql1
     volumes:
-      - ../wordpress:/var/www/html
+      - ./wordpress:/var/www/html
     networks:
       workgroup:
         ipv4_address: "10.5.0.6"
