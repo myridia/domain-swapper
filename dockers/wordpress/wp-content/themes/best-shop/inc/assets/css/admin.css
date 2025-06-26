@@ -1,0 +1,30 @@
+/* SinglePage and Single post */
+
+#best_shop_sidebar_layout .inside .hide-radio input[type = "radio"] {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+}
+#best_shop_sidebar_layout .inside .hide-radio label {
+    display: block;
+    border: 1px solid transparent;
+}
+#best_shop_sidebar_layout .inside .hide-radio input[type=radio]:checked + label {
+    border: 3px solid #CCC;
+}
+
+.customizer_note_control {
+    padding: 5px 7px;
+    background-color: #fff;
+    border: 1px solid #83c5ff;
+    margin: 5px 0 5px;
+}
+
+.customizer_note_control a {
+  text-decoration: none;
+}
+.customizer_note_control a span {
+  font-size: 13px;
+  font-weight: 500;    
+}

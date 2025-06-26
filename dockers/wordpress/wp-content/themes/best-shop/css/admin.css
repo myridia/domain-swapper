@@ -1,0 +1,5 @@
+/* CSS Document */
+.envo-review-notice, .etww-admin-notice.notice-warning {
+  display: none;
+  left: 9999px;
+}

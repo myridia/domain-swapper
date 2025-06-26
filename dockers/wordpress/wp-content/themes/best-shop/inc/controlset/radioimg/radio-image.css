@@ -1,0 +1,99 @@
+/*Radio Image Button */
+.customize-control-glbp-radio-image label {
+    position: relative;
+    display: inline-block; 
+}
+.customize-control-glbp-radio-image input {
+    display: none; 
+}
+.customize-control-glbp-radio-image input svg, 
+.customize-control-glbp-radio-image input img {
+    border: 1px solid transparent; 
+}
+.customize-control-glbp-radio-image input:checked + label svg,
+.customize-control-glbp-radio-image input:checked + label img {
+    -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    border: 1px solid #3498DB; 
+}
+.customize-control-glbp-radio-image input + label .image-clickable {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+#input_blog_page_layout{
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+#input_blog_page_layout .img-input-wrapper{
+    width: 42%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+#input_blog_page_layout .img-input-wrapper label svg,
+#input_blog_page_layout .img-input-wrapper label img{
+    width: 100%;
+    height: 100%;
+}
+
+.two-columns {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.image *, 
+.image *::before, 
+.image *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+.two-columns > div {
+    width: 50%;
+}
+
+.three-columns > div {
+    width: 33.33%;
+}
+
+.four-columns > div {
+    width: 25%;
+}
+
+.five-columns > div {
+    width: 20%;
+}
+
+.image > .img-input-wrapper label {
+    padding: 3px;
+}
+
+.image > .img-input-wrapper svg, 
+.image > .img-input-wrapper img {
+    width: 100%;
+    height: auto;
+    border: 1px solid transparent;
+    vertical-align: top;
+    border-radius: 3px;
+}
+
+.customize-control-glbp-radio-image input:checked + label svg, 
+.customize-control-glbp-radio-image input:checked + label img {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+/*Radio Image Button Ends */
