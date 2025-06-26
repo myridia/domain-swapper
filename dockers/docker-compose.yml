@@ -41,26 +41,24 @@ services:
 
 
   db:
-    image: mysql:8.0
+    image: mariadb    
     container_name: db
-    restart: always
-    environment:
-      MYSQL_DATABASE: dbsql1
-      MYSQL_USER: dbsql1
-      MYSQL_PASSWORD: passpass
-      MYSQL_RANDOM_ROOT_PASSWORD: '1'
-    ports:
-     - "3306:3306"
     volumes:
       - db:/var/lib/mysql
       - "./log/mysql:/var/log/mysql"
-      - "./init/:/docker-entrypoint-initdb.d"
-
-    command: 'mysqld --general-log=1 --general-log-file=/var/log/mysql/mysql.log'
+      - "./init/:/docker-entrypoint-initdb.d"    
+    ports:
+     - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: passpass
+      MYSQL_USER: dbsql1
+      MYSQL_PASSWORD: passpass
+      MYSQL_DATABASE: dbsql1
+    restart: always      
+    #command: 'mysqld --general-log=1 --general-log-file=/var/log/mysql/mysql.log'
     networks:
       workgroup:
         ipv4_address: "10.5.0.5"
-
 
   wpcli:
     image: wordpress:cli
