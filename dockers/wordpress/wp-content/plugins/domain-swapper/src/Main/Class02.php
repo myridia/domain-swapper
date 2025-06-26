@@ -28,9 +28,8 @@ class Class02
             $this->new_siteurl = 'https://'.$new_domain;
         }
 
-        // error_log($this->new_siteurl);
-
-        if ($o['activate']) {
+        // error_log(print_r($o));
+        if (isset($o['activate'])) {
             if ($this->new_siteurl != $this->siteurl) {
                 add_filter('option_siteurl', [$this, 'swap_siteurl']);
                 add_filter('style_loader_src', [$this, 'swap_style_loader_src'], 10, 4);
@@ -43,6 +42,7 @@ class Class02
                 add_filter('site_url', [$this, 'swap_site_url'], 10, 4);
                 add_filter('wp_setup_nav_menu_item', [$this, 'swap_wp_setup_nav_menu_item']);
                 add_filter('plugins_url', [$this, 'swap_plugin_url']);
+
                 //                add_filter('woocommerce_api_request_url', [$this, 'swap_content_url']);
                 //                add_filter('woocommerce_get_asset_url', [$this, 'swap_wo_asset_url'], 10, 2);
 
