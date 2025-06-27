@@ -47,40 +47,16 @@ class Class02
                 add_filter('wp_resource_hints', [$this, 'swap_prefetch_resource'], 10, 2);
                 add_filter('wp_get_attachment_image_attributes', [$this, 'swap_attachment_image_attributes'], 10, 3);
                 add_filter('woocommerce_gallery_image_html_attachment_image_params', [$this, 'swap_woocommerce_gallery_image_html_attachment_image_params'], 10, 4);
-
-                // add_filter('woocommerce_get_endpoint_url', [$this, 'swap_woocommerce_get_endpoint_url'], 10, 4);
-
-                // add_filter('woocommerce_get_asset_url', [$this, 'swap_wo_asset_url'], 10, 2);
-                /*
-                add_filter('do_shortcode_tag', [$this, 'swap_do_shortcode_tag'], 10, 4);
-
-                add_filter('feed_link', [$this, 'swap_feed_link'], 10, 2);
-                add_action('registered_taxonomy', [$this, 'swap_start_relative_url']);
-                add_action('shutdown', [$this, 'swap_end_relative_url']);
-                add_filter('option_siteurl', [$this, 'swap_content_url']);
-                add_filter('get_the_guid', [$this, 'swap_content_url']);
-                add_filter('avatar_defaults', [$this, 'swap_content_url']);
-                add_filter('stylesheet_directory_uri', [$this, 'swap_style_uri']);
-
-                add_filter('template_directory_uri', [$this, 'swap_style_uri']);
-                add_filter('upload_dir', [$this, 'swap_featured_img_url']);
-                add_filter('wp_get_attachment_url', [$this, 'swap_attachment_url']);
-
-                add_filter('wp_update_https_url', [$this, 'update_url_to_https']);
-                add_filter('rest_url', [$this, 'swap_rest_url'], 10, 4);
-                add_filter('rest_route_for_post', [$this, 'swap_rest_route_for_post'], 10, 4);
-
-                */
-                // add_filter('stylesheet_directory', [$this, 'swap_style_uri']);
-
-                // add_filter('wp_default_scripts', [$this, 'swap_default_scripts_domain']);
-                // add_filter('content_url', [$this, 'swap_content_url']);
-                // add_filter('pre_option_home', [$this, 'swap_siteurl']);
-                // add_filter('pre_option_home', [$this, 'swap_siteurl']);
-                // add_filter('pre_option_siteurl', [$this, 'swap_siteurl']);
-                // add_filter('option_home', [$this, 'swap_content_url']);
+                add_filter('woocommerce_cart_item_permalink', [$this, 'swap_woocommerce_cart_item_permalink'], 10, 3);
             }
         }
+    }
+
+    public function swap_woocommerce_cart_item_permalink($permalink, $cart_item, $cart_item_key)
+    {
+        // error_log('xxxxxxxxxxxxxxxxxxxX');
+
+        return $permalink;
     }
 
     public function swap_woocommerce_gallery_image_html_attachment_image_params($params, $attachment_id, $post_id, $image_class)
