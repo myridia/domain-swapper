@@ -45,6 +45,7 @@ class Class02
                 add_filter('wp_setup_nav_menu_item', [$this, 'swap_wp_setup_nav_menu_item']);
                 add_filter('plugins_url', [$this, 'swap_plugin_url']);
                 add_filter('wp_resource_hints', [$this, 'swap_prefetch_resource'], 10, 2);
+                add_filter('wp_get_attachment_image_attributes', [$this, 'swap_attachment_image_attributes'], 10, 3);
 
                 // add_filter('woocommerce_get_endpoint_url', [$this, 'swap_woocommerce_get_endpoint_url'], 10, 4);
 
@@ -81,6 +82,17 @@ class Class02
                 // add_filter('option_home', [$this, 'swap_content_url']);
             }
         }
+    }
+
+    public function swap_attachment_image_attributes($attr, $attachment, $size)
+    {
+        // if (isset($attr['class']) && false !== strpos($attr['class'], 'attachment-woocommerce_thumbnail')) {
+        //    $attr['alt'] = 'Custom alt text for WooCommerce thumbnail';
+        //    $attr['class'] .= ' my-custom-class'; // add a custom class
+        // }
+        error_log($attr);
+
+        return $attr;
     }
 
     public function swap_prefetch_resource($urls, $relation_type)
