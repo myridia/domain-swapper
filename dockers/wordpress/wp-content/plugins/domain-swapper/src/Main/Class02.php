@@ -86,11 +86,9 @@ class Class02
 
     public function swap_attachment_image_attributes($attr, $attachment, $size)
     {
-        // if (isset($attr['class']) && false !== strpos($attr['class'], 'attachment-woocommerce_thumbnail')) {
-        //    $attr['alt'] = 'Custom alt text for WooCommerce thumbnail';
-        //    $attr['class'] .= ' my-custom-class'; // add a custom class
-        // }
-        error_log($attr);
+        // https://developer.wordpress.org/reference/hooks/attachment_image_attributes
+        $attr['srcset'] = str_replace($this->siteurl, $this->new_siteurl, $attr['srcset']);
+        $attr['src'] = str_replace($this->siteurl, $this->new_siteurl, $attr['src']);
 
         return $attr;
     }
