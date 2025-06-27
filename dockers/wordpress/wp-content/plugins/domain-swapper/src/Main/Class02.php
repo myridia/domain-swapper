@@ -48,15 +48,16 @@ class Class02
                 add_filter('wp_get_attachment_image_attributes', [$this, 'swap_attachment_image_attributes'], 10, 3);
                 add_filter('woocommerce_gallery_image_html_attachment_image_params', [$this, 'swap_woocommerce_gallery_image_html_attachment_image_params'], 10, 4);
                 add_filter('woocommerce_cart_item_permalink', [$this, 'swap_woocommerce_cart_item_permalink'], 10, 3);
+                add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
             }
         }
     }
 
-    public function swap_woocommerce_cart_item_permalink($permalink, $cart_item, $cart_item_key)
+    public function swap_woocommerce_get_cart_url($url)
     {
-        // error_log('xxxxxxxxxxxxxxxxxxxX');
+        error_log($url);
 
-        return $permalink;
+        return $url;
     }
 
     public function swap_woocommerce_gallery_image_html_attachment_image_params($params, $attachment_id, $post_id, $image_class)
