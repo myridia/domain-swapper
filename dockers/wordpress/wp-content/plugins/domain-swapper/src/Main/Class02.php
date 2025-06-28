@@ -17,6 +17,11 @@ class Class02
         $new_domain = str_replace('https://', '', $this->new_siteurl);
         $new_domain = str_replace('http://', '', $new_domain);
 
+        $old_domain = str_replace('https://', '', $this->siteurl);
+        $old_domain = str_replace('http://', '', $old_domain);
+        $this->new_domain = $new_domain;
+        $this->old_domain = $old_domain;
+
         if (isset($_SERVER['HTTP_HOST'])) {
             if ('' != $_SERVER['HTTP_HOST']) {
                 $new_domain = $_SERVER['HTTP_HOST'];
@@ -52,8 +57,19 @@ class Class02
                 add_filter('woocommerce_gallery_image_html_attachment_image_params', [$this, 'swap_woocommerce_gallery_image_html_attachment_image_params'], 10, 4);
                 // add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
                 add_filter('wp_script_attributes', [$this, 'swap_wp_script_attributes'], 10, 2);
+                add_action('template_redirect', [$this, 'template_redirect']);
             }
         }
+    }
+
+    public function template_redirect()
+    {
+        ob_start(function ($html) {
+            $html = str_replace($this->old_domain, $new_domain, $html);
+            $html = str_replace($this->siteurl, $this->new_siteurl, $html);
+
+            return $html;
+        });
     }
 
     public function swap_wp_script_attributes(array $attr)
