@@ -7,6 +7,8 @@ class Class02
     private $domains;
     private $siteurl;
     private $new_siteurl;
+    private $new_domain;
+    private $old_domain;
 
     public function __construct()
     {
@@ -14,13 +16,12 @@ class Class02
         $this->domains = $o['include'];
         $this->siteurl = get_option('siteurl');
         $this->new_siteurl = $this->siteurl;
+
+        $this->old_domain = str_replace('https://', '', get_option('siteurl'));
+        $this->old_domain = str_replace('http://', '', $this->old_domain);
+
         $new_domain = str_replace('https://', '', $this->new_siteurl);
         $new_domain = str_replace('http://', '', $new_domain);
-
-        $old_domain = str_replace('https://', '', $this->siteurl);
-        $old_domain = str_replace('http://', '', $old_domain);
-        $this->new_domain = $new_domain;
-        $this->old_domain = $old_domain;
 
         if (isset($_SERVER['HTTP_HOST'])) {
             if ('' != $_SERVER['HTTP_HOST']) {
@@ -34,6 +35,7 @@ class Class02
 
         if (in_array($new_domain, $this->domains)) {
             $this->new_siteurl = 'https://'.$new_domain;
+            $this->new_domain = $new_domain;
         }
 
         // error_log(print_r($o));
@@ -65,8 +67,8 @@ class Class02
     public function template_redirect()
     {
         ob_start(function ($html) {
-            $html = str_replace($this->old_domain, $new_domain, $html);
             $html = str_replace($this->siteurl, $this->new_siteurl, $html);
+            $html = str_replace($this->old_domain, $this->new_domain, $html);
 
             return $html;
         });
@@ -75,8 +77,6 @@ class Class02
     public function swap_wp_script_attributes(array $attr)
     {
         $attr['src'] = str_replace($this->siteurl, $this->new_siteurl, $attr['src']);
-
-        //        error_log(serialize($attr));
 
         return $attr;
     }
