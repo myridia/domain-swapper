@@ -14,6 +14,9 @@ class Class02
         $this->domains = $o['include'];
         $this->siteurl = get_option('siteurl');
         $this->new_siteurl = $this->siteurl;
+        $new_domain = str_replace('https://', '', $this->new_siteurl);
+        $new_domain = str_replace('http://', '', $new_domain);
+
         if (isset($_SERVER['HTTP_HOST'])) {
             if ('' != $_SERVER['HTTP_HOST']) {
                 $new_domain = $_SERVER['HTTP_HOST'];
@@ -29,7 +32,7 @@ class Class02
         }
 
         // error_log(print_r($o));
-
+        // error_log('....start swappingaaaaaaa');
         if (isset($o['activate'])) {
             if ($this->new_siteurl != $this->siteurl) {
                 error_log('....start swapping');
@@ -47,16 +50,23 @@ class Class02
                 add_filter('wp_resource_hints', [$this, 'swap_prefetch_resource'], 10, 2);
                 add_filter('wp_get_attachment_image_attributes', [$this, 'swap_attachment_image_attributes'], 10, 3);
                 add_filter('woocommerce_gallery_image_html_attachment_image_params', [$this, 'swap_woocommerce_gallery_image_html_attachment_image_params'], 10, 4);
-                add_filter('woocommerce_cart_item_permalink', [$this, 'swap_woocommerce_cart_item_permalink'], 10, 3);
-                add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
+                // add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
+                add_filter('wp_script_attributes', [$this, 'swap_wp_script_attributes'], 10, 2);
             }
         }
     }
 
+    public function swap_wp_script_attributes(array $attr)
+    {
+        $attr['src'] = str_replace($this->siteurl, $this->new_siteurl, $attr['src']);
+
+        //        error_log(serialize($attr));
+
+        return $attr;
+    }
+
     public function swap_woocommerce_get_cart_url($url)
     {
-        error_log($url);
-
         return $url;
     }
 
@@ -95,7 +105,7 @@ class Class02
     {
         $new_url = $url;
         $src_parse = parse_url($url);
-        if (isset($src_parse['host'])) {
+        if (isset($src_parse['host']) && isset($src_parse['scheme'])) {
             $host = $src_parse['scheme'].'://'.$src_parse['host'];
 
             if (isset($src_parse['port'])) {
@@ -108,6 +118,8 @@ class Class02
         }
         $new_url = str_replace('http://', 'https://', $new_url);
         $new_url = str_replace($this->siteurl, $this->new_siteurl, $new_url);
+
+        // error_log($new_url);
 
         return $new_url;
     }
