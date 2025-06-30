@@ -12,7 +12,8 @@ class ClassAjax
 
     public function __construct()
     {
-        error_log('..swap ajax calls');
+        error_log('...swap ajax calls');
+
         $o = get_option(WPDS_OPTION);
         $this->domains = $o['include'];
         $this->siteurl = get_option('siteurl');

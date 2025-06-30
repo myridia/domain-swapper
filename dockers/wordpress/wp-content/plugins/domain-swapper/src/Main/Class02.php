@@ -58,8 +58,17 @@ class Class02
                 // add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
                 add_filter('wp_script_attributes', [$this, 'swap_wp_script_attributes'], 10, 2);
                 add_action('template_redirect', [$this, 'template_redirect']);
+                add_filter('woocommerce_cart_item_thumbnail', [$this, 'swap_woocommerce_cart_item_thumbnail'], 10, 3);
             }
         }
+    }
+
+    public function swap_woocommerce_cart_item_thumbnail($thumbnail, $cart_item, $cart_item_key)
+    {
+        $thumbnail = str_replace($this->siteurl, $this->new_siteurl, $thumbnail);
+        error_log($thumbnail);
+
+        return $thumbnail;
     }
 
     public function template_redirect()
