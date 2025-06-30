@@ -66,7 +66,6 @@ class Class02
     public function swap_woocommerce_cart_item_thumbnail($thumbnail, $cart_item, $cart_item_key)
     {
         $thumbnail = str_replace($this->siteurl, $this->new_siteurl, $thumbnail);
-        error_log($thumbnail);
 
         return $thumbnail;
     }
