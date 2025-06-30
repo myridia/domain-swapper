@@ -26,6 +26,7 @@ defined('ABSPATH') or exit('Something went wrong');
 
 use WP\Ds\Main\Class01;
 use WP\Ds\Main\Class02;
+use WP\Ds\Main\ClassAjax;
 
 // get the metadata from the plugin header
 $m_plugin_data = get_file_data(__FILE__, ['name' => 'Plugin Name', 'version' => 'Version', 'text_domain' => 'Text Domain', 'constant_prefix' => 'Constant Prefix', 'prefix' => 'Prefix', 'option_key' => 'Option_key']);
@@ -67,10 +68,12 @@ function wp_ds_plugin_init()
 {
     if (defined('DOING_AJAX') && DOING_AJAX) {
         error_log('.....ajax');
+        $plugin3 = new ClassAjax();
     } else {
         $plugin = new Class01();
         $plugin->add_menu_setting();
         $plugin2 = new Class02();
+
         // $plugin2->add_menu_setting();
     }
 }
