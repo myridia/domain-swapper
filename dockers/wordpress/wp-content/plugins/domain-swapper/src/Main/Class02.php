@@ -58,16 +58,21 @@ class Class02
                 // add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
                 add_filter('wp_script_attributes', [$this, 'swap_wp_script_attributes'], 10, 2);
                 add_action('template_redirect', [$this, 'template_redirect']);
-                add_filter('woocommerce_cart_item_thumbnail', [$this, 'swap_woocommerce_cart_item_thumbnail'], 10, 3);
+                add_filter('woocommerce_store_api_cart_item_images', [$this, 'woocommerce_store_api_cart_item_images'], 10, 3);
             }
         }
     }
 
-    public function swap_woocommerce_cart_item_thumbnail($thumbnail, $cart_item, $cart_item_key)
+    public function woocommerce_store_api_cart_item_images($product_images, $cart_item, $cart_item_key)
     {
-        $thumbnail = str_replace($this->siteurl, $this->new_siteurl, $thumbnail);
+        // https://developer.wordpress.org/reference/hooks/woocommerce_store_api_cart_item_images
+        foreach ($product_images as $k => $v) {
+            $product_images[$k]->src = str_replace($this->siteurl, $this->new_siteurl, $v->src);
+            $product_images[$k]->thumbnail = str_replace($this->siteurl, $this->new_siteurl, $v->thumbnail);
+            $product_images[$k]->srcset = str_replace($this->siteurl, $this->new_siteurl, $v->srcset);
+        }
 
-        return $thumbnail;
+        return $product_images;
     }
 
     public function template_redirect()
