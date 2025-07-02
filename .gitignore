@@ -16,6 +16,7 @@
 /readme.html
 /wp-*.php
 /xmlrpc.php
+dockers/wordpress/wp-content/uploads/wc-logs/
 
 # Configuration
 wp-config.php
