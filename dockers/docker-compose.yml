@@ -45,7 +45,7 @@ services:
     image: mariadb    
     container_name: db
     volumes:
-      - db:/var/lib/mysql
+      - db_ds:/var/lib/mysql
       - "./log/mysql:/var/log/mysql"
       - "./init/:/docker-entrypoint-initdb.d"    
     ports:
@@ -99,7 +99,7 @@ services:
       - VIRTUAL_HOST=phpmyadmin.local        
         
 volumes:
-  db:
+  db_ds:
 
 networks:
   workgroup:
