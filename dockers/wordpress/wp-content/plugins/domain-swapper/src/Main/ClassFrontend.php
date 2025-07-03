@@ -2,7 +2,7 @@
 
 namespace WP\DS\Main;
 
-class Class02
+class ClassFrontend
 {
     private $domains;
     private $siteurl;

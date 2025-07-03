@@ -2,7 +2,7 @@
 
 namespace WP\Ds\Main;
 
-class Class01
+class ClassAdmin
 {
     private $options;
 

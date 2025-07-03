@@ -39,7 +39,7 @@ msgstr ""
 msgid "http://domain-swapper.myridia.com"
 msgstr ""
 
-#: src/Main/Class01.php:32
-#: src/Main/Class01.php:33
+#: src/Main/ClassAdmin.php:32
+#: src/Main/ClassAdmin.php:33
 msgid "Domain Swapper"
 msgstr ""

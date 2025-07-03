@@ -24,14 +24,18 @@
  **/
 defined('ABSPATH') or exit('Something went wrong');
 
-use WP\Ds\Main\Class01;
-use WP\Ds\Main\Class02;
+/*
+ * Set the Plugin Namespace
+ *
+ * @since 1.0.0 (if available)
+ */
+use WP\Ds\Main\ClassAdmin;
 use WP\Ds\Main\ClassAjax;
+use WP\Ds\Main\ClassFrontend;
 
 // get the metadata from the plugin header
 $m_plugin_data = get_file_data(__FILE__, ['name' => 'Plugin Name', 'version' => 'Version', 'text_domain' => 'Text Domain', 'constant_prefix' => 'Constant Prefix', 'prefix' => 'Prefix', 'option_key' => 'Option_key']);
 
-//  Define Plugin specific Constants
 m_make_constants('NAME', $m_plugin_data['text_domain'], $m_plugin_data);
 m_make_constants('DIR', dirname(plugin_basename(__FILE__)), $m_plugin_data);
 m_make_constants('BASE', plugin_basename(__FILE__), $m_plugin_data);
@@ -46,33 +50,44 @@ m_make_constants('PREFIX', $m_plugin_data['prefix'], $m_plugin_data);
 m_make_constants('OPTION', $m_plugin_data['option_key'], $m_plugin_data);
 
 // Default Plugin activate and deactivate hooks, started in static class functions
-register_activation_hook(__FILE__, ['WP\Ds\Main\Class01', 'activate']);
-register_deactivation_hook(__FILE__, ['WP\Ds\Main\Class01', 'deactivate']);
+register_activation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'activate']);
+register_deactivation_hook(__FILE__, ['WP\Ds\Main\ClassFrontend', 'deactivate']);
 
 // Register to start the Plugin
 
 add_action('init', 'wp_ds_plugin_init', 80);
 add_action('admin_init', 'wp_ds_plugin_admin_init', 99);
 
-/*
-  Start the the Plugin
-*/
+/**
+ * Init the Admin Plugin .
+ *
+ * Init ClassAdmin and register the settings
+ *
+ * @since 1.0.0
+ */
 function wp_ds_plugin_admin_init()
 {
-    $plugin = new Class01();
+    $plugin = new ClassAdmin();
     $plugin->register_settings();
     // $plugin->key();
 }
 
+/**
+ * Init the User Front Plugin.
+ *
+ * Init ClassAdmin,ClassFrontend and ClassAjax
+ *
+ * @since 1.0.0
+ */
 function wp_ds_plugin_init()
 {
     if (defined('DOING_AJAX') && DOING_AJAX) {
         error_log('.....ajax');
         $plugin3 = new ClassAjax();
     } else {
-        $plugin = new Class01();
+        $plugin = new ClassAdmin();
         $plugin->add_menu_setting();
-        $plugin2 = new Class02();
+        $plugin2 = new ClassFrontend();
 
         // $plugin2->add_menu_setting();
     }
