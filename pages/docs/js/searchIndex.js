@@ -16,275 +16,80 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#function_m_make_constants"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01",
-            "name": "Class01",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin",
+            "name": "ClassAdmin",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method___construct"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method___construct"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Aactivate\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Aactivate\u0028\u0029",
             "name": "activate",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_activate"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_activate"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Adeactivate\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Adeactivate\u0028\u0029",
             "name": "deactivate",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_deactivate"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_deactivate"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Akey\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Akey\u0028\u0029",
             "name": "key",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_key"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_key"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Aadd_menu_setting\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Aadd_menu_setting\u0028\u0029",
             "name": "add_menu_setting",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_add_menu_setting"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_add_menu_setting"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Aregister_settings\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Aregister_settings\u0028\u0029",
             "name": "register_settings",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_register_settings"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_register_settings"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Ais_valid_domain_name\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Ais_valid_domain_name\u0028\u0029",
             "name": "is_valid_domain_name",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_is_valid_domain_name"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_is_valid_domain_name"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Avalidate\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Avalidate\u0028\u0029",
             "name": "validate",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_validate"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_validate"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Acallback\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Acallback\u0028\u0029",
             "name": "callback",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_callback"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_callback"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Afield_activate\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Afield_activate\u0028\u0029",
             "name": "field_activate",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_field_activate"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_field_activate"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Afield_key\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Afield_key\u0028\u0029",
             "name": "field_key",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_field_key"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_field_key"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Afield_include\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Afield_include\u0028\u0029",
             "name": "field_include",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_field_include"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_field_include"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003Awporg_options_page_html\u0028\u0029",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Awporg_options_page_html\u0028\u0029",
             "name": "wporg_options_page_html",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#method_wporg_options_page_html"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#method_wporg_options_page_html"
         },                {
-            "fqsen": "\\WP\\Ds\\Main\\Class01\u003A\u003A\u0024options",
+            "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003A\u0024options",
             "name": "options",
             "summary": "",
-            "url": "classes/WP-Ds-Main-Class01.html#property_options"
-        },                {
-            "fqsen": "\\WPDS_CUSTOM_REQUEST_URL",
-            "name": "WPDS_CUSTOM_REQUEST_URL",
-            "summary": "",
-            "url": "namespaces/default.html#constant_WPDS_CUSTOM_REQUEST_URL"
-        },                {
-            "fqsen": "\\WP_SITEURL",
-            "name": "WP_SITEURL",
-            "summary": "",
-            "url": "namespaces/default.html#constant_WP_SITEURL"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02",
-            "name": "Class02",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method___construct"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Awoocommerce_store_api_cart_item_images\u0028\u0029",
-            "name": "woocommerce_store_api_cart_item_images",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_woocommerce_store_api_cart_item_images"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Atemplate_redirect\u0028\u0029",
-            "name": "template_redirect",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_template_redirect"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_wp_script_attributes\u0028\u0029",
-            "name": "swap_wp_script_attributes",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_wp_script_attributes"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_woocommerce_gallery_image_html_attachment_image_params\u0028\u0029",
-            "name": "swap_woocommerce_gallery_image_html_attachment_image_params",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_woocommerce_gallery_image_html_attachment_image_params"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_attachment_image_attributes\u0028\u0029",
-            "name": "swap_attachment_image_attributes",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_attachment_image_attributes"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_prefetch_resource\u0028\u0029",
-            "name": "swap_prefetch_resource",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_prefetch_resource"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_style_loader_src\u0028\u0029",
-            "name": "swap_style_loader_src",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_style_loader_src"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_script_loader_src\u0028\u0029",
-            "name": "swap_script_loader_src",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_script_loader_src"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_do_shortcode_tag\u0028\u0029",
-            "name": "swap_do_shortcode_tag",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_do_shortcode_tag"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_plugin_url\u0028\u0029",
-            "name": "swap_plugin_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_plugin_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_wp_setup_nav_menu_item\u0028\u0029",
-            "name": "swap_wp_setup_nav_menu_item",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_wp_setup_nav_menu_item"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_site_url\u0028\u0029",
-            "name": "swap_site_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_site_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_home_url\u0028\u0029",
-            "name": "swap_home_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_home_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_the_content\u0028\u0029",
-            "name": "swap_the_content",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_the_content"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_pre_get_shortlink\u0028\u0029",
-            "name": "swap_pre_get_shortlink",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_pre_get_shortlink"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_get_canonical_url\u0028\u0029",
-            "name": "swap_get_canonical_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_get_canonical_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_template_directory_uri\u0028\u0029",
-            "name": "swap_template_directory_uri",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_template_directory_uri"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_siteurl\u0028\u0029",
-            "name": "swap_siteurl",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_siteurl"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_feed_link\u0028\u0029",
-            "name": "swap_feed_link",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_feed_link"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_default_scripts_domain\u0028\u0029",
-            "name": "swap_default_scripts_domain",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_default_scripts_domain"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_wo_asset_url\u0028\u0029",
-            "name": "swap_wo_asset_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_wo_asset_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_rest_route_for_post\u0028\u0029",
-            "name": "swap_rest_route_for_post",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_rest_route_for_post"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_rest_url\u0028\u0029",
-            "name": "swap_rest_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_rest_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aupdate_url_to_https\u0028\u0029",
-            "name": "update_url_to_https",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_update_url_to_https"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_start_relative_url\u0028\u0029",
-            "name": "swap_start_relative_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_start_relative_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_end_relative_url\u0028\u0029",
-            "name": "swap_end_relative_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_end_relative_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_relative_url\u0028\u0029",
-            "name": "swap_relative_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_relative_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_attachment_url\u0028\u0029",
-            "name": "swap_attachment_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_attachment_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_featured_img_url\u0028\u0029",
-            "name": "swap_featured_img_url",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_featured_img_url"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003Aswap_style_uri\u0028\u0029",
-            "name": "swap_style_uri",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#method_swap_style_uri"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003A\u0024domains",
-            "name": "domains",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#property_domains"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003A\u0024siteurl",
-            "name": "siteurl",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#property_siteurl"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003A\u0024new_siteurl",
-            "name": "new_siteurl",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#property_new_siteurl"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003A\u0024new_domain",
-            "name": "new_domain",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#property_new_domain"
-        },                {
-            "fqsen": "\\WP\\DS\\Main\\Class02\u003A\u003A\u0024old_domain",
-            "name": "old_domain",
-            "summary": "",
-            "url": "classes/WP-DS-Main-Class02.html#property_old_domain"
+            "url": "classes/WP-Ds-Main-ClassAdmin.html#property_options"
         },                {
             "fqsen": "\\WP\\DS\\Main\\ClassAjax",
             "name": "ClassAjax",
@@ -340,6 +145,201 @@ Search.appendIndex(
             "name": "old_domain",
             "summary": "",
             "url": "classes/WP-DS-Main-ClassAjax.html#property_old_domain"
+        },                {
+            "fqsen": "\\WPDS_CUSTOM_REQUEST_URL",
+            "name": "WPDS_CUSTOM_REQUEST_URL",
+            "summary": "",
+            "url": "namespaces/default.html#constant_WPDS_CUSTOM_REQUEST_URL"
+        },                {
+            "fqsen": "\\WP_SITEURL",
+            "name": "WP_SITEURL",
+            "summary": "",
+            "url": "namespaces/default.html#constant_WP_SITEURL"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend",
+            "name": "ClassFrontend",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method___construct"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Awoocommerce_store_api_cart_item_images\u0028\u0029",
+            "name": "woocommerce_store_api_cart_item_images",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_woocommerce_store_api_cart_item_images"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Atemplate_redirect\u0028\u0029",
+            "name": "template_redirect",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_template_redirect"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_wp_script_attributes\u0028\u0029",
+            "name": "swap_wp_script_attributes",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_wp_script_attributes"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_woocommerce_gallery_image_html_attachment_image_params\u0028\u0029",
+            "name": "swap_woocommerce_gallery_image_html_attachment_image_params",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_woocommerce_gallery_image_html_attachment_image_params"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_attachment_image_attributes\u0028\u0029",
+            "name": "swap_attachment_image_attributes",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_attachment_image_attributes"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_prefetch_resource\u0028\u0029",
+            "name": "swap_prefetch_resource",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_prefetch_resource"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_style_loader_src\u0028\u0029",
+            "name": "swap_style_loader_src",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_style_loader_src"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_script_loader_src\u0028\u0029",
+            "name": "swap_script_loader_src",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_script_loader_src"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_do_shortcode_tag\u0028\u0029",
+            "name": "swap_do_shortcode_tag",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_do_shortcode_tag"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_plugin_url\u0028\u0029",
+            "name": "swap_plugin_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_plugin_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_wp_setup_nav_menu_item\u0028\u0029",
+            "name": "swap_wp_setup_nav_menu_item",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_wp_setup_nav_menu_item"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_site_url\u0028\u0029",
+            "name": "swap_site_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_site_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_home_url\u0028\u0029",
+            "name": "swap_home_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_home_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_the_content\u0028\u0029",
+            "name": "swap_the_content",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_the_content"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_pre_get_shortlink\u0028\u0029",
+            "name": "swap_pre_get_shortlink",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_pre_get_shortlink"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_get_canonical_url\u0028\u0029",
+            "name": "swap_get_canonical_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_get_canonical_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_template_directory_uri\u0028\u0029",
+            "name": "swap_template_directory_uri",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_template_directory_uri"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_siteurl\u0028\u0029",
+            "name": "swap_siteurl",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_siteurl"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_feed_link\u0028\u0029",
+            "name": "swap_feed_link",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_feed_link"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_default_scripts_domain\u0028\u0029",
+            "name": "swap_default_scripts_domain",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_default_scripts_domain"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_wo_asset_url\u0028\u0029",
+            "name": "swap_wo_asset_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_wo_asset_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_rest_route_for_post\u0028\u0029",
+            "name": "swap_rest_route_for_post",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_rest_route_for_post"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_rest_url\u0028\u0029",
+            "name": "swap_rest_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_rest_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aupdate_url_to_https\u0028\u0029",
+            "name": "update_url_to_https",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_update_url_to_https"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_start_relative_url\u0028\u0029",
+            "name": "swap_start_relative_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_start_relative_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_end_relative_url\u0028\u0029",
+            "name": "swap_end_relative_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_end_relative_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_relative_url\u0028\u0029",
+            "name": "swap_relative_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_relative_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_attachment_url\u0028\u0029",
+            "name": "swap_attachment_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_attachment_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_featured_img_url\u0028\u0029",
+            "name": "swap_featured_img_url",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_featured_img_url"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003Aswap_style_uri\u0028\u0029",
+            "name": "swap_style_uri",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#method_swap_style_uri"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003A\u0024domains",
+            "name": "domains",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#property_domains"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003A\u0024siteurl",
+            "name": "siteurl",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#property_siteurl"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003A\u0024new_siteurl",
+            "name": "new_siteurl",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#property_new_siteurl"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003A\u0024new_domain",
+            "name": "new_domain",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#property_new_domain"
+        },                {
+            "fqsen": "\\WP\\DS\\Main\\ClassFrontend\u003A\u003A\u0024old_domain",
+            "name": "old_domain",
+            "summary": "",
+            "url": "classes/WP-DS-Main-ClassFrontend.html#property_old_domain"
         },                {
             "fqsen": "\\",
             "name": "\\",
