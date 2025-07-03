@@ -18,7 +18,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin",
             "name": "ClassAdmin",
-            "summary": "",
+            "summary": "Main\u0020Admin\u0020Class.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003A__construct\u0028\u0029",
@@ -28,62 +28,62 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Aactivate\u0028\u0029",
             "name": "activate",
-            "summary": "",
+            "summary": "Default\u0020Activate.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_activate"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Adeactivate\u0028\u0029",
             "name": "deactivate",
-            "summary": "",
+            "summary": "Default\u0020Deacativation.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_deactivate"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Akey\u0028\u0029",
             "name": "key",
-            "summary": "",
+            "summary": "Pro\u0020Key\u0020test.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_key"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Aadd_menu_setting\u0028\u0029",
             "name": "add_menu_setting",
-            "summary": "",
+            "summary": "Add\u0020Menu\u0020Setting.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_add_menu_setting"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Aregister_settings\u0028\u0029",
             "name": "register_settings",
-            "summary": "",
+            "summary": "Add\u0020an\u0020API\u0020based\u0020Setting\u0020Page\ndoc\u003A\u0020https\u003A\/\/developer.wordpress.org\/plugins\/settings\/custom\u002Dsettings\u002Dpage\/.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_register_settings"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Ais_valid_domain_name\u0028\u0029",
             "name": "is_valid_domain_name",
-            "summary": "",
+            "summary": "Check\u0020for\u0020valid\u0020Domain.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_is_valid_domain_name"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Avalidate\u0028\u0029",
             "name": "validate",
-            "summary": "",
+            "summary": "Validate\u0020input.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_validate"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Acallback\u0028\u0029",
             "name": "callback",
-            "summary": "",
+            "summary": "Callback\u0020after\u0020Save\u0020Settings.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_callback"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Afield_activate\u0028\u0029",
             "name": "field_activate",
-            "summary": "",
+            "summary": "Field\u0020Activate\u0020HTML\u0020output.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_field_activate"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Afield_key\u0028\u0029",
             "name": "field_key",
-            "summary": "",
+            "summary": "Field\u0020Pro\u0020Key\u0020HTML\u0020output.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_field_key"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Afield_include\u0028\u0029",
             "name": "field_include",
-            "summary": "",
+            "summary": "Field\u0020Doomain\u0020HTML\u0020outputs.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_field_include"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003Awporg_options_page_html\u0028\u0029",
             "name": "wporg_options_page_html",
-            "summary": "",
+            "summary": "Generate\u0020Setting\u0020Page.",
             "url": "classes/WP-Ds-Main-ClassAdmin.html#method_wporg_options_page_html"
         },                {
             "fqsen": "\\WP\\Ds\\Main\\ClassAdmin\u003A\u003A\u0024options",
