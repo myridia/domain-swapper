@@ -22,6 +22,12 @@
  * Prefix: wpds_
  * Option_key: plugin_domain_swapper
  **/
+
+/*
+ * Default Wordpress Constant
+ *
+ * @since 1.0.0 (if available)
+ */
 defined('ABSPATH') or exit('Something went wrong');
 
 /*
@@ -33,9 +39,18 @@ use WP\Ds\Main\ClassAdmin;
 use WP\Ds\Main\ClassAjax;
 use WP\Ds\Main\ClassFrontend;
 
-// get the metadata from the plugin header
+/*
+ * Get the metadata from the plugin header
+ *
+ * @since 1.0.0 (if available)
+ */
 $m_plugin_data = get_file_data(__FILE__, ['name' => 'Plugin Name', 'version' => 'Version', 'text_domain' => 'Text Domain', 'constant_prefix' => 'Constant Prefix', 'prefix' => 'Prefix', 'option_key' => 'Option_key']);
 
+/*
+ * Constants Calls
+ *
+ * @since 1.0.0 (if available)
+ */
 m_make_constants('NAME', $m_plugin_data['text_domain'], $m_plugin_data);
 m_make_constants('DIR', dirname(plugin_basename(__FILE__)), $m_plugin_data);
 m_make_constants('BASE', plugin_basename(__FILE__), $m_plugin_data);
@@ -49,8 +64,18 @@ m_make_constants('TEXT', $m_plugin_data['text_domain'], $m_plugin_data);
 m_make_constants('PREFIX', $m_plugin_data['prefix'], $m_plugin_data);
 m_make_constants('OPTION', $m_plugin_data['option_key'], $m_plugin_data);
 
-// Default Plugin activate and deactivate hooks, started in static class functions
+/*
+ * Default Plugin activate hooks. Started as a static class functions
+ *
+ * @since 1.0.0 (if available)
+ */
 register_activation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'activate']);
+
+/*
+ * Default Plugin deactivate hooks. Started as a static class functions
+ *
+ * @since 1.0.0 (if available)
+ */
 register_deactivation_hook(__FILE__, ['WP\Ds\Main\ClassFrontend', 'deactivate']);
 
 // Register to start the Plugin
@@ -94,8 +119,13 @@ function wp_ds_plugin_init()
 }
 
 /*
-  Helper Function to register Classes cleanly with namespaces
-*/
+ * Register Classes
+ *
+ *  Register a PHP Class with Namespace
+ *
+ * @since 1.0.0
+ * @param String $className
+ */
 spl_autoload_register(function (string $className) {
     if (false === strpos($className, 'WP\\Ds')) {
         return;
@@ -105,7 +135,14 @@ spl_autoload_register(function (string $className) {
     require_once $classFile;
 });
 
-// Helper Function to create all Constants
+/*
+ * Create Constants
+ *
+ *  Create in a compact way all Constants used for the Plugin.
+ *
+ * @since 1.0.0
+ * @param String $className
+ */
 function m_make_constants($name, $value, $pdata)
 {
     $prefix = $pdata['constant_prefix'];

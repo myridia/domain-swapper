@@ -2,6 +2,13 @@
 
 namespace WP\Ds\Main;
 
+/**
+ * Main Admin Class.
+ *
+ * Register, deregiter the plugin and basic Admin setup
+ *
+ * @since 1.0.0
+ */
 class ClassAdmin
 {
     private $options;
@@ -13,9 +20,11 @@ class ClassAdmin
         ];
     }
 
-    /*
-      Default Activate
-    */
+    /**
+     *  Default Activate.
+     *
+     * @since 1.0.0
+     */
     public static function activate()
     {
         $options = [
@@ -26,18 +35,23 @@ class ClassAdmin
         }
     }
 
-    /*
-      Default Deacativation
-    */
+    /**
+     * Default Deacativation.
+     *
+     * @since 1.0.0
+     */
     public static function deactivate()
     {
         delete_option(WPDS_OPTION);
     }
 
-    /*
-      Pro Key test
-      //https://www.php.net/manual/en/function.sodium-crypto-sign.php
-    */
+    /**
+     * Pro Key test.
+     *
+     *  https://www.php.net/manual/en/function.sodium-crypto-sign.php
+     *
+     * @since 1.0.0
+     */
     public static function key()
     {
         $sign_pair = sodium_crypto_sign_keypair();
@@ -50,9 +64,13 @@ class ClassAdmin
         // echo $message_signed.'<br>';
     }
 
-    /*
-      Add Menu Setting
-    */
+    /**
+     * Add Menu Setting.
+     *
+     * The Menu will appear under Settings
+     *
+     * @since 1.0.0
+     */
     public function add_menu_setting()
     {
         add_submenu_page(
@@ -66,10 +84,12 @@ class ClassAdmin
         );
     }
 
-    /*
-      Add an API based Setting Page
-      // https://developer.wordpress.org/plugins/settings/custom-settings-page/
-    */
+    /**
+     * Add an API based Setting Page
+     * doc: https://developer.wordpress.org/plugins/settings/custom-settings-page/.
+     *
+     * @since 1.0.0
+     */
     public function register_settings()
     {
         register_setting(WPDS_OPTION, WPDS_OPTION, [$this, 'validate']);
@@ -116,6 +136,15 @@ class ClassAdmin
         );
     }
 
+    /**
+     * Check for valid Domain.
+     *
+     * @since 1.0.0
+     *
+     * @param string $domain_name
+     *
+     * @return bool $ok
+     */
     public function is_valid_domain_name($domain_name)
     {
         $ok = preg_match("/^([a-z\d](-*[a-z\d])*)(\.([a-z\d](-*[a-z\d])*))*$/i", $domain_name) // valid chars check
@@ -130,6 +159,15 @@ class ClassAdmin
         return $ok;
     }
 
+    /**
+     * Validate input.
+     *
+     * @since 1.0.0
+     *
+     * @param string $input
+     *
+     * @return string $input
+     */
     public function validate($input)
     {
         $newinput = $input;
@@ -149,11 +187,31 @@ class ClassAdmin
         return $newinput;
     }
 
+    /**
+     * Callback after Save Settings.
+     *
+     * @since 1.0.0
+     */
     public function callback()
     {
         esc_html_e('Settings Saved to ', WPDS_TEXT);
     }
 
+    /**
+     * Field Activate HTML output.
+     *
+     * Generate a text checkbox field for the Plugin activation
+     *
+     * @since 1.0.0
+     *
+     * @param array $args {
+     *                    Field array
+     *
+     * @var string label_for
+     *             }
+     *
+     * @return string $input
+     */
     public function field_activate($args)
     {
         $o = get_option(WPDS_OPTION);
@@ -166,6 +224,21 @@ class ClassAdmin
         echo "<input type='checkbox' id='key' name='{$args['label_for']}'  {$checked} />";
     }
 
+    /**
+     * Field Pro Key HTML output.
+     *
+     * Generate a text input field for the Plugin activation key
+     *
+     * @since 1.0.0
+     *
+     * @param array $args {
+     *                    Field array
+     *
+     * @var string label_for
+     *             }
+     *
+     * @return string $input
+     */
     public function field_key($args)
     {
         $o = get_option(WPDS_OPTION);
@@ -176,6 +249,21 @@ class ClassAdmin
         echo "<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />";
     }
 
+    /**
+     * Field Doomain HTML outputs.
+     *
+     * Generate a text input fields for the Domain names
+     *
+     * @since 1.0.0
+     *
+     * @param array $args {
+     *                    Field array
+     *
+     * @var string label_for
+     *             }
+     *
+     * @return string $input
+     */
     public function field_include($args)
     {
         $o = get_option(WPDS_OPTION);
@@ -192,6 +280,13 @@ class ClassAdmin
         }
     }
 
+    /**
+     * Generate Setting Page.
+     *
+     * Generate a text input fields for the Domain names
+     *
+     * @since 1.0.0
+     */
     public function wporg_options_page_html()
     {
         if (!current_user_can('manage_options')) {
