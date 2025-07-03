@@ -5,7 +5,7 @@ namespace WP\Ds\Main;
 /**
  * Main Admin Class.
  *
- * Register, deregiter the plugin and basic Admin setup
+ * Register and un-register the plugin. Setting Page render.
  *
  * @since 1.0.0
  */
