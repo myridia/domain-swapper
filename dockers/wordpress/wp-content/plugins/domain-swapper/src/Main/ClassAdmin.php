@@ -48,6 +48,9 @@ class ClassAdmin
     /**
      * Pro Key test.
      *
+     *  Generate a list of message_signed and save them to the plugin. As well save the sign_public key to the plugin.
+     *  But keep the sign_secrete and the messages/serial keys secret.
+     *  Let the Customer enter his key, it will be signed and the result must be in your saved list to confirm it. 
      *  https://www.php.net/manual/en/function.sodium-crypto-sign.php
      *
      * @since 1.0.0
@@ -57,7 +60,7 @@ class ClassAdmin
         $sign_pair = sodium_crypto_sign_keypair();
         $sign_secret = sodium_crypto_sign_secretkey($sign_pair);
         $sign_public = sodium_crypto_sign_publickey($sign_pair);
-        $message = 'Hello';
+        $message = '675234';
         $message_signed = sodium_crypto_sign($message, $sign_secret);
         $smessage = sodium_crypto_sign_open($message_signed, $sign_public);
         // echo $smessage.'<br>';
