@@ -7,8 +7,6 @@ namespace WP\DS\Main;
  *
  * Handle Ajax requests
  *
- * Register and un-register the plugin. Setting Page render.
- *
  * @since 1.0.0
  */
 class ClassAjax

@@ -2,6 +2,13 @@
 
 namespace WP\DS\Main;
 
+/**
+ * Class Frontend.
+ *
+ * Handle all Request to to browser Frontend
+ *
+ * @since 1.0.0
+ */
 class ClassFrontend
 {
     private $domains;
@@ -11,6 +18,13 @@ class ClassFrontend
     private $old_domain;
     private $activate;
 
+    /**
+     * Init the Frontend Filter Hooks.
+     *
+     * If Plugin is activated and if the new_siteurl is different to the base stieurl, then init the ajax filter hooks
+     *
+     * @since 1.0.0
+     */
     public function __construct()
     {
         error_log('...swap browser frontent calls');
@@ -44,7 +58,7 @@ class ClassFrontend
      *
      * Set the new_domain and and old domain and other data
      *
-     * Register and un-register the plugin. Setting Page render.
+     * Register and un-register the plugin. Setting Page render - Same like in ClassAjax
      *
      * @since 1.0.0
      */
@@ -85,9 +99,17 @@ class ClassFrontend
         }
     }
 
+    /**
+     * Overwrite filter hook woocommerce_store_api_cart_item_images.
+     *
+     * https://developer.wordpress.org/reference/hooks/woocommerce_store_api_cart_item_images
+     *
+     * @since 1.0.0
+     *
+     * @return array $produt_images
+     */
     public function swap_woocommerce_store_api_cart_item_images($product_images, $cart_item, $cart_item_key)
     {
-        // https://developer.wordpress.org/reference/hooks/woocommerce_store_api_cart_item_images
         foreach ($product_images as $k => $v) {
             $product_images[$k]->src = str_replace($this->siteurl, $this->new_siteurl, $v->src);
             $product_images[$k]->thumbnail = str_replace($this->siteurl, $this->new_siteurl, $v->thumbnail);
@@ -97,6 +119,15 @@ class ClassFrontend
         return $product_images;
     }
 
+    /**
+     * Overwrite filter hook template_redirect.
+     *
+     * https://developer.wordpress.org/reference/hooks/template_redirect
+     *
+     * @since 1.0.0
+     *
+     * @return string $html
+     */
     public function swap_template_redirect()
     {
         ob_start(function ($html) {
@@ -107,6 +138,15 @@ class ClassFrontend
         });
     }
 
+    /**
+     * Overwrite filter hook wp_script_attributes.
+     *
+     * https://developer.wordpress.org/reference/hooks/wp_script_attributes
+     *
+     * @since 1.0.0
+     *
+     * @return array $attr
+     */
     public function swap_wp_script_attributes(array $attr)
     {
         $attr['src'] = str_replace($this->siteurl, $this->new_siteurl, $attr['src']);
@@ -114,37 +154,69 @@ class ClassFrontend
         return $attr;
     }
 
+    /**
+     * Overwrite filter hook woocommerce_gallery_image_html_attachment_image_params.
+     *
+     * https://developer.wordpress.org/reference/hooks/woocommerce_gallery_image_html_attachment_image_params
+     *
+     * @since 1.0.0
+     *
+     * @return array $params
+     */
     public function swap_woocommerce_gallery_image_html_attachment_image_params($params, $attachment_id, $post_id, $image_class)
     {
-        // https://developer.wordpress.org/reference/hooks/swap_woocommerce_gallery_image_html_attachment_image_params
         $params['data-src'] = str_replace($this->siteurl, $this->new_siteurl, $params['data-src']);
         $params['data-large_image'] = str_replace($this->siteurl, $this->new_siteurl, $params['data-large_image']);
 
         return $params;
     }
 
+    /**
+     * Overwrite filter hook attachment_image_attributes.
+     *
+     * https://developer.wordpress.org/reference/hooks/attachment_image_attributes
+     *
+     * @since 1.0.0
+     *
+     * @return array $att
+     */
     public function swap_attachment_image_attributes($attr, $attachment, $size)
     {
-        // https://developer.wordpress.org/reference/hooks/attachment_image_attributes
         $attr['srcset'] = str_replace($this->siteurl, $this->new_siteurl, $attr['srcset']);
         $attr['src'] = str_replace($this->siteurl, $this->new_siteurl, $attr['src']);
 
         return $attr;
     }
 
+    /**
+     * Overwrite filter hook prefetch_resource.
+     *
+     * https://developer.wordpress.org/reference/hooks/prefetch_resource
+     *
+     * @since 1.0.0
+     *
+     * @return array $url
+     */
     public function swap_prefetch_resource($urls, $relation_type)
     {
-        // https://developer.wordpress.org/reference/hooks/prefetch_resource
         if ('prefetch' === $relation_type) {
             foreach ($urls as $k => $v) {
                 $urls[$k]['href'] = str_replace($this->siteurl, $this->new_siteurl, $v['href']);
-                // error_log($v['href']);
             }
         }
 
         return $urls;
     }
 
+    /**
+     * Overwrite filter hook style_loader_src.
+     *
+     * https://developer.wordpress.org/reference/hooks/style_loader_src
+     *
+     * @since 1.0.0
+     *
+     * @return string $new_url
+     */
     public function swap_style_loader_src($url)
     {
         $new_url = $url;
@@ -166,6 +238,15 @@ class ClassFrontend
         return $new_url;
     }
 
+    /**
+     * Overwrite filter hook script_loader_src.
+     *
+     * https://developer.wordpress.org/reference/hooks/script_loader_src
+     *
+     * @since 1.0.0
+     *
+     * @return string $html
+     */
     public function swap_script_loader_src($url)
     {
         $new_url = $url;
@@ -187,11 +268,15 @@ class ClassFrontend
         return $new_url;
     }
 
-    public function swap_do_shortcode_tag($output, $tag, $attr, $m)
-    {
-        return $output;
-    }
-
+    /**
+     * Overwrite filter hook plugin_url.
+     *
+     * https://developer.wordpress.org/reference/hooks/plugin_url
+     *
+     * @since 1.0.0
+     *
+     * @return string $url
+     */
     public function swap_plugin_url($url)
     {
         // https://developer.wordpress.org/reference/hooks/plugin_url
@@ -200,14 +285,31 @@ class ClassFrontend
         return $url;
     }
 
+    /**
+     * Overwrite filter hook wp_setup_nav_menu_item.
+     *
+     * https://developer.wordpress.org/reference/hooks/wp_setup_nav_menu_item
+     *
+     * @since 1.0.0
+     *
+     * @return string $menu_item
+     */
     public function swap_wp_setup_nav_menu_item($menu_item)
     {
-        // https://developer.wordpress.org/reference/hooks/wp_setup_nav_menu_item
         $menu_item->url = str_replace($this->siteurl, $this->new_siteurl, $menu_item->url);
 
         return $menu_item;
     }
 
+    /**
+     * Overwrite filter hook site_url.
+     *
+     * https://developer.wordpress.org/reference/hooks/site_url
+     *
+     * @since 1.0.0
+     *
+     * @return string $url
+     */
     public function swap_site_url($url, $path, $orig_scheme, $blog_id)
     {
         // https://developer.wordpress.org/reference/hooks/swap_site_url/
@@ -219,6 +321,15 @@ class ClassFrontend
         return $url;
     }
 
+    /**
+     * Overwrite filter hook home_url.
+     *
+     * https://developer.wordpress.org/reference/hooks/home_url
+     *
+     * @since 1.0.0
+     *
+     * @return string $url
+     */
     public function swap_home_url($url, $path, $orig_scheme, $blog_id)
     {
         // https://developer.wordpress.org/reference/hooks/home_url/
@@ -230,11 +341,17 @@ class ClassFrontend
         return $url;
     }
 
+    /**
+     * Overwrite filter hook the_content.
+     *
+     * https://developer.wordpress.org/reference/hooks/the_content
+     *
+     * @since 1.0.0
+     *
+     * @return string $content
+     */
     public function swap_the_content($content)
     {
-        /* https://developer.wordpress.org/reference/hooks/the_content/
-          changed /category url
-         */
         if (is_singular() && in_the_loop() && is_main_query()) {
             $new_content = str_replace($this->siteurl, $this->new_siteurl, $content);
 
@@ -244,9 +361,17 @@ class ClassFrontend
         return $content;
     }
 
+    /**
+     * Overwrite filter hook get_shortlink.
+     *
+     * https://developer.wordpress.org/reference/hooks/get_shortlink
+     *
+     * @since 1.0.0
+     *
+     * @return string $shortlink
+     */
     public function swap_pre_get_shortlink($shortlink, $id, $context, $allow_slugs)
     {
-        // https://developer.wordpress.org/reference/hooks/pre_get_shortlink/
         if (0 == strlen($shortlink) && '' != $this->new_siteurl) {
             $shortlink = $this->new_siteurl;
         } elseif ('' != $this->new_siteurl) {
@@ -256,15 +381,31 @@ class ClassFrontend
         return $shortlink;
     }
 
+    /**
+     * Overwrite filter hook get_canonical_url.
+     *
+     * https://developer.wordpress.org/reference/hooks/get_canonical_url
+     *
+     * @since 1.0.0
+     *
+     * @return string $url
+     */
     public function swap_get_canonical_url($url, $post)
     {
-        // https://developer.wordpress.org/reference/hooks/get_canonical_url/
-        // error_log($url);
         $url = str_replace($this->siteurl, $this->new_siteurl, $url);
 
         return $url;
     }
 
+    /**
+     * Overwrite filter hook template_directory_uri.
+     *
+     * https://developer.wordpress.org/reference/hooks/template_directory_uri
+     *
+     * @since 1.0.0
+     *
+     * @return string $url
+     */
     public function swap_template_directory_uri($url)
     {
         // https://developer.wordpress.org/reference/hooks/template_directory_uri/
@@ -273,6 +414,15 @@ class ClassFrontend
         return $url;
     }
 
+    /**
+     * Overwrite filter hook siteurl.
+     *
+     * https://developer.wordpress.org/reference/hooks/siteurl
+     *
+     * @since 1.0.0
+     *
+     * @return string $url
+     */
     public function swap_siteurl($url)
     {
         if ('' != $this->new_siteurl) {
@@ -286,7 +436,6 @@ class ClassFrontend
 
             $url = $this->new_siteurl;
         }
-        // error_log($url);
 
         return $url;
     }
