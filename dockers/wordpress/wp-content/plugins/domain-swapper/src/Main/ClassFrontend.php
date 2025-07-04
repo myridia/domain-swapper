@@ -9,10 +9,56 @@ class ClassFrontend
     private $new_siteurl;
     private $new_domain;
     private $old_domain;
+    private $activate;
 
     public function __construct()
     {
+        error_log('...swap browser frontent calls');
+        $this->set_domain_data();
+        if ($this->activate) {
+            if ($this->new_siteurl != $this->siteurl) {
+                error_log('....start swapping');
+                add_filter('option_siteurl', [$this, 'swap_siteurl']);
+                add_filter('style_loader_src', [$this, 'swap_style_loader_src'], 10, 4);
+                add_filter('script_loader_src', [$this, 'swap_script_loader_src'], 10, 4);
+                add_filter('template_directory_uri', [$this, 'swap_template_directory_uri']);
+                add_filter('get_canonical_url', [$this, 'swap_get_canonical_url'], 10, 2);
+                add_filter('pre_get_shortlink', [$this, 'swap_pre_get_shortlink'], 10, 4);
+                add_filter('the_content', [$this, 'swap_the_content'], 1);
+                add_filter('home_url', [$this, 'swap_home_url'], 10, 4);
+                add_filter('site_url', [$this, 'swap_site_url'], 10, 4);
+                add_filter('wp_setup_nav_menu_item', [$this, 'swap_wp_setup_nav_menu_item']);
+                add_filter('plugins_url', [$this, 'swap_plugin_url']);
+                add_filter('wp_resource_hints', [$this, 'swap_prefetch_resource'], 10, 2);
+                add_filter('wp_get_attachment_image_attributes', [$this, 'swap_attachment_image_attributes'], 10, 3);
+                add_filter('woocommerce_gallery_image_html_attachment_image_params', [$this, 'swap_woocommerce_gallery_image_html_attachment_image_params'], 10, 4);
+                add_filter('wp_script_attributes', [$this, 'swap_wp_script_attributes'], 10, 2);
+                add_action('template_redirect', [$this, 'swap_template_redirect']);
+                add_filter('woocommerce_store_api_cart_item_images', [$this, 'swap_woocommerce_store_api_cart_item_images'], 10, 3);
+            }
+        }
+    }
+
+    /**
+     * Set Urls.
+     *
+     * Set the new_domain and and old domain and other data
+     *
+     * Register and un-register the plugin. Setting Page render.
+     *
+     * @since 1.0.0
+     */
+    public function set_domain_data()
+    {
         $o = get_option(WPDS_OPTION);
+        if ($o['activate']) {
+            $this->activate = 1;
+        } else {
+            $this->activate = 0;
+
+            return;
+        }
+
         $this->domains = $o['include'];
         $this->siteurl = get_option('siteurl');
         $this->new_siteurl = $this->siteurl;
@@ -37,33 +83,9 @@ class ClassFrontend
             $this->new_siteurl = 'https://'.$new_domain;
             $this->new_domain = $new_domain;
         }
-
-        if (isset($o['activate'])) {
-            if ($this->new_siteurl != $this->siteurl) {
-                error_log('....start swapping');
-                add_filter('option_siteurl', [$this, 'swap_siteurl']);
-                add_filter('style_loader_src', [$this, 'swap_style_loader_src'], 10, 4);
-                add_filter('script_loader_src', [$this, 'swap_script_loader_src'], 10, 4);
-                add_filter('template_directory_uri', [$this, 'swap_template_directory_uri']);
-                add_filter('get_canonical_url', [$this, 'swap_get_canonical_url'], 10, 2);
-                add_filter('pre_get_shortlink', [$this, 'swap_pre_get_shortlink'], 10, 4);
-                add_filter('the_content', [$this, 'swap_the_content'], 1);
-                add_filter('home_url', [$this, 'swap_home_url'], 10, 4);
-                add_filter('site_url', [$this, 'swap_site_url'], 10, 4);
-                add_filter('wp_setup_nav_menu_item', [$this, 'swap_wp_setup_nav_menu_item']);
-                add_filter('plugins_url', [$this, 'swap_plugin_url']);
-                add_filter('wp_resource_hints', [$this, 'swap_prefetch_resource'], 10, 2);
-                add_filter('wp_get_attachment_image_attributes', [$this, 'swap_attachment_image_attributes'], 10, 3);
-                add_filter('woocommerce_gallery_image_html_attachment_image_params', [$this, 'swap_woocommerce_gallery_image_html_attachment_image_params'], 10, 4);
-                // add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
-                add_filter('wp_script_attributes', [$this, 'swap_wp_script_attributes'], 10, 2);
-                add_action('template_redirect', [$this, 'template_redirect']);
-                add_filter('woocommerce_store_api_cart_item_images', [$this, 'woocommerce_store_api_cart_item_images'], 10, 3);
-            }
-        }
     }
 
-    public function woocommerce_store_api_cart_item_images($product_images, $cart_item, $cart_item_key)
+    public function swap_woocommerce_store_api_cart_item_images($product_images, $cart_item, $cart_item_key)
     {
         // https://developer.wordpress.org/reference/hooks/woocommerce_store_api_cart_item_images
         foreach ($product_images as $k => $v) {
@@ -75,7 +97,7 @@ class ClassFrontend
         return $product_images;
     }
 
-    public function template_redirect()
+    public function swap_template_redirect()
     {
         ob_start(function ($html) {
             $html = str_replace($this->siteurl, $this->new_siteurl, $html);
@@ -140,8 +162,6 @@ class ClassFrontend
         }
         $new_url = str_replace('http://', 'https://', $new_url);
         $new_url = str_replace($this->siteurl, $this->new_siteurl, $new_url);
-
-        // error_log($new_url);
 
         return $new_url;
     }
@@ -269,96 +289,5 @@ class ClassFrontend
         // error_log($url);
 
         return $url;
-    }
-
-    public function swap_feed_link($output, $feed)
-    {
-        // error_log($output);
-
-        return $output;
-    }
-
-    public function swap_default_scripts_domain($scripts)
-    {
-        return $scripts;
-    }
-
-    public function swap_wo_asset_url($url, $path)
-    {
-        $new_url = str_replace($this->siteurl, $this->new_siteurl, $url);
-
-        return $new_url;
-    }
-
-    public function swap_rest_route_for_post($route, $post)
-    {
-        return $route;
-    }
-
-    public function swap_rest_url($url, $path, $blog_id, $scheme)
-    {
-        $new_url = str_replace($this->siteurl, $this->new_siteurl, $url);
-
-        // $new_url = str_replace($this->siteurl, 'https://th.shock.se', $url);
-        /*
-        error_log($this->siteurl);
-        error_log($this->new_siteurl);
-        error_log($url);
-        error_log($new_url);
-        error_log('xxxxxxxxxxxxxxxxxxxxxx');
-        */
-        return $new_url;
-    }
-
-    public function update_url_to_https($url)
-    {
-        return str_replace('http://', 'https://', $url);
-    }
-
-    public function swap_start_relative_url()
-    {
-        ob_start([$this, 'swap_relative_url']);
-    }
-
-    public function swap_end_relative_url()
-    {
-        @ob_end_flush();
-    }
-
-    public function swap_relative_url($buffer)
-    {
-        $url = esc_url(home_url('/'));
-        $url_relative = wp_make_link_relative($url);
-
-        $url_escaped = str_replace('/', '\/', $url);
-        $url_escaped_relative = str_replace('/', '\/', $url_relative);
-
-        $buffer = str_replace($url, $url_relative, $buffer);
-        $buffer = str_replace($url_escaped, $url_escaped_relative, $buffer);
-
-        return $buffer;
-    }
-
-    public function swap_attachment_url($url)
-    {
-        $var = explode('/wp-content', $url);
-
-        $new_url = str_replace($var[0], $this->new_siteurl, $url);
-
-        return $new_url;
-    }
-
-    public function swap_featured_img_url($url)
-    {
-        $new_url = str_replace($this->siteurl, $this->new_siteurl, $url);
-
-        return $new_url;
-    }
-
-    public function swap_style_uri($url)
-    {
-        $new_url = $this->swap_content_url($url);
-
-        return $new_url;
     }
 }
