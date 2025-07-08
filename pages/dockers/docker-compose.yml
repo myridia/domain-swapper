@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - "88:80"
+    volumes:
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf            
+    tty: true
+
+
