@@ -23,6 +23,7 @@ class MakePages:
 
             with open("db/page.json", "w") as f:
                 f.write(json.dumps(doc))
+        print(doc)
         self.company = doc["company"]
         self.templates = doc["templates"]
         self.menu = doc["menu"]
