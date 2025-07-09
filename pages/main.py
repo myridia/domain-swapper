@@ -4,8 +4,15 @@ from pathlib import Path
 import requests, argparse
 import couchdb2
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from datetime import datetime
 
-env = Environment(loader=FileSystemLoader("templates"), autoescape=select_autoescape())
+
+env = Environment(
+    loader=FileSystemLoader("templates"),
+    autoescape=select_autoescape(),
+    extensions=["jinja2.ext.i18n"],
+)
+env.add_extension("jinja2.ext.debug")
 
 
 class MakePages:
@@ -23,17 +30,14 @@ class MakePages:
 
             with open("db/page.json", "w") as f:
                 f.write(json.dumps(doc))
-        print(doc)
-        self.company = doc["company"]
-        self.templates = doc["templates"]
-        self.menu = doc["menu"]
+        self.doc = doc
 
     def start(self):
         print("...start")
-        for i in self.templates:
+        for i in self.doc["templates"]:
             print("...generate {0}".format(i))
             template = env.get_template(i)
-            buff = template.render(name=i, menu=self.menu, company=self.company)
+            buff = template.render(doc=self.doc, template=i.replace(".html", ""))
             out_path = "public/{}".format(i)
             with open(out_path, "w") as f:
                 f.write(buff)
