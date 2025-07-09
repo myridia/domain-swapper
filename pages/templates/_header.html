@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Software Apps</title>
+    <title>{{name}}</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
     <link rel="stylesheet" href="assets/css/accordion-faq-list.css">
@@ -20,13 +20,10 @@
     <nav class="navbar navbar-expand-md bg-body py-3">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/Image%203.jpg" width="66" height="66" alt="logo"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2"><a href="index.html">Software Apps</a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="install.html">Install</a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="docs/index.html" target="_blank">Documentation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="terms.html">Terms &amp; Info</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <ul class="navbar-nav ms-auto">
+		{% for m in menu %}
+                    <li class="nav-item"><a class="nav-link activate" href="{{m.href}}">{{m.name}}</a></li>		
+		{% endfor %}
                 </ul>
             </div>
         </div>

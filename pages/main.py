@@ -10,14 +10,32 @@ env = Environment(loader=FileSystemLoader("templates"), autoescape=select_autoes
 class MakePages:
     def __init__(self):
         print("...init MakePages")
+        self.templates = [
+            "index.html",
+            "contact.html",
+            "faq.html",
+            "install.html",
+            "terms.html",
+        ]
+
+        self.menu = [
+            {"href": "index.html", "name": "Home"},
+            {"href": "install.html", "name": "Install"},
+            {"href": "faq.html", "name": "FAQ"},
+            {"href": "docs/index.html", "name": "Documentation"},
+            {"href": "terms.html", "name": "Terms & Info"},
+            {"href": "contact.html", "name": "Contact"},
+        ]
 
     def start(self):
         print("...start")
-        template = env.get_template("index.html")
-        buff = template.render(name="Pages")
-        out_path = "public/index.html"
-        with open(out_path, "w") as f:
-            f.write(buff)
+        for i in self.templates:
+            print("...generate {0}".format(i))
+            template = env.get_template(i)
+            buff = template.render(name=i, menu=self.menu)
+            out_path = "public/{}".format(i)
+            with open(out_path, "w") as f:
+                f.write(buff)
 
 
 if __name__ == "__main__":
