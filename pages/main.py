@@ -27,12 +27,14 @@ class MakePages:
             {"href": "contact.html", "name": "Contact"},
         ]
 
+        self.company = "Domain Swapper"
+
     def start(self):
         print("...start")
         for i in self.templates:
             print("...generate {0}".format(i))
             template = env.get_template(i)
-            buff = template.render(name=i, menu=self.menu)
+            buff = template.render(name=i, menu=self.menu, company=self.company)
             out_path = "public/{}".format(i)
             with open(out_path, "w") as f:
                 f.write(buff)
