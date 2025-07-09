@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nginx_pages:
+    container_name: nginx_pages
+    image: nginx
+    ports:
+      - "88:80"
+    volumes:
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d      
+      - ../public/:/usr/share/nginx/html/
+    tty: true
+
+

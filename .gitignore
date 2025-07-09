@@ -1,3 +1,5 @@
+pages/db/*.json
+
 .phpdoc/cache
 
 # Wordpress - ignore core, configuration, examples, uploads and logs.
