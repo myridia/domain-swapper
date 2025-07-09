@@ -27,26 +27,6 @@ class MakePages:
         self.templates = doc["templates"]
         self.menu = doc["menu"]
 
-        """
-        self.templates = [
-            "index.html",
-            "contact.html",
-            "faq.html",
-            "install.html",
-            "terms.html",
-        ]
-        self.menu = [
-            {"href": "index.html", "name": "Home"},
-            {"href": "install.html", "name": "Install"},
-            {"href": "faq.html", "name": "FAQ"},
-            {"href": "docs/index.html", "name": "Documentation"},
-            {"href": "terms.html", "name": "Terms & Info"},
-            {"href": "contact.html", "name": "Contact"},
-        ]
-
-        self.company = "Domain Swapper"
-        """
-
     def start(self):
         print("...start")
         for i in self.templates:
