@@ -1,5 +1,4 @@
-# domain-swapper
-![domain-swapper](pages/public/assets/img/logo.png) 
+# domain-swapper ![domain-swapper](pages/public/assets/img/logo.png) 
 
 
 ## Install
