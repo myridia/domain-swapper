@@ -18,19 +18,13 @@ env.add_extension("jinja2.ext.debug")
 class MakePages:
     def __init__(self):
         print("...init MakePages")
-        p = Path("db/page.json")
-        doc = {}
-        if p.is_file():
-            j = p.read_text()
-            doc = json.loads(j)
-        else:
-            server = couchdb2.Server("https://cb.neriene.com")
-            db = server.get("domain_swapper")
-            doc = db.get("page")
-
-            with open("db/page.json", "w") as f:
-                f.write(json.dumps(doc))
-        self.doc = doc
+        self.server_name = "https://cb.neriene.com"
+        self.db_name = "domain_swapper"
+        self.remove_doc("page")
+        page = self.get_doc("page")
+        self.save_doc(page)
+        # print(page)
+        # self.doc = doc
 
     def start(self):
         print("...start")
@@ -42,6 +36,32 @@ class MakePages:
             with open(out_path, "w") as f:
                 f.write(buff)
 
+    def get_doc(self, id):
+        doc = {}
+        p = Path("db/{}.json".format(id))
+        if p.is_file():
+            j = p.read_text()
+            doc = json.loads(j)
+        else:
+            doc = self.download_doc(id)
+        return doc
+
+    def download_doc(self, id):
+        server = couchdb2.Server(self.server_name)
+        db = server.get(self.db_name)
+        doc = db.get(id)
+        return doc
+
+    def save_doc(self, doc):
+        p = Path("db/{}.json".format(doc["_id"]))
+        with open("db/{}".format(p.name), "w") as f:
+            f.write(json.dumps(doc))
+
+    def remove_doc(self, id):
+        p = Path("db/{}.json".format(id))
+        if p.is_file():
+            p.unlink()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -50,4 +70,4 @@ if __name__ == "__main__":
         epilog="Text at the bottom of help",
     )
     mp = MakePages()
-    mp.start()
+    # mp.start()
