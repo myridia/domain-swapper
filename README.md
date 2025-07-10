@@ -1,5 +1,5 @@
-# domain-swapper
-domain-swapper
+# ![domain-swapper](pages/public/assets/img/logo.png) Domain-Swapper
+
 
 ## Install
 ```
