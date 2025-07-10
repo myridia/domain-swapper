@@ -20,21 +20,23 @@ class MakePages:
         print("...init MakePages")
         self.server_name = "https://cb.neriene.com"
         self.db_name = "domain_swapper"
-        self.remove_doc("page")
-        page = self.get_doc("page")
-        self.save_doc(page)
-        # print(page)
+        self.cache = True
+        self.target_folder = "public"
+        self.templates = self.get_doc("templates")
+        print(self.templates)
+        # self.remove_doc("page")
+        # page = self.get_doc("page")
+        # self.save_doc(page)
+
         # self.doc = doc
 
-    def start(self):
-        print("...start")
-        for i in self.doc["templates"]:
-            print("...generate {0}".format(i))
-            template = env.get_template(i)
-            buff = template.render(doc=self.doc, template=i.replace(".html", ""))
-            out_path = "public/{}".format(i)
-            with open(out_path, "w") as f:
-                f.write(buff)
+    def render_page(self, doc, template):
+        print("...render_page")
+        template = env.get_template(template)
+        buff = template.render(doc=doc, template=template.replace(".html", ""))
+        out_path = "{0}/{1}".format(self.target_folder, template)
+        with open(out_path, "w") as f:
+            f.write(buff)
 
     def get_doc(self, id):
         doc = {}
@@ -44,6 +46,8 @@ class MakePages:
             doc = json.loads(j)
         else:
             doc = self.download_doc(id)
+            if self.cache == True:
+                self.save_doc(doc)
         return doc
 
     def download_doc(self, id):
