@@ -20,26 +20,36 @@ class MakePages:
         print("...init MakePages")
         self.server_name = "https://cb.neriene.com"
         self.db_name = "domain_swapper"
-        self.cache = True
+        self.cache = False
         self.target_folder = "public"
-        self.templates = self.get_doc("templates")
-        print(self.templates)
+        self.templates = []
+
         # self.remove_doc("page")
         # page = self.get_doc("page")
         # self.save_doc(page)
 
         # self.doc = doc
 
-    def render_page(self, doc, template):
+    def render_templates(self, _templates=[]):
+        templates = []
+        if len(_templates):
+            templates = _templates
+        templates = self.templates
+        print("...render_templates")
+        for i in templates:
+            doc = self.get_doc(i)
+            self.render_page(doc, i)
+
+    def render_page(self, doc, template_file):
         print("...render_page")
-        template = env.get_template(template)
-        buff = template.render(doc=doc, template=template.replace(".html", ""))
-        out_path = "{0}/{1}".format(self.target_folder, template)
+        template = env.get_template(template_file)
+        buff = template.render(doc=doc, template=template_file.replace(".html", ""))
+        out_path = "{0}/{1}".format(self.target_folder, template_file)
         with open(out_path, "w") as f:
             f.write(buff)
 
-    def get_doc(self, id):
-        doc = {}
+    def get_doc(self, _id):
+        id = _id.split(".")[0]
         p = Path("db/{}.json".format(id))
         if p.is_file():
             j = p.read_text()
@@ -66,6 +76,15 @@ class MakePages:
         if p.is_file():
             p.unlink()
 
+    def set_cache(self):
+        self.cache = True
+
+    def unset_cache(self):
+        self.cache = False
+
+    def remove_rendered(self):
+        self.cache = False
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -73,5 +92,6 @@ if __name__ == "__main__":
         description="Generate Pages",
         epilog="Text at the bottom of help",
     )
-    mp = MakePages()
-    # mp.start()
+    m = MakePages()
+    m.templates = m.get_doc("page")["templates"]
+    m.render_templates(m.templates)
