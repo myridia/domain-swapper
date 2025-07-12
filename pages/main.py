@@ -22,6 +22,7 @@ class MakePages:
         self.db_name = "domain_swapper"
         self.cache = False
         self.target_folder = "public"
+        self.template_folder = "templates"
         self.templates = []
 
         # self.remove_doc("page")
@@ -41,12 +42,15 @@ class MakePages:
             self.render_page(doc, i)
 
     def render_page(self, doc, template_file):
-        print("...render_page")
-        template = env.get_template(template_file)
-        buff = template.render(doc=doc, template=template_file.replace(".html", ""))
-        out_path = "{0}/{1}".format(self.target_folder, template_file)
-        with open(out_path, "w") as f:
-            f.write(buff)
+        p = Path("{0}/{1}".format(self.template_folder, template_file))
+        print("...try render_page {0}".format(p))
+        if p.is_file():
+            print("...template exists...ok")
+            template = env.get_template(template_file)
+            buff = template.render(doc=doc, template=template_file.replace(".html", ""))
+            out_path = "{0}/{1}".format(self.target_folder, template_file)
+            with open(out_path, "w") as f:
+                f.write(buff)
 
     def get_doc(self, _id):
         id = _id.split(".")[0]
