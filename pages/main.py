@@ -6,7 +6,6 @@ import couchdb2
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 
-
 env = Environment(
     loader=FileSystemLoader("templates"),
     autoescape=select_autoescape(),
