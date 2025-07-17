@@ -21,9 +21,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2   
-      - name: apt_get_install_npm
+      - name: install via apt-get
         run: |
-            sudo apt-get install wget
+            sudo apt-get install wget unzip zip 
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -34,3 +34,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: release 
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: 'dockers/wordpress/wp-content/plugins/domain-swapper/domain-swapper.php'
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
