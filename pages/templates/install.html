@@ -10,18 +10,19 @@
                     </div>
                 </div>
                 <div class="row">
+		{% for i in doc.columns %}		  
                     <div class="col-lg-6 col-xl-3">
                       <div class="border-start p-4">
-			
-                            <h5>Download the Installer</h5>
-                            <p class="text-muted">Click below to download the latest version of Software Apps.</p><a class="text-decoration-none" href="#">[Download Installer]</a>
+                            <h5>{{i.h}}</h5>
+                            <p class="text-muted">{{i.p}}</a>
                       </div>
-
-		      
                     </div>
+		{% endfor %}		      
                 </div>
                 <div class="text-center mt-5"></div>
             </div>
         </section>
     </div>
     {% include "_footer.html" %}
+
+
