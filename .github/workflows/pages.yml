@@ -28,7 +28,7 @@ jobs:
       - name: zip domain-swapper
         run: |
           cd dockers/wordpress/wp-content/plugins/
-          zip domain-swapper.zip domain-swapper 
+          zip -r domain-swapper.zip domain-swapper 
         
        
             
@@ -43,11 +43,11 @@ jobs:
      #   id: deployment
      #   uses: actions/deploy-pages@v4
 
-      #- name: release 
-      #  uses: svenstaro/upload-release-action@v2
-      #  with:
-      #    repo_token: ${{ secrets.GITHUB_TOKEN }}
-      #    file: 'dockers/wordpress/wp-content/plugins/domain-swapper/domain-swapper.php'
-      #    tag: ${{ github.ref }}
-      #    overwrite: true
-      #    file_glob: true
+      - name: release 
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: 'dockers/wordpress/wp-content/plugins/domain-swapper.zip'
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
