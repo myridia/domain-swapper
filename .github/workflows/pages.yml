@@ -27,8 +27,8 @@ jobs:
             
       - name: zip domain-swapper
         run: |
-          cd dockers/wordpress/wp-content/plugins/domain-swapper 
-          ls 
+          cd dockers/wordpress/wp-content/plugins/
+          zip domain-swapper.zip domain-swapper 
         
        
             
