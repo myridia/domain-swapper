@@ -1,4 +1,4 @@
-name: Deploy static content to Pages
+name: Release 
 on:
   push:
     branches: ["main"]
@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
   
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
+  contents: write
+  pull-requests: write 
+  issues: read
+  packages: none
 
 jobs:
   deploy:
@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2   
+        
       - name: install via apt-get
         run: |
             sudo apt-get install wget unzip zip
