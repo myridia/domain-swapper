@@ -1,0 +1,38 @@
+name: Deploy static content to Pages
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - '*'
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+  deploy:
+    if: github.repository_owner == 'myridia'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2   
+      - name: install via apt-get
+        run: |
+            sudo apt-get install wget unzip zip
+            
+      - name: zip domain-swapper
+        run: |
+          cd dockers/wordpress/wp-content/plugins/
+          zip -r domain-swapper.zip domain-swapper 
+         
+      - name: release 
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: 'dockers/wordpress/wp-content/plugins/domain-swapper.zip'
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
