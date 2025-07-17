@@ -5,8 +5,6 @@ on:
     tags:
       - '*'
   workflow_dispatch:
-
-
   
 permissions:
   contents: read
@@ -25,34 +23,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2   
-      - name: install via apt-get
-        run: |
-            sudo apt-get install wget unzip zip
-            
-      - name: zip domain-swapper
-        run: |
-          cd dockers/wordpress/wp-content/plugins/
-          zip -r domain-swapper.zip domain-swapper 
-        
-       
-            
-     # - name: Setup Pages
-     #   uses: actions/configure-pages@v5
-     # - name: Upload artifact
-     #   uses: actions/upload-pages-artifact@v3
-     #   with:
-          # Upload entire repository
-     #     path: './pages/public'
-     # - name: Deploy to GitHub Pages
-     #   id: deployment
-     #   uses: actions/deploy-pages@v4
-
-      - name: release 
-        uses: svenstaro/upload-release-action@v2
+        uses: actions/checkout@v2        
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: 'dockers/wordpress/wp-content/plugins/domain-swapper.zip'
-          tag: ${{ github.ref }}
-          overwrite: true
-          file_glob: true
+          # Upload entire repository
+          path: './pages/public'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+
+      
