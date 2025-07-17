@@ -1,4 +1,5 @@
 pages/db/*.json
+pages/env
 
 .phpdoc/cache
 
