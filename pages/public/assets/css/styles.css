@@ -21,7 +21,28 @@
   height: 175px;
 }
 
-.company {
-    text-decoration:none;
-    color: #000;
+
+.b_index .a_index {
+    font-weight:bold;
 }
+
+.b_install .a_install {
+    font-weight:bold;
+}
+
+.b_faq .a_faq {
+    font-weight:bold;
+}
+
+.b_documentation .a_documentation {
+    font-weight:bold;
+}
+
+.b_terms .a_terms {
+    font-weight:bold;
+}
+
+.b_contact .a_contact {
+    font-weight:bold;
+}
+

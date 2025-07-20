@@ -10,7 +10,7 @@ echo "linux"
 rm public/*.html
 rm db/*.json
 ./main.py
-while inotifywait -e modify ./main.py templates/*.html
+while inotifywait -e modify ./main.py templates/*.html templates/assets/css/styles.css 
 do
    ./main.py
 done    

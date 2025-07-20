@@ -40,7 +40,7 @@ class MakePages:
         p = Path("{0}/{1}".format(self.template_folder, template_file))
         print("...try render_page {0}".format(p))
         if p.is_file():
-            print("...template exists...ok")
+            print("...ok...template exists")
             template = env.get_template(template_file)
             buff = template.render(
                 doc=doc, page=self.page, template=template_file.replace(".html", "")
@@ -104,3 +104,4 @@ if __name__ == "__main__":
     m.page = m.get_doc("page")
     m.templates = m.page["templates"]
     m.render_templates(m.templates)
+    m.render_page(m.page, "assets/css/styles.css")
