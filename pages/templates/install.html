@@ -1,3 +1,16 @@
+{% macro code(code='xxxxx') -%}
+<pre lang="json" class="pre-scrollable text-white text-bg-dark line-numbers"
+onPaste="setTimeout(function() {onPaste();}, 0)"
+id="editable"
+     contenteditable>
+  <code class="text-white text-bg-dark language-bash">
+{{code}}
+ </code>
+</pre>
+{%- endmacro %}
+
+    
+
 {% include "_header.html" %}
     <div id="Content">
         <section id="content-1" class="py-5">
@@ -32,21 +45,21 @@
 		{% for ii in i.ul %}		  	      
                 {{ii}}<br>
 		{% endfor %}
+
+		{% if i.code is defined and not empty %}
+   		  <br>
+		  Example: 
+                  {{ code('$ wp-cli plugin install domin-swapper --allow-root') }}
+		{% endif %}		
+		
 		</div>
-		<pre lang="json" class="pre-scrollable text-white text-bg-dark" ><code class="text-white text-bg-dark">
-$ wp-cli plugin install domin-swapper&nbsp;
-$ wp-cli plugin install domin-swapper&nbsp;
-$ wp-cli plugin install domin-swapper&nbsp;		    
-function myFunction() {
-console.log("Hello, world!");
-}
-		  </code>
-		</pre>
-                <h5>Example:&nbsp;</h5><img>
             </div>
 		{% endfor %}		      
         </section>
-    </div>
-    {% include "_footer.html" %}
+</div>
+
+
+
+ {% include "_footer.html" %}
 
 
