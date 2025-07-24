@@ -1,0 +1,15 @@
+var vwu = new Vanilla_website_utils();
+
+window.onload = async function () {
+  let input = document.querySelector("#token");
+  if (input) {
+    let host = await vwu.get_host();
+    let url = "http://127.0.0.1:8089/token?page=" + host;
+    const data = JSON.parse(await vwu.aget_api(url));
+    const token = data[0]["token"];
+    console.log(token);
+    input.value = token;
+  }
+};
+
+
