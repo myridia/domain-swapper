@@ -102,7 +102,7 @@ if __name__ == "__main__":
     )
     m = MakePages()
     m.page = m.get_doc("page")
-    m.templates = m.page["templates"]
-    m.render_templates(m.templates)
-    m.render_page(m.page, "assets/css/styles.css")
+    # m.templates = m.page["templates"]
+    # m.render_templates(m.templates)
+    # m.render_page(m.page, "assets/css/styles.css")
     m.render_page(m.page, "assets/js/page.js")

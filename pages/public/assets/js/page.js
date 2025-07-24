@@ -19,4 +19,12 @@ window.onload = async function () {
   if (random_input) {
     random_input.value = random;
   }
+
+  document
+    .querySelector("#btn_submit")
+    .addEventListener("click", process_contact_form);
 };
+
+function process_contact_form(e) {
+  console.log(e.target.closest("form"));
+}
