@@ -25,6 +25,8 @@ window.onload = async function () {
     .addEventListener("click", process_contact_form);
 };
 
-function process_contact_form(e) {
-  console.log(e.target.closest("form"));
+async function process_contact_form(e) {
+  //  console.log(e.target.closest("form"));
+  const _data = await vwu.get_form_data(e.target.closest("form"));
+  console.log(_data);
 }
