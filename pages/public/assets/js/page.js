@@ -1,5 +1,5 @@
 var vwu = new Vanilla_website_utils();
-var random = Math.floor(Math.random() * 10000000);
+var random = Math.floor(Math.random() * 1000);
 window.onload = async function () {
   let input = document.querySelector("#token");
   if (input) {
