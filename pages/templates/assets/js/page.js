@@ -7,7 +7,7 @@ window.onload = async function () {
     let url =
       "{{doc.api}}/token?page={{doc.name}}&client_host=" +
       host +
-      "xx&r=" +
+      "&r=" +
       random;
     const data = JSON.parse(await vwu.aget_api(url));
     const token = data[0]["token"];
@@ -35,8 +35,13 @@ async function process_contact_form(e) {
     //console.log("xxxxx");
 
     let host = await vwu.get_host();
-    let url = "{{doc.api}}/send_email";
-    //    const data = JSON.parse(await vwu.apost_api(url));
+    let url3 = "{{doc.api}}/email";
+    let ret = await vwu.apost_api(
+      url3,
+      JSON.stringify(data),
+      "application/json",
+    );
+    console.log(ret);
   } else {
     let contact_msg = document.querySelector("#contact_msg");
     if (contact_msg) {
