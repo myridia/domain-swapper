@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vanilla-website-utils": "^1.11.2"
+    "vanilla-website-utils": "^1.12.0"
   }
 }

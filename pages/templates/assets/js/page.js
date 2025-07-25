@@ -5,9 +5,9 @@ window.onload = async function () {
   if (input) {
     let host = await vwu.get_host();
     let url =
-      "http://127.0.0.1:8089/token?page={{doc.name}}&client_host=" +
+      "{{doc.api}}/token?page={{doc.name}}&client_host=" +
       host +
-      "&r=" +
+      "xx&r=" +
       random;
     const data = JSON.parse(await vwu.aget_api(url));
     const token = data[0]["token"];
@@ -26,7 +26,21 @@ window.onload = async function () {
 };
 
 async function process_contact_form(e) {
-  //  console.log(e.target.closest("form"));
-  const _data = await vwu.get_form_data(e.target.closest("form"));
-  console.log(_data);
+  const data = await vwu.get_form_data(e.target.closest("form"));
+  if (
+    data["token"] != "ABCD0123456789" &&
+    data["xname"] != "" &&
+    data["xmessage"] != ""
+  ) {
+    //console.log("xxxxx");
+
+    let host = await vwu.get_host();
+    let url = "{{doc.api}}/send_email";
+    //    const data = JSON.parse(await vwu.apost_api(url));
+  } else {
+    let contact_msg = document.querySelector("#contact_msg");
+    if (contact_msg) {
+      contact_msg.innerHTML = "{{doc.contact_msg}}";
+    }
+  }
 }

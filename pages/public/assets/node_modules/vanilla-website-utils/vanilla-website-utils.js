@@ -962,7 +962,23 @@ module.exports = class Vanilla_website_utils {
     let e = form.getElementsByTagName("input");
     let pairs = [];
     for (let i = 0; i < e.length; i++) {
-      if (e[i].type == "text") {
+      if (
+        [
+          "text",
+          "email",
+          "tel",
+          "time",
+          "url",
+          "week",
+          "password",
+          "number",
+          "month",
+          "hidden",
+          "datetime-local",
+          "date",
+          "color",
+        ].includes(e[i].type)
+      ) {
         pairs.push(
           encodeURIComponent(e[i].name) +
             "=" +
