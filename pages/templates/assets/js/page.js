@@ -11,7 +11,7 @@ window.onload = async function () {
       random;
     const data = JSON.parse(await vwu.aget_api(url));
     const token = data[0]["token"];
-    console.log(token);
+    //console.log(token);
     input.value = token;
   }
 
@@ -27,6 +27,10 @@ window.onload = async function () {
 
 async function process_contact_form(e) {
   const data = await vwu.get_form_data(e.target.closest("form"));
+  let contact_msg = document.querySelector("#contact_msg");
+  if (contact_msg) {
+    contact_msg.innerHTML = "";
+  }
   if (
     data["token"] != "ABCD0123456789" &&
     data["xname"] != "" &&
@@ -36,16 +40,23 @@ async function process_contact_form(e) {
 
     let host = await vwu.get_host();
     let url3 = "{{doc.api}}/email";
-    let ret = await vwu.apost_api(
-      url3,
-      JSON.stringify(data),
-      "application/json",
+    const ret = JSON.parse(
+      await vwu.apost_api(url3, JSON.stringify(data), "application/json"),
     );
-    console.log(ret);
+    if (ret["ok"]) {
+      if (contact_msg) {
+        contact_msg.innerHTML = "{{doc.contact_msg_success}}";
+      }
+    } else {
+      if (contact_msg) {
+        contact_msg.innerHTML = "{{doc.contact_msg_failed}}";
+      }
+    }
   } else {
-    let contact_msg = document.querySelector("#contact_msg");
     if (contact_msg) {
-      contact_msg.innerHTML = "{{doc.contact_msg}}";
+      if (contact_msg) {
+        contact_msg.innerHTML = "{{doc.contact_msg_failed}}";
+      }
     }
   }
 }
