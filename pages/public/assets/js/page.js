@@ -43,9 +43,9 @@ async function process_contact_form(e) {
     const ret = JSON.parse(
       await vwu.apost_api(url3, JSON.stringify(data), "application/json"),
     );
-    if (ret["ok"]) {
+    if (ret["ok"] === true) {
       if (contact_msg) {
-        contact_msg.innerHTML = "";
+        contact_msg.innerHTML = "...email was send sucessfully!";
       }
     } else {
       if (contact_msg) {

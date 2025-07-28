@@ -43,19 +43,19 @@ async function process_contact_form(e) {
     const ret = JSON.parse(
       await vwu.apost_api(url3, JSON.stringify(data), "application/json"),
     );
-    if (ret["ok"]) {
+    if (ret["ok"] === true) {
       if (contact_msg) {
-        contact_msg.innerHTML = "{{doc.contact_msg_success}}";
+        contact_msg.innerHTML = "{{page.contact_msg_success}}";
       }
     } else {
       if (contact_msg) {
-        contact_msg.innerHTML = "{{doc.contact_msg_failed}}";
+        contact_msg.innerHTML = "{{page.contact_msg_failed}}";
       }
     }
   } else {
     if (contact_msg) {
       if (contact_msg) {
-        contact_msg.innerHTML = "{{doc.contact_msg_failed}}";
+        contact_msg.innerHTML = "{{page.contact_msg_failed}}";
       }
     }
   }
