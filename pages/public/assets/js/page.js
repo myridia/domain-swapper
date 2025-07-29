@@ -5,14 +5,17 @@ window.onload = async function () {
   if (input) {
     let host = await vwu.get_host();
     let url =
-      "http://127.0.0.1:8089/token?page=domain-swapper&client_host=" +
+      "https://api.grallator.com/token?page=domain-swapper&client_host=" +
       host +
       "&r=" +
       random;
     const data = JSON.parse(await vwu.aget_api(url));
     const token = data[0]["token"];
-    //console.log(token);
+    console.log(token);
     input.value = token;
+
+    const d = JSON.parse(await vwu.aget_api("http://api.grallator.com/test"));
+    console.log(d);
   }
 
   let random_input = document.querySelector("#random");
@@ -39,7 +42,7 @@ async function process_contact_form(e) {
     //console.log("xxxxx");
 
     let host = await vwu.get_host();
-    let url3 = "http://127.0.0.1:8089/email";
+    let url3 = "https://api.grallator.com/email";
     const ret = JSON.parse(
       await vwu.apost_api(url3, JSON.stringify(data), "application/json"),
     );
