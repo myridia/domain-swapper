@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title></title>
+    <title>Contact us</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
     <link rel="stylesheet" href="assets/css/accordion-faq-list.css">
@@ -13,26 +13,40 @@
     <link rel="stylesheet" href="assets/css/FAQ-Frequentlly-Asked-Questions.css">
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="assets/css/prism.css">    
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body class="contact">
+
+<body class="b_contact ">
     <nav class="navbar navbar-expand-md bg-body py-3">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/logo.svg" width="66" height="66" alt="logo"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2"><a class="company" href="index.html">Domain Swapper</a>
               <ul class="navbar-nav ms-auto">
 		
-                    <li class="nav-item"><a class="nav-link activate" href="index.html">Home</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_index" href="index.html">Home</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="install.html">Install</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_install" href="install.html">Install</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="faq.html">FAQ</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_faq" href="faq.html">FAQ</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="docs/index.html">Documentation</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_documentation" href="docs/index.html">Documentation</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="terms.html">Terms &amp; Info</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_terms" href="terms.html">Terms &amp; Info</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="contact.html">Contact</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_contact" href="contact.html">Contact</a>
+		</li>		
 		
                 </ul>
             </div>
@@ -58,7 +72,7 @@
                                     </svg></div>
                                 <div class="px-2">
                                     <h6 class="mb-0">Phone</h6>
-                                    <p class="mb-0">+123456789</p>
+                                    <p class="mb-0"><a href="tel:+66832168330" />+66 8 3216 8330</a></p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center p-3">
@@ -67,7 +81,7 @@
                                     </svg></div>
                                 <div class="px-2">
                                     <h6 class="mb-0">Email</h6>
-                                    <p class="mb-0">info@example.com</p>
+                                    <p class="mb-0"><a href="mailto:domain-swapper@myridia.com" >domain-swapper@myridia.com</a></p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center p-3">
@@ -76,18 +90,23 @@
                                     </svg></div>
                                 <div class="px-2">
                                     <h6 class="mb-0">Location</h6>
-                                    <p class="mb-0">12 Example Street</p>
+                                    <p class="mb-0">Salaya, Phutthamonthon District, Nakhon Pathom 73170</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-5 col-xl-4">
-                        <div>
-                            <form class="p-3 p-xl-4" method="post">
-                                <div class="mb-3"><input class="form-control" type="text" id="name-1" name="name" placeholder="Name"></div>
-                                <div class="mb-3"><input class="form-control" type="email" id="email-1" name="email" placeholder="Email"></div>
-                                <div class="mb-3"><textarea class="form-control" id="message-1" name="message" rows="6" placeholder="Message"></textarea></div>
-                                <div><button class="btn btn-primary d-block w-100" type="submit">Send </button></div>
+                        <div><p id="contact_msg"></p>
+                            <form class="p-3 p-xl-4" method="post" class="contact_form" onsubmit="return false"  >
+                                <div class="mb-3"><input class="form-control" type="text" id="xname-1" name="xname" placeholder="Name" onpaste="return false;" ></div>
+                                <div class="mb-3"><input class="form-control" type="email" id="xemail-1" name="xemail" placeholder="Email" onpaste="return false;"></div>
+                                <div class="mb-3"><textarea class="form-control" id="xmessage-1" name="xmessage" rows="6" placeholder="Message" onpaste="return false;"></textarea></div>
+				<div><button id="btn_submit" class="btn btn-primary d-block w-100" type="submit">Send </button></div>
+				<div>
+				  <input type="hidden" name="token" id="token" value="" />
+				  <input type="hidden" name="random" id="random" value="" />
+				  <input type="hidden" name="page" id="page" value="domain-swapper" />				  				  
+				</div>  
                             </form>
                         </div>
                     </div>
@@ -114,6 +133,10 @@
         </footer>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/node_modules/vanilla-website-utils/dist/vanilla-website-utils.js"></script>            
+    <script src="assets/js/page.js"></script>        
 </body>
+
 
 </html>

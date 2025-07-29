@@ -1,3 +1,7 @@
+
+
+    
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -13,26 +17,40 @@
     <link rel="stylesheet" href="assets/css/FAQ-Frequentlly-Asked-Questions.css">
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="assets/css/prism.css">    
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body class="install">
+
+<body class="b_install ">
     <nav class="navbar navbar-expand-md bg-body py-3">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/logo.svg" width="66" height="66" alt="logo"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2"><a class="company" href="index.html">Domain Swapper</a>
               <ul class="navbar-nav ms-auto">
 		
-                    <li class="nav-item"><a class="nav-link activate" href="index.html">Home</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_index" href="index.html">Home</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="install.html">Install</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_install" href="install.html">Install</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="faq.html">FAQ</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_faq" href="faq.html">FAQ</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="docs/index.html">Documentation</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_documentation" href="docs/index.html">Documentation</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="terms.html">Terms &amp; Info</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_terms" href="terms.html">Terms &amp; Info</a>
+		</li>		
 		
-                    <li class="nav-item"><a class="nav-link activate" href="contact.html">Contact</a></li>		
+                <li class="nav-item">
+		  <a class="nav-link a_contact" href="contact.html">Contact</a>
+		</li>		
 		
                 </ul>
             </div>
@@ -47,7 +65,7 @@
                     <div class="col-xl-6 mx-auto">
                       <h2 class="mb-3">How to Install</h2>
 		      
-                        <p class="text-muted" style="text-align: center;">There are 4 ways to install the Domain Swapper WordPress plugin</p>
+                        <p class="text-muted" style="text-align: center;">4 ways you can install the Domain Swapper WordPress plugin</p>
                     </div>
                 </div>
                 <div class="row">
@@ -62,7 +80,7 @@
                     <div class="col-lg-6 col-xl-3">
                       <div class="border-start p-4">
                             <h5>2. Upload Zip</h5>
-                            <p class="text-muted">Install over an uploaded Plugin (ZIP File) via the Admin Dashboard</a>
+                            <p class="text-muted">Install an uploaded Plugin (ZIP File) via the Admin Dashboard</a>
                       </div>
                     </div>
 				  
@@ -83,9 +101,98 @@
                 </div>
                 <div class="text-center mt-5"></div>
             </div>
+
+
+				  
+
+
+            <div class="container py-3">
+              <h3>1. Plugin Page</h3>
+	        <div>
+				  	      
+                Go to Plugins &gt; Add New<br>
+				  	      
+                Search for the plugin by name domain-swapper<br>
+				  	      
+                Click Install Now, then Activate.<br>
+		
+
+				
+		
+		</div>
+            </div>
+				  
+
+
+            <div class="container py-3">
+              <h3>2. Upload Zip</h3>
+	        <div>
+				  	      
+                Download the plugin ZIP file from WordPress.org or get it from https://github.com/myridia/domain-swapper/releases/download/main/domain-swapper.zip<br>
+				  	      
+                Go to Plugins &gt; Add New &gt; Upload Plugin.<br>
+				  	      
+                Choose the ZIP file and click Install Now, then Activate.<br>
+				  	      
+                Click Install Now, then Activate.<br>
+		
+
+				
+		
+		</div>
+            </div>
+				  
+
+
+            <div class="container py-3">
+              <h3>3. FTP/SFTP/SSH</h3>
+	        <div>
+				  	      
+                Get the plugin folder from a Zip file or it Source <br>
+				  	      
+                Upload the extracted plugin folder to the /wp-content/plugins/ directory on your web server using FTP/SFTP/SSH<br>
+				  	      
+                Go to Plugins in the admin dashboard and Activate the plugin.<br>
+		
+
+				
+		
+		</div>
+            </div>
+				  
+
+
+            <div class="container py-3">
+              <h3>4. WP-CLI</h3>
+	        <div>
+				  	      
+                Go the Wordpress root directory<br>
+				  	      
+                type`: wp plugin install --activate domain-swapper<br>
+		
+
+		
+   		  <br>
+		  Example: 
+                  <pre lang="json" class="pre-scrollable text-white text-bg-dark line-numbers"
+onPaste="setTimeout(function() {onPaste();}, 0)"
+id="editable"
+     contenteditable>
+  <code class="text-white text-bg-dark language-bash">
+$ wp-cli plugin install domin-swapper --allow-root
+ </code>
+</pre>
+				
+		
+		</div>
+            </div>
+				      
         </section>
-    </div>
-        <div id="Footers">
+</div>
+
+
+
+     <div id="Footers">
         <footer class="text-center">
             <div class="container text-muted py-4 py-lg-5">
                 <ul class="list-inline">
@@ -104,7 +211,11 @@
         </footer>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/node_modules/vanilla-website-utils/dist/vanilla-website-utils.js"></script>            
+    <script src="assets/js/page.js"></script>        
 </body>
+
 
 </html>
 

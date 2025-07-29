@@ -21,3 +21,9 @@
   height: 175px;
 }
 
+{% for m in page.menu %}
+.b_{{m.id}} .a_{{m.id}} {
+    font-weight:bold;
+}
+{% endfor %}
+
