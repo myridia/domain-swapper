@@ -14,8 +14,8 @@ window.onload = async function () {
     console.log(token);
     input.value = token;
 
-    //    const d = JSON.parse(await vwu.aget_api("https://api.grallator.com/test"));
-    //  console.log(d);
+    const d = JSON.parse(await vwu.aget_api("https://api.grallator.com/test"));
+    console.log(d);
   }
 
   let random_input = document.querySelector("#random");
