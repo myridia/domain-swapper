@@ -1,8 +1,14 @@
 var vwu = new Vanilla_website_utils();
 var random = Math.floor(Math.random() * 1000);
 window.onload = async function () {
+  const btn_submit = document.querySelector("#btn_submit");
   let input = document.querySelector("#token");
-  if (input) {
+  let random_input = document.querySelector("#random");
+  let contact_form = document.querySelector(".contact_form");
+
+  if (input && random_input && btn_submit && contact_form) {
+    contact_form.style.visibility = "visible";
+
     let host = await vwu.get_host();
     let url =
       "https://api.grallator.com/token?page=domain-swapper&client_host=" +
@@ -11,18 +17,10 @@ window.onload = async function () {
       random;
     const data = JSON.parse(await vwu.aget_api(url));
     const token = data[0]["token"];
-    console.log(data);
+    //console.log(data);
     input.value = token;
-  }
-
-  let random_input = document.querySelector("#random");
-  if (random_input) {
     random_input.value = random;
-  }
-
-  const btn = document.querySelector("#btn_submit");
-  if (btn) {
-    btn.addEventListener("click", process_contact_form);
+    btn_submit.addEventListener("click", process_contact_form);
   }
 };
 
