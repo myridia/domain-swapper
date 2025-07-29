@@ -11,11 +11,11 @@ window.onload = async function () {
       random;
     const data = JSON.parse(await vwu.aget_api(url));
     const token = data[0]["token"];
-    console.log(token);
+    console.log(data);
     input.value = token;
 
-    const d = JSON.parse(await vwu.aget_api("http://api.grallator.com/test"));
-    console.log(d);
+    //const d = JSON.parse(await vwu.aget_api("https://api.grallator.com/test"));
+    //console.log(d);
   }
 
   let random_input = document.querySelector("#random");
