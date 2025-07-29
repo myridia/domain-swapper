@@ -11,11 +11,8 @@ window.onload = async function () {
       random;
     const data = JSON.parse(await vwu.aget_api(url));
     const token = data[0]["token"];
-    console.log(token);
+    console.log(data);
     input.value = token;
-
-    const d = JSON.parse(await vwu.aget_api("http://api.grallator.com/test"));
-    console.log(d);
   }
 
   let random_input = document.querySelector("#random");
@@ -23,9 +20,10 @@ window.onload = async function () {
     random_input.value = random;
   }
 
-  document
-    .querySelector("#btn_submit")
-    .addEventListener("click", process_contact_form);
+  const btn = document.querySelector("#btn_submit");
+  if (btn) {
+    btn.addEventListener("click", process_contact_form);
+  }
 };
 
 async function process_contact_form(e) {
