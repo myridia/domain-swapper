@@ -24,9 +24,15 @@ window.onload = async function () {
   }
 };
 
+async function refresh_page(e) {
+  window.location.reload();
+}
+
 async function process_contact_form(e) {
   const data = await vwu.get_form_data(e.target.closest("form"));
   let contact_msg = document.querySelector("#contact_msg");
+  contact_msg.addEventListener("click", refresh_page);
+  let contact_form = document.querySelector(".contact_form");
   if (contact_msg) {
     contact_msg.innerHTML = "";
   }
@@ -44,17 +50,20 @@ async function process_contact_form(e) {
     );
     if (ret["ok"] === true) {
       if (contact_msg) {
+        contact_form.style.visibility = "hidden";
         contact_msg.innerHTML = "{{page.contact_msg_success}}";
       }
     } else {
       if (contact_msg) {
+        contact_form.style.visibility = "hidden";
         contact_msg.innerHTML = "{{page.contact_msg_failed}}";
       }
     }
   } else {
     if (contact_msg) {
       if (contact_msg) {
-        contact_msg.innerHTML = "{{page.contact_msg_failed}}";
+        contact_form.style.visibility = "hidden";
+        contact_msg.innerHTML = "{{page.contact_msg_failed}}</a>";
       }
     }
   }
