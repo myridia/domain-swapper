@@ -63,6 +63,8 @@ class ClassAdmin
         $message = '675234';
         $message_signed = sodium_crypto_sign($message, $sign_secret);
         $smessage = sodium_crypto_sign_open($message_signed, $sign_public);
+	echo sodium_bin2hex(sodium_crypto_shorthash("a","1434567890123456"));
+
         // echo $smessage.'<br>';
         // echo $message_signed.'<br>';
     }
