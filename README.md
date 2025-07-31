@@ -78,9 +78,11 @@ See https://github.com/myridia/hello_haproxy_docker/tree/main for install the ce
 *  domain4  https://foo.local
 
 
-## Enter wp cli to to do some work
+## Enter wp cli and make the wordpress installation up2date 
 ```
 docker exec -it wpcli bash
+wp core update --allow-root
+wp plugin update --all --allow-root
 ```
 
 ## Generate Language Files
