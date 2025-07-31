@@ -1,22 +1,23 @@
 # ![domain-swapper](pages/public/assets/img/logo.png) Domain-Swapper
 
 
-## Install
+# Install
+## Clone from github
 ```
 git clone https://github.com/myridia/domain-swapper.git
+```
+## Start the Web enviroment  via docker
+```
 cd domain-swapper/dockers
 docker-compose up
 ```
 
 ## First Wordpress Setup
-* After the Dockers got loaded, setup Wordpress http://127.0.0.1
-
+* After the Dockers is running, visit with your browser the address http://127.0.0.1
 
 ## Wordpress login
 * user: test
 * pass: test
-
-
 
 
 ## Info

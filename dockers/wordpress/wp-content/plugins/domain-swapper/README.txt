@@ -1,7 +1,7 @@
-=== Domain-swapping - 1 WordPress Site with Multiple Domains ===
-Contributors: iqonicdesign
+=== domain-swapper - 1 WordPress Site with Multiple Domains ===
+Contributors: Myridia Company
 Tags: wordpress, changer, host switcher, dynamic host, multiplehosts, multihost
-Requires PHP: 5.2.4
+Requires PHP: 8.4.0
 Requires at least: 3.0.1
 Tested up to: 6.7.1
 Stable tag: 1.0.2
