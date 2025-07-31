@@ -17,7 +17,7 @@ docker-compose up
 * pass: test
 
 
-## Hard Fork from iqonicdesign  WPMultiHost https://youtu.be/zEV2GVB-BcU
+
 
 ## Info
 Contributors: Myridia
@@ -87,7 +87,7 @@ docker exec -it wpcli bash
 wp i18n make-pot . languages/domain_swapper.pot --allow-root
 ```
 
-## Constatns
+## Constants
 ```
 WPDS_NAME
 WPDS_DIR
@@ -104,3 +104,4 @@ WPDS_SETTINGS
 
 
 ```
+## Inpired by  WPMultiHost https://youtu.be/zEV2GVB-BcU
