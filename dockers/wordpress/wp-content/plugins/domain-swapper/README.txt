@@ -2,9 +2,9 @@
 Contributors: Myridia Company
 Tags: wordpress, changer, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 8.2.0
-Requires at least: 3.0.1
-Tested up to: 6.7.1
-Stable tag: 1.0.2
+Requires at least: 6.8.1
+Tested up to: 6.8.2
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
