@@ -1,25 +1,37 @@
 # ![domain-swapper](pages/public/assets/img/logo.png) Domain-Swapper
 
+# The Domain Swapper Plugin lets you use multiple domain names.
+
+## Developer Requirment Setup
+We apologize but you need to do a one time setup to make it works, as we need to to tell your operation system where to find your testing domains. To do this configure your operation host file like
+```
+127.0.0.1 www.app.local ww1.app.local  ww2.app.local  ww3.app.local www.app.local foo.local phpmyadmin.local
+```
+
 
 ## Install
+### Clone from github
 ```
 git clone https://github.com/myridia/domain-swapper.git
+```
+### Start the Web enviroment  via docker
+```
 cd domain-swapper/dockers
 docker-compose up
 ```
+### Check the PHP instation 
+```
+ https://ww1.app.local/info.php
+```
+### First Wordpress Setup
+* After the Dockers is running, visit with your browser the address http://127.0.0.1
 
-## First Wordpress Setup
-* After the Dockers got loaded, setup Wordpress http://127.0.0.1
-
-
-## Wordpress login
+### Wordpress login
 * user: test
 * pass: test
 
 
-
-
-## Info
+### Info
 Contributors: Myridia
 Tags: wordpress, changer, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 5.2.4
@@ -77,9 +89,14 @@ See https://github.com/myridia/hello_haproxy_docker/tree/main for install the ce
 *  domain4  https://foo.local
 
 
-## Enter wp cli to to do some work
+## Enter wp cli and make the wordpress installation up2date 
 ```
 docker exec -it wpcli bash
+wp core verify-checksums --allow-root
+wp core update --allow-root
+wp plugin update --all --allow-root
+wp core update-db --allow-root
+wp core download --force --allow-root
 ```
 
 ## Generate Language Files

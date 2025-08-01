@@ -76,8 +76,10 @@ services:
       WORDPRESS_DB_USER: dbsql1
       WORDPRESS_DB_PASSWORD: passpass
       WORDPRESS_DB_NAME: dbsql1
+      PHP_MEMORY_LIMIT: 2G
     volumes:
       - ./wordpress:/var/www/html
+      - ./etc/php.ini:/usr/local/etc/php/conf.d/custom.ini # Or uploads.ini
     networks:
       workgroup:
         ipv4_address: "10.5.0.6"
