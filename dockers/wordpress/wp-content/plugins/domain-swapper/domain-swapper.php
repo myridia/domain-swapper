@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 /**
  * @see              https://domain-swapper.myridia.com
@@ -74,7 +74,7 @@ register_activation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'activate']);
  *
  * @since 1.0.0 (if available)
  */
-register_deactivation_hook(__FILE__, ['WP\Ds\Main\ClassFrontend', 'deactivate']);
+register_deactivation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'deactivate']);
 
 // Register to start the Plugin
 

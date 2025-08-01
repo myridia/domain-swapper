@@ -21,7 +21,7 @@ class ClassFrontend
     /**
      * Init the Frontend Filter Hooks.
      *
-     * If Plugin is activated and if the new_siteurl is different to the base stieurl, then init the ajax filter hooks
+     * If Plugin is active  and if the new_siteurl is different to the base stieurl, then init the ajax filter hooks
      *
      * @since 1.0.0
      */
@@ -29,7 +29,7 @@ class ClassFrontend
     {
         error_log('...swap browser frontent calls');
         $this->set_domain_data();
-        if ($this->activate) {
+        if ($this->active) {
             if ($this->new_siteurl != $this->siteurl) {
                 error_log('....start swapping');
                 add_filter('option_siteurl', [$this, 'swap_siteurl']);
@@ -65,10 +65,10 @@ class ClassFrontend
     public function set_domain_data()
     {
         $o = get_option(WPDS_OPTION);
-        if ($o['activate']) {
-            $this->activate = 1;
+        if ($o['active']) {
+            $this->active = 1;
         } else {
-            $this->activate = 0;
+            $this->active = 0;
 
             return;
         }

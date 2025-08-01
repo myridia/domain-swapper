@@ -21,7 +21,7 @@ class ClassAdmin
     }
 
     /**
-     *  Default Activate.
+     *  Default On.
      *
      * @since 1.0.0
      */
@@ -50,7 +50,7 @@ class ClassAdmin
      *
      *  Generate a list of message_signed and save them to the plugin. As well save the sign_public key to the plugin.
      *  But keep the sign_secrete and the messages/serial keys secret.
-     *  Let the Customer enter his key, it will be signed and the result must be in your saved list to confirm it. 
+     *  Let the Customer enter his key, it will be signed and the result must be in your saved list to confirm it.
      *  https://www.php.net/manual/en/function.sodium-crypto-sign.php
      *
      * @since 1.0.0
@@ -63,7 +63,7 @@ class ClassAdmin
         $message = '675234';
         $message_signed = sodium_crypto_sign($message, $sign_secret);
         $smessage = sodium_crypto_sign_open($message_signed, $sign_public);
-	echo sodium_bin2hex(sodium_crypto_shorthash("a","1434567890123456"));
+        echo sodium_bin2hex(sodium_crypto_shorthash('a', '1434567890123456'));
 
         // echo $smessage.'<br>';
         // echo $message_signed.'<br>';
@@ -119,13 +119,13 @@ class ClassAdmin
         );
 
         add_settings_field(
-            'activate',
-            __('Activate:', WPDS_TEXT),
-            [$this, 'field_activate'],
+            'active',
+            __('Active:', WPDS_TEXT),
+            [$this, 'field_active'],
             WPDS_OPTION,
             'section1',
             [
-                'label_for' => 'plugin_domain_swapper[activate]',
+                'label_for' => 'plugin_domain_swapper[active]',
             ]
         );
 
@@ -203,7 +203,7 @@ class ClassAdmin
     }
 
     /**
-     * Field Activate HTML output.
+     * Field Active HTML output.
      *
      * Generate a text checkbox field for the Plugin activation
      *
@@ -221,8 +221,8 @@ class ClassAdmin
     {
         $o = get_option(WPDS_OPTION);
         $checked = '';
-        if (isset($o['activate'])) {
-            if ('on' == $o['activate']) {
+        if (isset($o['active'])) {
+            if ('on' == $o['active']) {
                 $checked = 'checked=checked';
             }
         }
