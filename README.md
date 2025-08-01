@@ -81,6 +81,7 @@ See https://github.com/myridia/hello_haproxy_docker/tree/main for install the ce
 ## Enter wp cli and make the wordpress installation up2date 
 ```
 docker exec -it wpcli bash
+wp core verify-checksums --allow-root
 wp core update --allow-root
 wp plugin update --all --allow-root
 wp core update-db --allow-root
