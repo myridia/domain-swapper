@@ -1,6 +1,15 @@
 # ![domain-swapper](pages/public/assets/img/logo.png) Domain-Swapper
 
+# The Domain Swapper Plugin lets you use multiple domain names.
 
+## Developer Requirment Setup
+We apologize but you need to do a one time setup to make it works, as we need to to tell your operation system where to find your testing domains. To do this configure your operation host file like
+```
+127.0.0.1 www.app.local ww1.app.local  ww2.app.local  ww3.app.local www.app.local foo.local phpmyadmin.local
+```
+
+, to make this work in a development testing enviroment we are using dockers with a proxy webserver setup. 
+You need to configure your operation system host to point 
 # Install
 ## Clone from github
 ```
