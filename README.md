@@ -8,31 +8,30 @@ We apologize but you need to do a one time setup to make it works, as we need to
 127.0.0.1 www.app.local ww1.app.local  ww2.app.local  ww3.app.local www.app.local foo.local phpmyadmin.local
 ```
 
-, to make this work in a development testing enviroment we are using dockers with a proxy webserver setup. 
-You need to configure your operation system host to point 
-# Install
-## Clone from github
+
+## Install
+### Clone from github
 ```
 git clone https://github.com/myridia/domain-swapper.git
 ```
-## Start the Web enviroment  via docker
+### Start the Web enviroment  via docker
 ```
 cd domain-swapper/dockers
 docker-compose up
 ```
-## Check the PHP instation 
+### Check the PHP instation 
 ```
  https://ww1.app.local/info.php
 ```
-## First Wordpress Setup
+### First Wordpress Setup
 * After the Dockers is running, visit with your browser the address http://127.0.0.1
 
-## Wordpress login
+### Wordpress login
 * user: test
 * pass: test
 
 
-## Info
+### Info
 Contributors: Myridia
 Tags: wordpress, changer, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 5.2.4
