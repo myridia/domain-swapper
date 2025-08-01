@@ -11,7 +11,10 @@ git clone https://github.com/myridia/domain-swapper.git
 cd domain-swapper/dockers
 docker-compose up
 ```
-
+## Check the PHP instation 
+```
+ https://ww1.app.local/info.php
+```
 ## First Wordpress Setup
 * After the Dockers is running, visit with your browser the address http://127.0.0.1
 
