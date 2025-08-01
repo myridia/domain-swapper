@@ -122,3 +122,7 @@ WPDS_SETTINGS
 
 ```
 ## Inpired by  WPMultiHost https://youtu.be/zEV2GVB-BcU
+
+
+## Uploaded on
+* https://wordpress.org/plugins/developers/add/
