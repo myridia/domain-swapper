@@ -96,6 +96,7 @@ wp core verify-checksums --allow-root
 wp core update --allow-root
 wp plugin update --all --allow-root
 wp core update-db --allow-root
+wp core download --force --allow-root
 ```
 
 ## Generate Language Files
