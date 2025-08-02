@@ -1,11 +1,11 @@
-    <?php
+<?php
 
 /**
  * @see              https://domain-swapper.myridia.com
  * @since             1.0.0
  *
  * @wordpress-plugin
- * Plugin Name: Domain swapper
+ * Plugin Name: domain-swapper
  * Plugin URI: https://wordpress.org/plugins/domain-swapper
  * Description: Swap or change your Domains for one WordPress Site. So you can access one single WordPress site with different domains.
  * Version: 1.0.0
@@ -13,7 +13,7 @@
  * Author URI: http://domain-swapper.myridia.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: domain_swapper
+ * Text Domain: domain-swapper
  * Domain Path: /languages
  * Update URL: https://github.com/myridia/domain-swapper
  * Constant Prefix: WPDS_
@@ -74,7 +74,7 @@ register_activation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'activate']);
  *
  * @since 1.0.0 (if available)
  */
-register_deactivation_hook(__FILE__, ['WP\Ds\Main\ClassFrontend', 'deactivate']);
+register_deactivation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'deactivate']);
 
 // Register to start the Plugin
 
@@ -105,7 +105,7 @@ function wp_ds_plugin_admin_init()
 function wp_ds_plugin_init()
 {
     if (defined('DOING_AJAX') && DOING_AJAX) {
-        error_log('.....ajax');
+        // error_log('.....ajax');
         $plugin3 = new ClassAjax();
     } else {
         $plugin = new ClassAdmin();

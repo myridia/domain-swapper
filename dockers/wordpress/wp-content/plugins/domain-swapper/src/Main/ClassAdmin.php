@@ -21,7 +21,7 @@ class ClassAdmin
     }
 
     /**
-     *  Default Activate.
+     *  Default On.
      *
      * @since 1.0.0
      */
@@ -50,7 +50,7 @@ class ClassAdmin
      *
      *  Generate a list of message_signed and save them to the plugin. As well save the sign_public key to the plugin.
      *  But keep the sign_secrete and the messages/serial keys secret.
-     *  Let the Customer enter his key, it will be signed and the result must be in your saved list to confirm it. 
+     *  Let the Customer enter his key, it will be signed and the result must be in your saved list to confirm it.
      *  https://www.php.net/manual/en/function.sodium-crypto-sign.php
      *
      * @since 1.0.0
@@ -63,7 +63,7 @@ class ClassAdmin
         $message = '675234';
         $message_signed = sodium_crypto_sign($message, $sign_secret);
         $smessage = sodium_crypto_sign_open($message_signed, $sign_public);
-	echo sodium_bin2hex(sodium_crypto_shorthash("a","1434567890123456"));
+        // echo sodium_bin2hex(sodium_crypto_shorthash('a', '1434567890123456'));
 
         // echo $smessage.'<br>';
         // echo $message_signed.'<br>';
@@ -80,8 +80,8 @@ class ClassAdmin
     {
         add_submenu_page(
             'options-general.php',
-            esc_html__('Domain Swapper', 'domain_swapper'),
-            esc_html__('Domain Swapper', 'domain_swapper'),
+            esc_html__('Domain Swapper', 'domain-swapper'),
+            esc_html__('Domain Swapper', 'domain-swapper'),
             'manage_options',
             'domain-swapper',
             [$this, 'wporg_options_page_html'],
@@ -102,14 +102,14 @@ class ClassAdmin
         // https://developer.wordpress.org/reference/functions/add_settings_section/
         add_settings_section(
             'section1',
-            __('Settings', WPDS_TEXT),
+            __('Settings', 'domain-swapper'),
             [$this, 'callback'],
             WPDS_OPTION
         );
         // https://developer.wordpress.org/reference/functions/add_settings_field/
         add_settings_field(
             'key',
-            __('Pro Key:', WPDS_TEXT),
+            __('Pro Key:', 'domain-swapper'),
             [$this, 'field_key'],
             WPDS_OPTION,
             'section1',
@@ -119,19 +119,19 @@ class ClassAdmin
         );
 
         add_settings_field(
-            'activate',
-            __('Activate:', WPDS_TEXT),
-            [$this, 'field_activate'],
+            'active',
+            __('Active:', 'domain-swapper'),
+            [$this, 'field_active'],
             WPDS_OPTION,
             'section1',
             [
-                'label_for' => 'plugin_domain_swapper[activate]',
+                'label_for' => 'plugin_domain_swapper[active]',
             ]
         );
 
         add_settings_field(
             'include',
-            __('Included Domains: ', WPDS_TEXT),
+            __('Included Domains: ', 'domain-swapper'),
             [$this, 'field_include'],
             WPDS_OPTION,
             'section1',
@@ -188,6 +188,7 @@ class ClassAdmin
                 }
             }
         }
+        add_settings_error('wporg_messages', 'wporg_message', __('Settings saved successfully to the database option settings:  plugin_domain_swapper', 'domain-swapper'), 'updated');
 
         return $newinput;
     }
@@ -199,11 +200,11 @@ class ClassAdmin
      */
     public function callback()
     {
-        esc_html_e('Settings Saved to ', WPDS_TEXT);
+        esc_html_e('Settings Saved to ', 'domain-swapper');
     }
 
     /**
-     * Field Activate HTML output.
+     * Field Active HTML output.
      *
      * Generate a text checkbox field for the Plugin activation
      *
@@ -217,16 +218,25 @@ class ClassAdmin
      *
      * @return string $input
      */
-    public function field_activate($args)
+    public function field_active($args)
     {
         $o = get_option(WPDS_OPTION);
         $checked = '';
-        if (isset($o['activate'])) {
-            if ('on' == $o['activate']) {
+        if (isset($o['active'])) {
+            if ('on' == $o['active']) {
                 $checked = 'checked=checked';
             }
         }
-        echo "<input type='checkbox' id='key' name='{$args['label_for']}'  {$checked} />";
+        $html_content = "<input type='checkbox' id='key' name='{$args['label_for']}'  {$checked} />";
+        echo wp_kses($html_content, [
+            'input' => [
+                'id' => [],
+                'name' => [],
+                'type' => [],
+                'value' => [],
+                'checked' => [],
+            ],
+        ]);
     }
 
     /**
@@ -251,7 +261,15 @@ class ClassAdmin
         if (isset($o['key'])) {
             $key = $o['key'];
         }
-        echo "<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />";
+        $html_content = "<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />";
+        echo wp_kses($html_content, [
+            'input' => [
+                'id' => [],
+                'name' => [],
+                'type' => [],
+                'value' => [],
+            ],
+        ]);
     }
 
     /**
@@ -274,13 +292,28 @@ class ClassAdmin
         $o = get_option(WPDS_OPTION);
         if (isset($o['include'])) {
             foreach ($o['include'] as $i) {
-                echo "<input id='key' name='{$args['label_for']}' type='text' value='{$i}'  /><br>";
+                $html_content = "<input id='key' name='{$args['label_for']}' type='text' value='{$i}'  /><br>";
+                echo wp_kses($html_content, ['br' => [],
+                    'input' => [
+                        'id' => [],
+                        'name' => [],
+                        'type' => [],
+                        'value' => [],
+                    ],
+                ]);
             }
         } else {
             /* example 1 */
-
             for ($i = 1; $i <= 5; ++$i) {
-                echo "<input id='key' name='{$args['label_for']}' type='text'  /><br>";
+                $html_content = "<input id='key' name='{$args['label_for']}' type='text'  /><br>";
+                echo wp_kses($html_content, ['br' => [],
+                    'input' => [
+                        'id' => [],
+                        'name' => [],
+                        'type' => [],
+                        'value' => [],
+                    ],
+                ]);
             }
         }
     }
@@ -297,16 +330,15 @@ class ClassAdmin
         if (!current_user_can('manage_options')) {
             return;
         }
-        if (isset($_GET['settings-updated'])) {
-            add_settings_error('wporg_messages', 'wporg_message', __('Settings saved successfully to the database option settings:  '.WPDS_OPTION, WPDS_TEXT), 'updated');
-        }
         settings_errors('wporg_messages');
         ?>
 	<div class="wrap">
 		<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 		<form action="options.php" method="post">
-			<?php
 
+
+	    <?php
+        wp_nonce_field('wpds_save', 'wpds_nonce');
         settings_fields(WPDS_OPTION);
         do_settings_sections(WPDS_OPTION);
         submit_button('Save Settings');

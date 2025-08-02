@@ -1,10 +1,10 @@
-=== domain-swapper - 1 WordPress Site with Multiple Domains ===
+=== domain-swapper ===
 Contributors: Myridia Company
-Tags: wordpress, changer, host switcher, dynamic host, multiplehosts, multihost
+Tags: change domains, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 8.2.0
 Requires at least: 6.8.1
-Tested up to: 6.8.2
-Stable tag: 1.0.1
+Tested up to: 6.8
+Stable Tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

@@ -27,7 +27,7 @@ class ClassAjax
      */
     public function __construct()
     {
-        error_log('...swap ajax calls');
+        // error_log('...swap ajax calls');
         $this->set_domain_data();
 
         if ($this->activate) {
@@ -71,12 +71,14 @@ class ClassAjax
         $new_domain = str_replace('http://', '', $new_domain);
 
         if (isset($_SERVER['HTTP_HOST'])) {
-            if ('' != $_SERVER['HTTP_HOST']) {
-                $new_domain = $_SERVER['HTTP_HOST'];
+            $unslashed = sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST']));
+            if ('' != $unslashed) {
+                $new_domain = $unslashed;
             }
         } elseif (isset($_SERVER['SERVER_NAME'])) {
-            if ('' != $_SERVER['SERVER_NAME']) {
-                $new_domain = $_SERVER['SERVER_NAME'];
+            $unslashed = sanitize_text_field(wp_unslash($_SERVER['SERVER_NAME']));
+            if ('' != $unslashed) {
+                $new_domain = $unslashed;
             }
         }
 

@@ -21,17 +21,17 @@ class ClassFrontend
     /**
      * Init the Frontend Filter Hooks.
      *
-     * If Plugin is activated and if the new_siteurl is different to the base stieurl, then init the ajax filter hooks
+     * If Plugin is active  and if the new_siteurl is different to the base stieurl, then init the ajax filter hooks
      *
      * @since 1.0.0
      */
     public function __construct()
     {
-        error_log('...swap browser frontent calls');
+        // error_log('...swap browser frontent calls');
         $this->set_domain_data();
-        if ($this->activate) {
+        if ($this->active) {
             if ($this->new_siteurl != $this->siteurl) {
-                error_log('....start swapping');
+                // error_log('....start swapping');
                 add_filter('option_siteurl', [$this, 'swap_siteurl']);
                 add_filter('style_loader_src', [$this, 'swap_style_loader_src'], 10, 4);
                 add_filter('script_loader_src', [$this, 'swap_script_loader_src'], 10, 4);
@@ -65,10 +65,10 @@ class ClassFrontend
     public function set_domain_data()
     {
         $o = get_option(WPDS_OPTION);
-        if ($o['activate']) {
-            $this->activate = 1;
+        if (isset($o['active'])) {
+            $this->active = 1;
         } else {
-            $this->activate = 0;
+            $this->active = 0;
 
             return;
         }
@@ -84,12 +84,14 @@ class ClassFrontend
         $new_domain = str_replace('http://', '', $new_domain);
 
         if (isset($_SERVER['HTTP_HOST'])) {
-            if ('' != $_SERVER['HTTP_HOST']) {
-                $new_domain = $_SERVER['HTTP_HOST'];
+            $unslashed = sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST']));
+            if ('' != $unslashed) {
+                $new_domain = $unslashed;
             }
         } elseif (isset($_SERVER['SERVER_NAME'])) {
-            if ('' != $_SERVER['SERVER_NAME']) {
-                $new_domain = $_SERVER['SERVER_NAME'];
+            $unslashed = sanitize_text_field(wp_unslash($_SERVER['SERVER_NAME']));
+            if ('' != $unslashed) {
+                $new_domain = $unslashed;
             }
         }
 
@@ -220,7 +222,7 @@ class ClassFrontend
     public function swap_style_loader_src($url)
     {
         $new_url = $url;
-        $src_parse = parse_url($url);
+        $src_parse = wp_parse_url($url);
         if (isset($src_parse['host']) && isset($src_parse['scheme'])) {
             $host = $src_parse['scheme'].'://'.$src_parse['host'];
 
@@ -250,7 +252,7 @@ class ClassFrontend
     public function swap_script_loader_src($url)
     {
         $new_url = $url;
-        $src_parse = parse_url($url);
+        $src_parse = wp_parse_url($url);
         if (isset($src_parse['host'])) {
             $host = $src_parse['scheme'].'://'.$src_parse['host'];
 
