@@ -5,7 +5,7 @@
  * @since             1.0.0
  *
  * @wordpress-plugin
- * Plugin Name: Domain swapper
+ * Plugin Name: domain-swapper
  * Plugin URI: https://wordpress.org/plugins/domain-swapper
  * Description: Swap or change your Domains for one WordPress Site. So you can access one single WordPress site with different domains.
  * Version: 1.0.0
@@ -13,7 +13,7 @@
  * Author URI: http://domain-swapper.myridia.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: domain_swapper
+ * Text Domain: domain-swapper
  * Domain Path: /languages
  * Update URL: https://github.com/myridia/domain-swapper
  * Constant Prefix: WPDS_

@@ -63,7 +63,7 @@ class ClassAdmin
         $message = '675234';
         $message_signed = sodium_crypto_sign($message, $sign_secret);
         $smessage = sodium_crypto_sign_open($message_signed, $sign_public);
-        echo sodium_bin2hex(sodium_crypto_shorthash('a', '1434567890123456'));
+        // echo sodium_bin2hex(sodium_crypto_shorthash('a', '1434567890123456'));
 
         // echo $smessage.'<br>';
         // echo $message_signed.'<br>';
@@ -80,8 +80,8 @@ class ClassAdmin
     {
         add_submenu_page(
             'options-general.php',
-            esc_html__('Domain Swapper', 'domain_swapper'),
-            esc_html__('Domain Swapper', 'domain_swapper'),
+            esc_html__('Domain Swapper', 'domain-swapper'),
+            esc_html__('Domain Swapper', 'domain-swapper'),
             'manage_options',
             'domain-swapper',
             [$this, 'wporg_options_page_html'],
@@ -102,14 +102,14 @@ class ClassAdmin
         // https://developer.wordpress.org/reference/functions/add_settings_section/
         add_settings_section(
             'section1',
-            __('Settings', WPDS_TEXT),
+            __('Settings', 'domain-swapper'),
             [$this, 'callback'],
             WPDS_OPTION
         );
         // https://developer.wordpress.org/reference/functions/add_settings_field/
         add_settings_field(
             'key',
-            __('Pro Key:', WPDS_TEXT),
+            __('Pro Key:', 'domain-swapper'),
             [$this, 'field_key'],
             WPDS_OPTION,
             'section1',
@@ -120,7 +120,7 @@ class ClassAdmin
 
         add_settings_field(
             'active',
-            __('Active:', WPDS_TEXT),
+            __('Active:', 'domain-swapper'),
             [$this, 'field_active'],
             WPDS_OPTION,
             'section1',
@@ -131,7 +131,7 @@ class ClassAdmin
 
         add_settings_field(
             'include',
-            __('Included Domains: ', WPDS_TEXT),
+            __('Included Domains: ', 'domain-swapper'),
             [$this, 'field_include'],
             WPDS_OPTION,
             'section1',
@@ -199,7 +199,7 @@ class ClassAdmin
      */
     public function callback()
     {
-        esc_html_e('Settings Saved to ', WPDS_TEXT);
+        esc_html_e('Settings Saved to ', 'domain-swapper');
     }
 
     /**
@@ -226,7 +226,7 @@ class ClassAdmin
                 $checked = 'checked=checked';
             }
         }
-        echo "<input type='checkbox' id='key' name='{$args['label_for']}'  {$checked} />";
+        echo esc_html("<input type='checkbox' id='key' name='{$args['label_for']}'  {$checked} />");
     }
 
     /**
@@ -251,7 +251,7 @@ class ClassAdmin
         if (isset($o['key'])) {
             $key = $o['key'];
         }
-        echo "<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />";
+        echo esc_html("<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />");
     }
 
     /**
@@ -274,13 +274,13 @@ class ClassAdmin
         $o = get_option(WPDS_OPTION);
         if (isset($o['include'])) {
             foreach ($o['include'] as $i) {
-                echo "<input id='key' name='{$args['label_for']}' type='text' value='{$i}'  /><br>";
+                echo esc_html("<input id='key' name='{$args['label_for']}' type='text' value='{$i}'  /><br>");
             }
         } else {
             /* example 1 */
 
             for ($i = 1; $i <= 5; ++$i) {
-                echo "<input id='key' name='{$args['label_for']}' type='text'  /><br>";
+                echo esc_html("<input id='key' name='{$args['label_for']}' type='text'  /><br>");
             }
         }
     }
@@ -298,7 +298,7 @@ class ClassAdmin
             return;
         }
         if (isset($_GET['settings-updated'])) {
-            add_settings_error('wporg_messages', 'wporg_message', __('Settings saved successfully to the database option settings:  '.WPDS_OPTION, WPDS_TEXT), 'updated');
+            add_settings_error('wporg_messages', 'wporg_message', __('Settings saved successfully to the database option settings:  plugin_domain_swapper', 'domain-swapper'), 'updated');
         }
         settings_errors('wporg_messages');
         ?>

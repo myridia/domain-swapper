@@ -84,12 +84,14 @@ class ClassFrontend
         $new_domain = str_replace('http://', '', $new_domain);
 
         if (isset($_SERVER['HTTP_HOST'])) {
-            if ('' != $_SERVER['HTTP_HOST']) {
-                $new_domain = $_SERVER['HTTP_HOST'];
+            $unslashed = sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST']));
+            if ('' != $unslashed) {
+                $new_domain = $unslashed;
             }
         } elseif (isset($_SERVER['SERVER_NAME'])) {
-            if ('' != $_SERVER['SERVER_NAME']) {
-                $new_domain = $_SERVER['SERVER_NAME'];
+            $unslashed = sanitize_text_field(wp_unslash($_SERVER['SERVER_NAME']));
+            if ('' != $unslashed) {
+                $new_domain = $unslashed;
             }
         }
 
@@ -220,7 +222,7 @@ class ClassFrontend
     public function swap_style_loader_src($url)
     {
         $new_url = $url;
-        $src_parse = parse_url($url);
+        $src_parse = wp_parse_url($url);
         if (isset($src_parse['host']) && isset($src_parse['scheme'])) {
             $host = $src_parse['scheme'].'://'.$src_parse['host'];
 
@@ -250,7 +252,7 @@ class ClassFrontend
     public function swap_script_loader_src($url)
     {
         $new_url = $url;
-        $src_parse = parse_url($url);
+        $src_parse = wp_parse_url($url);
         if (isset($src_parse['host'])) {
             $host = $src_parse['scheme'].'://'.$src_parse['host'];
 
