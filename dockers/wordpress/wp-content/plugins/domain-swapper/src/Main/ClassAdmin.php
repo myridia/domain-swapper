@@ -188,6 +188,7 @@ class ClassAdmin
                 }
             }
         }
+        add_settings_error('wporg_messages', 'wporg_message', __('Settings saved successfully to the database option settings:  plugin_domain_swapper', 'domain-swapper'), 'updated');
 
         return $newinput;
     }
@@ -226,7 +227,16 @@ class ClassAdmin
                 $checked = 'checked=checked';
             }
         }
-        echo esc_html("<input type='checkbox' id='key' name='{$args['label_for']}'  {$checked} />");
+        $html_content = "<input type='checkbox' id='key' name='{$args['label_for']}'  {$checked} />";
+        echo wp_kses($html_content, [
+            'input' => [
+                'id' => [],
+                'name' => [],
+                'type' => [],
+                'value' => [],
+                'checked' => [],
+            ],
+        ]);
     }
 
     /**
@@ -251,7 +261,15 @@ class ClassAdmin
         if (isset($o['key'])) {
             $key = $o['key'];
         }
-        echo esc_html("<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />");
+        $html_content = "<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />";
+        echo wp_kses($html_content, [
+            'input' => [
+                'id' => [],
+                'name' => [],
+                'type' => [],
+                'value' => [],
+            ],
+        ]);
     }
 
     /**
@@ -274,13 +292,28 @@ class ClassAdmin
         $o = get_option(WPDS_OPTION);
         if (isset($o['include'])) {
             foreach ($o['include'] as $i) {
-                echo esc_html("<input id='key' name='{$args['label_for']}' type='text' value='{$i}'  /><br>");
+                $html_content = "<input id='key' name='{$args['label_for']}' type='text' value='{$i}'  /><br>";
+                echo wp_kses($html_content, ['br' => [],
+                    'input' => [
+                        'id' => [],
+                        'name' => [],
+                        'type' => [],
+                        'value' => [],
+                    ],
+                ]);
             }
         } else {
             /* example 1 */
-
             for ($i = 1; $i <= 5; ++$i) {
-                echo esc_html("<input id='key' name='{$args['label_for']}' type='text'  /><br>");
+                $html_content = "<input id='key' name='{$args['label_for']}' type='text'  /><br>";
+                echo wp_kses($html_content, ['br' => [],
+                    'input' => [
+                        'id' => [],
+                        'name' => [],
+                        'type' => [],
+                        'value' => [],
+                    ],
+                ]);
             }
         }
     }
@@ -297,16 +330,15 @@ class ClassAdmin
         if (!current_user_can('manage_options')) {
             return;
         }
-        if (isset($_GET['settings-updated'])) {
-            add_settings_error('wporg_messages', 'wporg_message', __('Settings saved successfully to the database option settings:  plugin_domain_swapper', 'domain-swapper'), 'updated');
-        }
         settings_errors('wporg_messages');
         ?>
 	<div class="wrap">
 		<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 		<form action="options.php" method="post">
-			<?php
 
+
+	    <?php
+        wp_nonce_field('wpds_save', 'wpds_nonce');
         settings_fields(WPDS_OPTION);
         do_settings_sections(WPDS_OPTION);
         submit_button('Save Settings');
