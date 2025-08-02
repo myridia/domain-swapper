@@ -27,7 +27,7 @@ class ClassAjax
      */
     public function __construct()
     {
-        error_log('...swap ajax calls');
+        // error_log('...swap ajax calls');
         $this->set_domain_data();
 
         if ($this->activate) {

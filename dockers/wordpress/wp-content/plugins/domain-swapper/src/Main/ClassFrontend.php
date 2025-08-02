@@ -27,11 +27,11 @@ class ClassFrontend
      */
     public function __construct()
     {
-        error_log('...swap browser frontent calls');
+        // error_log('...swap browser frontent calls');
         $this->set_domain_data();
         if ($this->active) {
             if ($this->new_siteurl != $this->siteurl) {
-                error_log('....start swapping');
+                // error_log('....start swapping');
                 add_filter('option_siteurl', [$this, 'swap_siteurl']);
                 add_filter('style_loader_src', [$this, 'swap_style_loader_src'], 10, 4);
                 add_filter('script_loader_src', [$this, 'swap_script_loader_src'], 10, 4);

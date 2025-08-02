@@ -105,7 +105,7 @@ function wp_ds_plugin_admin_init()
 function wp_ds_plugin_init()
 {
     if (defined('DOING_AJAX') && DOING_AJAX) {
-        error_log('.....ajax');
+        // error_log('.....ajax');
         $plugin3 = new ClassAjax();
     } else {
         $plugin = new ClassAdmin();
