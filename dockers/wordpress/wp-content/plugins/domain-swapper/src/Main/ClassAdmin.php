@@ -217,7 +217,7 @@ class ClassAdmin
      *
      * @return string $input
      */
-    public function field_activate($args)
+    public function field_active($args)
     {
         $o = get_option(WPDS_OPTION);
         $checked = '';
