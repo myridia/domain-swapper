@@ -97,6 +97,10 @@ wp core update --allow-root
 wp plugin update --all --allow-root
 wp core update-db --allow-root
 wp core download --force --allow-root
+wp plugin activate woocommerce  --allow-root
+wp theme activate starter-shop  --allow-root
+wp plugin install wordpress-importer --activate --allow-root
+wp import wp-content/plugins/woocommerce/sample-data/sample_products.xml --authors=skip --quiet --allow-root
 ```
 
 ## Generate Language Files
