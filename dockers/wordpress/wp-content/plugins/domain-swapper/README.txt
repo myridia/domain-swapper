@@ -1,8 +1,8 @@
 === domain-swapper ===
-Contributors: Myridia Company
+Contributors: veto, Myridia Company
 Tags: change domains, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 8.2.0
-Requires at least: 6.8.1
+Requires at least: 6.8
 Tested up to: 6.8
 Stable Tag: 1.0.1
 License: GPLv2 or later

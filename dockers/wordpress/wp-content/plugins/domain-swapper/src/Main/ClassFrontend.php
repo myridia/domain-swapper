@@ -428,10 +428,6 @@ class ClassFrontend
     public function swap_siteurl($url)
     {
         if ('' != $this->new_siteurl) {
-            if (!defined('WPDS_CUSTOM_REQUEST_URL')) {
-                define('WPDS_CUSTOM_REQUEST_URL', $this->new_siteurl);
-            }
-
             if (!defined('WP_SITEURL')) {
                 define('WP_SITEURL', $this->new_siteurl);
             }
