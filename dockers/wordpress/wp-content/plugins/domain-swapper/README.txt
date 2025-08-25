@@ -3,7 +3,7 @@ Contributors: Veto, Myridia Company
 Tags: change domains, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 8.2.0
 Requires at least: 6.2
-Tested up to: 6.8.2
+Tested up to: 6.8
 Stable Tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
