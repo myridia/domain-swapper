@@ -1,4 +1,4 @@
-=== domain-swapper ===
+=== Domain-swapper ===
 Contributors: veto
 Tags: change domains, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 8.2.0
