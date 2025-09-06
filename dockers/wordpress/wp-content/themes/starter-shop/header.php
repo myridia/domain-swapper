@@ -17,7 +17,14 @@ do_action('best_shop_doctype');
 do_action('best_shop_before_wp_head');
 wp_head();
 
-?><div><a href="https://www.app.local">www.app.local</a><a href="https://ww1.app.local">www.app.local</a><a href="https://ww2.app.local">www.app.local</a><a href="https://ww3.app.local">www.app.local</a><a href="https://foo.local">www.app.local</a>
+?>
+    <div>
+    <a class="button" href="https://www.app.local">www.app.local</a>
+    <a class="button" href="https://ww1.app.local">ww1.app.local</a>
+    <a class="button" href="https://ww2.app.local">ww2.app.local</a>
+    <a class="button" href="https://ww3.app.local">ww3.app.local</a>
+    <a class="button" href="https://foo.local">foo.local</a>
+    </div>
 </head>
 
 <body <?php body_class(); ?> itemscope itemtype="https://schema.org/WebPage">
