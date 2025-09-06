@@ -104,6 +104,7 @@ services:
   chromium:
     container_name: chromium
     image: docker-chromium
+    restart: always    
     ports:
       - "5800:5800"
       - "5900:5900"
@@ -113,7 +114,6 @@ services:
       - "ww2.app.local:10.5.0.2"
       - "ww3.app.local:10.5.0.2"
       - "foo.local:10.5.0.2"            
-
     environment:
       - TZ=Europe/London
       - USER_ID=0
