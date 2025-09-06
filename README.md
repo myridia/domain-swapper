@@ -6,8 +6,7 @@ Lets say you have a wordpress Website with the domain www.foo.com. Now you like 
 wordpress.This plugin let you do it.
 
 ## How to test the plugin
-The plugin is integrated into the Wordpress CMS framework what this framework is integrated into a webserver, database and php engine. And all they are integrated into a operationsystem.
-To virtualize all this, we created a docker-compose file what will help you to virtualize all those services. 
+The plugin is integrated into the WordPress CMS framework, what by itself is integrated into a web server, database and PHP engine. And all they need to be integrated into an operating system. To virtualize all this, we created a docker-compose file what will help you to run and virtualize all those services.
 
 ## Steps to run the the docker-compose 
 *    have docker and docker-compose in your operation system
