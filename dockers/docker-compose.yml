@@ -99,7 +99,17 @@ services:
         ipv4_address: "10.5.0.7"
     environment:
       - VIRTUAL_HOST=phpmyadmin.local        
-        
+
+  chromium:
+    container_name: chromium
+    image: docker-chromium
+    ports:
+      - "5800:5800"
+      - "5900:5900"
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.8"
+      
 volumes:
   db_ds:
 
