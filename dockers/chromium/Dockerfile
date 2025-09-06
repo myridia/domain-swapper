@@ -6,9 +6,11 @@ RUN add-pkg mesa-dri-gallium
 RUN add-pkg chromium 
 RUN add-pkg nano 
 RUN add-pkg curl
-COPY minica-key.pem /root/
+RUN add-pkg nss-tools 
 COPY minica.pem /root/
-#RUN echo "10.5.0.2 www.app.local" >> /etc/hosts
+COPY pki /root/.pki
+#RUN certutil -d sql:$HOME/.pki/nssdb -A -t "CT,C,C"  -n minica -i /root/minica.pem
+#RUN ls /root/
 COPY startapp.sh /startapp.sh
 
 # Set the application name.
