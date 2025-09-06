@@ -1,158 +1,155 @@
 <?php
 /**
  * Theme Headep
- * DOCTYPE hook 
+ * DOCTYPE hook.
+ *
  * @hooked best_shop_doctype
  */
-do_action( 'best_shop_doctype' );
+do_action('best_shop_doctype');
 ?>
 <head itemscope itemtype="https://schema.org/WebSite">
 <?php
 /**
- * Before wp_head
- * 
+ * Before wp_head.
+ *
  * @hooked best_shop_head
  */
-do_action( 'best_shop_before_wp_head' );
+do_action('best_shop_before_wp_head');
 wp_head();
-?>
+
+?><div><a href="https://www.app.local">www.app.local</a><a href="https://ww1.app.local">www.app.local</a><a href="https://ww2.app.local">www.app.local</a><a href="https://ww3.app.local">www.app.local</a><a href="https://foo.local">www.app.local</a>
 </head>
 
 <body <?php body_class(); ?> itemscope itemtype="https://schema.org/WebPage">
 <?php
 wp_body_open();
-/**
+/*
  * Before Header
- * 
- * @hooked best_shop_page_start 
+ *
+ * @hooked best_shop_page_start
  */
-do_action( 'best_shop_before_header' );
+do_action('best_shop_before_header');
 
 /**
- * Header
+ * Header.
  */
-
-
 $best_shop_header_layout = best_shop_get_header_style();
 
-//if header layout is customizer or empty, get customizer setting
-if ( $best_shop_header_layout === 'customizer-setting' || $best_shop_header_layout === '' ) {
-  $best_shop_header_layout = best_shop_get_setting( 'header_layout' );
+// if header layout is customizer or empty, get customizer setting
+if ('customizer-setting' === $best_shop_header_layout || '' === $best_shop_header_layout) {
+    $best_shop_header_layout = best_shop_get_setting('header_layout');
 }
 
-//if woocommerce not installed, set layout to default
-if ( !class_exists( 'WooCommerce' ) && $best_shop_header_layout === 'woocommerce-bar' ) {
-  $best_shop_header_layout = 'default';
+// if woocommerce not installed, set layout to default
+if (!class_exists('WooCommerce') && 'woocommerce-bar' === $best_shop_header_layout) {
+    $best_shop_header_layout = 'default';
 }
 
 ?>
 <header id="masthead" class="site-header style-one 
-        <?php if ($best_shop_header_layout==='transparent-header') { 
-            echo esc_attr($best_shop_header_layout); 
-        } if($best_shop_header_layout==='woocommerce-bar'){
-            echo esc_attr(" header-no-border "); 
+        <?php if ('transparent-header' === $best_shop_header_layout) {
+            echo esc_attr($best_shop_header_layout);
+        } if ('woocommerce-bar' === $best_shop_header_layout) {
+            echo esc_attr(' header-no-border ');
         }
-        if ($best_shop_header_layout==='woocommerce-bar'){
-            echo esc_attr(' hide-menu-cart ');
-        }
-                                     
-        ?>"
+if ('woocommerce-bar' === $best_shop_header_layout) {
+    echo esc_attr(' hide-menu-cart ');
+}
+
+?>"
         itemscope itemtype="https://schema.org/WPHeader">
-  <?php if(best_shop_get_setting('enable_top_bar')): ?>
+  <?php if (best_shop_get_setting('enable_top_bar')) { ?>
   <div class="top-bar-menu">
     <div class="container">
       <div class="left-menu">
         <?php
 
-        if ( best_shop_get_setting( 'top_bar_left_content' ) === 'menu' ) {
-
-          wp_nav_menu( array( 'container_class' => 'top-bar-menu',
-            'theme_location' => 'top-bar-left-menu',
-            'depth' => 1,
-          ) );
-
-        } elseif ( best_shop_get_setting( 'top_bar_left_content' ) === 'contacts' ) {
-            ?>
+if ('menu' === best_shop_get_setting('top_bar_left_content')) {
+    wp_nav_menu(['container_class' => 'top-bar-menu',
+        'theme_location' => 'top-bar-left-menu',
+        'depth' => 1,
+    ]);
+} elseif ('contacts' === best_shop_get_setting('top_bar_left_content')) {
+    ?>
         <ul>
-          <?php if (best_shop_get_setting('phone_number')!=''): ?>
-          <li><?php echo esc_html(best_shop_get_setting('phone_title')).esc_html(best_shop_get_setting('phone_number')) ; ?></li>
-          <?php endif; ?>
-          <?php if (best_shop_get_setting('address')!=''): ?>
-          <li><?php echo esc_html(best_shop_get_setting('address_title')).esc_html(best_shop_get_setting('address')) ; ?></li>
-          <?php endif; ?>
-          <?php if (best_shop_get_setting('mail_description')!=''): ?>
-          <li><?php echo esc_html(best_shop_get_setting('mail_title')).esc_html(best_shop_get_setting('mail_description')) ; ?></li>
-          <?php endif; ?>
+          <?php if ('' != best_shop_get_setting('phone_number')) { ?>
+          <li><?php echo esc_html(best_shop_get_setting('phone_title')).esc_html(best_shop_get_setting('phone_number')); ?></li>
+          <?php } ?>
+          <?php if ('' != best_shop_get_setting('address')) { ?>
+          <li><?php echo esc_html(best_shop_get_setting('address_title')).esc_html(best_shop_get_setting('address')); ?></li>
+          <?php } ?>
+          <?php if ('' != best_shop_get_setting('mail_description')) { ?>
+          <li><?php echo esc_html(best_shop_get_setting('mail_title')).esc_html(best_shop_get_setting('mail_description')); ?></li>
+          <?php } ?>
         </ul>
         <?php
-        } elseif ( best_shop_get_setting( 'top_bar_left_content' ) === 'text' ) {
-            ?>
+} elseif ('text' === best_shop_get_setting('top_bar_left_content')) {
+    ?>
         <ul>
-          <li><?php echo esc_html((best_shop_get_setting('top_bar_left_text')) ); ?></li>
+          <li><?php echo esc_html(best_shop_get_setting('top_bar_left_text')); ?></li>
         </ul>
         <?php
-        }
+}
 
-
-        ?>
+      ?>
       </div>
       <div class="right-menu">
         <?php
-        if ( best_shop_get_setting( 'top_bar_right_content' ) === 'menu' ) {
-          wp_nav_menu( array( 'container_class' => 'top-bar-menu',
-            'theme_location' => 'top-bar-right-menu',
-            'depth' => 1,
-          ) );
-        } elseif ( best_shop_get_setting( 'top_bar_right_content' ) === 'social' ) {
+      if ('menu' === best_shop_get_setting('top_bar_right_content')) {
+          wp_nav_menu(['container_class' => 'top-bar-menu',
+              'theme_location' => 'top-bar-right-menu',
+              'depth' => 1,
+          ]);
+      } elseif ('social' === best_shop_get_setting('top_bar_right_content')) {
+          best_shop_social_links(true);
+      } elseif ('menu_social' === best_shop_get_setting('top_bar_right_content')) {
+          wp_nav_menu(['container_class' => 'top-bar-menu',
+              'theme_location' => 'top-bar-right-menu',
+              'depth' => 1,
+          ]);
 
-          best_shop_social_links( true );
+          best_shop_social_links(true);
+      }
 
-        } elseif ( best_shop_get_setting( 'top_bar_right_content' ) === 'menu_social' ) {
-
-          wp_nav_menu( array( 'container_class' => 'top-bar-menu',
-            'theme_location' => 'top-bar-right-menu',
-            'depth' => 1,
-          ) );
-
-          best_shop_social_links( true );
-
-        }
-
-        ?>
+      ?>
       </div>
     </div>
   </div>
-  <?php endif; /* end top bar*/ ?>
-  <div class=" <?php if(best_shop_get_setting('menu_layout') === 'default' ) { echo 'main-menu-wrap'; } else { echo 'burger-banner'; } ?> ">
+  <?php } /* end top bar */ ?>
+  <div class=" <?php if ('default' === best_shop_get_setting('menu_layout')) {
+      echo 'main-menu-wrap';
+  } else {
+      echo 'burger-banner';
+  } ?> ">
     <div class="container">
       <div class="header-wrapper">
         <?php
         /**
-         * Site Branding 
+         * Site Branding.
          */
         best_shop_site_branding();
-        ?>
+?>
         <div class="nav-wrap">
-          <?php if(best_shop_get_setting('menu_layout') === 'default' ) { ?>
+          <?php if ('default' === best_shop_get_setting('menu_layout')) { ?>
           <div class="header-left">
             <?php
-            /**
-             * Primary navigation 
-             */
-            best_shop_primary_navigation();
-            ?>
+    /**
+     * Primary navigation.
+     */
+    best_shop_primary_navigation();
+              ?>
           </div>
           <div class="header-right">
             <?php
-            /**
-             * Header Search 
-             */
-            best_shop_header_search();
-            ?>
+              /**
+               * Header Search.
+               */
+              best_shop_header_search();
+              ?>
           </div>
           <?php } else { ?>
           <div class="banner header-right">
-            <?php the_widget( 'WP_Widget_Media_Image', 'url='.best_shop_get_setting('header_banner_img')); ?>
+            <?php the_widget('WP_Widget_Media_Image', 'url='.best_shop_get_setting('header_banner_img')); ?>
           </div>
           <?php } ?>
         </div>
@@ -161,8 +158,8 @@ if ( !class_exists( 'WooCommerce' ) && $best_shop_header_layout === 'woocommerce
     </div>
   </div>
   <?php
-  if ( best_shop_get_setting( 'menu_layout' ) === 'full_width' ) {
-    ?>
+  if ('full_width' === best_shop_get_setting('menu_layout')) {
+      ?>
   
   <!--Burger header-->
   <div class="burger main-menu-wrap">
@@ -171,19 +168,19 @@ if ( !class_exists( 'WooCommerce' ) && $best_shop_header_layout === 'woocommerce
         <div class="nav-wrap">
           <div class="header-left">
             <?php
-            /**
-             * Primary navigation 
-             */
-            best_shop_primary_navigation();
-            ?>
+              /**
+               * Primary navigation.
+               */
+              best_shop_primary_navigation();
+      ?>
           </div>
           <div class="header-right">
             <?php
-            /**
-             * Header Search 
-             */
-            best_shop_header_search();
-            ?>
+      /**
+       * Header Search.
+       */
+      best_shop_header_search();
+      ?>
           </div>
         </div>
       </div>
@@ -194,30 +191,29 @@ if ( !class_exists( 'WooCommerce' ) && $best_shop_header_layout === 'woocommerce
   <?php
   }
 
-  /**
-   * Mobile navigation
-   */
-  best_shop_mobile_navigation();
+/*
+ * Mobile navigation
+ */
+best_shop_mobile_navigation();
 
-
-  if ( class_exists( 'WooCommerce' ) && $best_shop_header_layout === 'woocommerce-bar' ) {
+if (class_exists('WooCommerce') && 'woocommerce-bar' === $best_shop_header_layout) {
     ?>
   <div class="woocommerce-bar">
     <nav>
       <div class="container">
         <?php
         best_shop_product_category_list();
-        best_shop_product_search();
-        best_shop_cart_wishlist_myacc();
-        ?>
+    best_shop_product_search();
+    best_shop_cart_wishlist_myacc();
+    ?>
       </div>
     </nav>
   </div>
   <?php
 
-  }
+}
 
-  ?>
+?>
 </header>
 <!-- #masthead -->
 
@@ -226,11 +222,10 @@ if ( !class_exists( 'WooCommerce' ) && $best_shop_header_layout === 'woocommerce
 /**
  * * @hooked best_shop_primary_page_header - 10
  */
-do_action( 'best_shop_before_posts_content' );
+do_action('best_shop_before_posts_content');
 
-
-if (best_shop_get_setting('preloader_enabled')){
-?>
+if (best_shop_get_setting('preloader_enabled')) {
+    ?>
 
 <div class="preloader-center">
      <div class="preloader-ring"></div>
@@ -238,4 +233,3 @@ if (best_shop_get_setting('preloader_enabled')){
 </div>
 <?php
 }
-
