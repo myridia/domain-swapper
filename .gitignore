@@ -24,7 +24,7 @@ pages/env
 dockers/wordpress/wp-content/uploads/wc-logs/
 
 # Configuration
-wp-config.php
+#wp-config.php
 
 # Example themes
 /wp-content/themes/twenty*/
