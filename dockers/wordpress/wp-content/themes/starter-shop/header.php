@@ -18,12 +18,19 @@ do_action('best_shop_before_wp_head');
 wp_head();
 
 ?>
-    <div>
-    <a class="button" href="https://www.app.local">www.app.local</a>
-    <a class="button" href="https://ww1.app.local">ww1.app.local</a>
-    <a class="button" href="https://ww2.app.local">ww2.app.local</a>
-    <a class="button" href="https://ww3.app.local">ww3.app.local</a>
-    <a class="button" href="https://foo.local">foo.local</a>
+
+<style >
+   .domain_swapper_example button a {
+    font-weight:bold;
+}
+</style>
+    <div class="domain_swapper_example">
+     <span>Test Domains:</span>
+    <button><a title="test domain www.app.local" class="button" href="https://">www.app.local</a></button>
+    <button><a title="test domain ww1.app.local" class="button" href="https://ww1.app.local">ww1.app.local</a></button>
+    <button><a title="test domain ww2.app.local" class="button" href="https://ww2.app.local">ww2.app.local</a></button>
+    <button><a title="test domain ww3.app.local" class="button" href="https://ww3.app.local">ww3.app.local</a></button>
+    <button><a title="test domain foo.app.local" class="button" href="https://foo.app.local">foo.app.local</a></button>
     </div>
 </head>
 

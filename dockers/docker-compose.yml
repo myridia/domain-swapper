@@ -25,7 +25,7 @@ services:
     links:
       - php
     environment:
-      - VIRTUAL_HOST=www.app.local,ww1.app.local,ww2.app.local,ww3.app.local
+      - VIRTUAL_HOST=www.app.local,ww1.app.local,ww2.app.local,ww3.app.local,foo.app.local
       - VIRTUAL_PROTO=https
       - VIRTUAL_PORT=443
     networks:
@@ -113,7 +113,7 @@ services:
       - "ww1.app.local:10.5.0.2"
       - "ww2.app.local:10.5.0.2"
       - "ww3.app.local:10.5.0.2"
-      - "foo.local:10.5.0.2"            
+      - "foo.app.local:10.5.0.2"            
     environment:
       - TZ=Europe/London
       - USER_ID=0
