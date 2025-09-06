@@ -9,7 +9,7 @@ We apologize but you need to do a one time setup to make it works, as we need to
 ```
 
 
-## Install
+## How to Test the Plugins
 ### Clone from github
 ```
 git clone https://github.com/myridia/domain-swapper.git
