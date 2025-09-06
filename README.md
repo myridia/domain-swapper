@@ -1,6 +1,18 @@
 # ![domain-swapper](pages/public/assets/img/logo.png) Domain-Swapper
 
 # The Domain Swapper Plugin lets you use multiple domain names.
+Lets say you have a wordpress Website with the domain www.foo.com. Now you like to have domains like dk.foo.com, de.foo.com and es.foo.com what link to the same 
+
+wordpress.This plugin let you do it.
+
+## How to test the plugin
+The plugin is integrated into the Wordpress CMS framework what this framework is integrated into a webserver, database and php engine. And all they are integrated into a operationsystem.
+To virtualize all this, we created a docker-compose file what will help you to virtualize all those services. 
+
+## Steps to run the the docker-compose 
+*    have docker and docker-compose in your operation system
+*    start the docker-compose.yml file inside the folder dockers 
+
 
 ## Developer Requirment Setup
 We apologize but you need to do a one time setup to make it works, as we need to to tell your operation system where to find your testing domains. To do this configure your operation host file like
