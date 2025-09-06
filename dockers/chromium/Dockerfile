@@ -6,7 +6,8 @@ RUN add-pkg mesa-dri-gallium
 RUN add-pkg chromium 
 RUN add-pkg nano 
 RUN add-pkg curl
-
+COPY minica-key.pem /root/
+COPY minica.pem /root/
 #RUN echo "10.5.0.2 www.app.local" >> /etc/hosts
 COPY startapp.sh /startapp.sh
 

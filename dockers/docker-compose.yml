@@ -94,11 +94,12 @@ services:
       PMA_HOST: db
       PMA_USER: dbsql1
       PMA_PASSWORD: passpass
+      VIRTUAL_HOST: phpmyadmin.local              
     networks:
       workgroup:
         ipv4_address: "10.5.0.7"
-    environment:
-      - VIRTUAL_HOST=phpmyadmin.local        
+
+
 
   chromium:
     container_name: chromium
