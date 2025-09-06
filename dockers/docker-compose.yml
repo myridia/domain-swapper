@@ -106,6 +106,8 @@ services:
     ports:
       - "5800:5800"
       - "5900:5900"
+    extra_hosts:
+      - "www.app.local:10.5.0.2"
     networks:
       workgroup:
         ipv4_address: "10.5.0.8"
