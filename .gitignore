@@ -1,10 +1,10 @@
-dockers/appdata/firefox/log
-dockers/appdata/firefox/xdg
-dockers/appdata/firefox/profile/startupCache
-dockers/appdata/firefox/profile/storage
-dockers/appdata/firefox/profile/security_state
-dockers/appdata/firefox/profile/favicons.sqlite
-dockers/appdata/firefox/profile/cache2
+test/appdata/firefox/log
+test/appdata/firefox/xdg
+test/appdata/firefox/profile/startupCache
+test/appdata/firefox/profile/storage
+test/appdata/firefox/profile/security_state
+test/appdata/firefox/profile/favicons.sqlite
+test/appdata/firefox/profile/cache2
 
 pages/db/*.json
 pages/env
@@ -29,7 +29,7 @@ pages/env
 /readme.html
 /wp-*.php
 /xmlrpc.php
-dockers/wordpress/wp-content/uploads/wc-logs/
+test/wordpress/wp-content/uploads/wc-logs/
 
 # Configuration
 #wp-config.php
