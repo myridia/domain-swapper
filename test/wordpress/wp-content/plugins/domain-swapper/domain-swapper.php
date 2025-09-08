@@ -38,29 +38,22 @@ use WP\Ds\Main\ClassAjax;
 use WP\Ds\Main\ClassFrontend;
 
 /*
- * Get the metadata from the plugin header
- *
- * @since 1.0.0 (if available)
- */
-$m_plugin_data = get_file_data(__FILE__, ['name' => 'Plugin Name', 'version' => 'Version', 'text_domain' => 'Text Domain', 'constant_prefix' => 'Constant Prefix', 'prefix' => 'Prefix', 'option_key' => 'Option_key']);
-
-/*
  * Constants Calls
  *
  * @since 1.0.0 (if available)
  */
-m_make_constants('NAME', $m_plugin_data['text_domain'], $m_plugin_data);
-m_make_constants('DIR', dirname(plugin_basename(__FILE__)), $m_plugin_data);
-m_make_constants('BASE', plugin_basename(__FILE__), $m_plugin_data);
-m_make_constants('URL', plugin_dir_url(__FILE__), $m_plugin_data);
-m_make_constants('URI', plugin_dir_url(__FILE__), $m_plugin_data);
-m_make_constants('PATH', plugin_dir_path(__FILE__), $m_plugin_data);
-m_make_constants('SLUG', dirname(plugin_basename(__FILE__)), $m_plugin_data);
-m_make_constants('BASENAME', dirname(plugin_basename(__FILE__)), $m_plugin_data);
-m_make_constants('VERSION', $m_plugin_data['version'], $m_plugin_data);
-m_make_constants('TEXT', $m_plugin_data['text_domain'], $m_plugin_data);
-m_make_constants('PREFIX', $m_plugin_data['prefix'], $m_plugin_data);
-m_make_constants('OPTION', $m_plugin_data['option_key'], $m_plugin_data);
+define('WPDS_NAME', 'domain-swapper');
+define('WPDS_DIR', 'domain-swapper');
+define('WPDS_BASE', 'domain-swapper/domain-swapper.php');
+define('WPDS_URL', 'https://www.app.local/wp-content/plugins/domain-swapper/');
+define('WPDS_URI', 'https://www.app.local/wp-content/plugins/domain-swapper/');
+define('WPDS_PATH', '/usr/share/nginx/html/wp-content/plugins/domain-swapper/');
+define('WPDS_SLUG', 'domain-swapper');
+define('WPDS_BASENAME', 'domain-swapper');
+define('WPDS_VERSION', '1.0.6');
+define('WPDS_TEXT', 'domain-swapper');
+define('WPDS_PREFIX', 'wpds_');
+define('WPDS_OPTION', 'plugin_domain_swapper');
 
 /*
  * Default Plugin activate hooks. Started as a static class functions
@@ -132,21 +125,3 @@ spl_autoload_register(function (string $className) {
     $classFile = str_replace('\\', '/', $className).'.php';
     require_once $classFile;
 });
-
-/*
- * Create Constants
- *
- *  Create in a compact way all Constants used for the Plugin.
- *
- * @since 1.0.0
- * @param String $className
- */
-function m_make_constants($name, $value, $pdata)
-{
-    $prefix = $pdata['constant_prefix'];
-    $c_name = $prefix.$name;
-    // echo $c_name.' : '.$value.' <br>';
-    if (!defined($c_name)) {
-        define($c_name, $value);
-    }
-}
