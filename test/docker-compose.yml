@@ -1,0 +1,140 @@
+version: '3'
+services:
+  nginx-proxy:
+    container_name: nginx_proxy    
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs/_.app.local:/etc/nginx/certs
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.2"
+      
+  nginx:
+    container_name: nginx
+    image: nginx
+    volumes:
+      - ./wordpress/:/usr/share/nginx/html/
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf            
+    tty: true
+    links:
+      - php
+    environment:
+      - VIRTUAL_HOST=www.app.local,ww1.app.local,ww2.app.local,ww3.app.local,foo.app.local
+      - VIRTUAL_PROTO=https
+      - VIRTUAL_PORT=443
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.3"
+  php:
+    container_name: php
+    image: myridia/php8.2fpm
+    volumes:
+      - ./wordpress/:/usr/share/nginx/html/
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.4"
+
+
+  db:
+    image: mariadb    
+    container_name: db
+    volumes:
+      - db_ds:/var/lib/mysql
+      - "./log/mysql:/var/log/mysql"
+      - "./init/:/docker-entrypoint-initdb.d"    
+    ports:
+     - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: passpass
+      MYSQL_USER: dbsql1
+      MYSQL_PASSWORD: passpass
+      MYSQL_DATABASE: dbsql1
+    restart: always      
+    #command: 'mysqld --general-log=1 --general-log-file=/var/log/mysql/mysql.log'
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.5"
+
+  wpcli:
+    image: wordpress:cli
+    container_name: wpcli
+    command: >
+      /bin/sh -c  '                                                                                            
+      sleep 3;                                                                                                 
+      tail -F anything '
+    user: root
+    links:
+      - db:mysql
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: dbsql1
+      WORDPRESS_DB_PASSWORD: passpass
+      WORDPRESS_DB_NAME: dbsql1
+      PHP_MEMORY_LIMIT: 2G
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./etc/php.ini:/usr/local/etc/php/conf.d/custom.ini # Or uploads.ini
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.6"
+
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    #ports:
+    #  - "81:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: dbsql1
+      PMA_PASSWORD: passpass
+      VIRTUAL_HOST: phpmyadmin.local              
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.7"
+
+
+
+  firefox:
+    container_name: firefox
+    #image: docker-chromium
+    image: jlesage/firefox
+    restart: always
+    
+    ports:
+      - "5800:5800"
+    #  - "5900:5900"
+    extra_hosts:
+      - "www.app.local:10.5.0.2"
+      - "ww1.app.local:10.5.0.2"
+      - "ww2.app.local:10.5.0.2"
+      - "ww3.app.local:10.5.0.2"
+      - "foo.app.local:10.5.0.2"            
+    environment:
+      - TZ=Europe/London
+      - DARK_MODE=1
+      #- USER_ID=0
+      #- GROUP_ID=0
+    volumes:
+      - "./appdata/firefox:/config:rw"
+      
+    networks:
+      workgroup:
+        ipv4_address: "10.5.0.8"
+      
+volumes:
+  db_ds:
+
+networks:
+  workgroup:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1

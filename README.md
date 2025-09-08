@@ -1,6 +1,28 @@
 # ![domain-swapper](pages/public/assets/img/logo.png) Domain-Swapper
 
 # The Domain Swapper Plugin lets you use multiple domain names.
+Lets say you have a wordpress Website with the domain www.foo.com. Now you like to have domains like dk.foo.com, de.foo.com and es.foo.com what link to the same 
+
+wordpress.This plugin let you do it.
+
+## How to test the plugin
+The plugin is integrated into the WordPress CMS framework, what by itself is integrated into a web server, database and PHP engine. And all they need to be integrated into an operating system. To virtualize all this, we created a docker-compose file what will help you to run and virtualize all those services.
+
+## Steps to run the the docker-compose in the test folder 
+* have docker and docker-compose in your operation system
+* start the docker-compose.yml file inside the folder dockers 
+* enter the folder test
+* run docker-compose with 
+```
+docker-composer up
+```
+* open your browser with address http://127.0.0.1:5800/
+* inside the browser VNC you find firefox
+* there go to the Address https://www.app.local 
+* Admin: http://127.0.0.1:5800/
+* User: test
+* Password: test
+
 
 ## Developer Requirment Setup
 We apologize but you need to do a one time setup to make it works, as we need to to tell your operation system where to find your testing domains. To do this configure your operation host file like
@@ -9,7 +31,7 @@ We apologize but you need to do a one time setup to make it works, as we need to
 ```
 
 
-## Install
+## How to Test the Plugins
 ### Clone from github
 ```
 git clone https://github.com/myridia/domain-swapper.git
