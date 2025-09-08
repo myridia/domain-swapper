@@ -33,26 +33,14 @@ defined('ABSPATH') or exit('Something went wrong');
  *
  * @since 1.0.0 (if available)
  */
-use WP\Ds\Main\ClassAdmin;
-use WP\Ds\Main\ClassAjax;
-use WP\Ds\Main\ClassFrontend;
+use WPDS\Ds\Main\ClassAdmin;
+use WPDS\Ds\Main\ClassAjax;
+use WPDS\Ds\Main\ClassFrontend;
 
 /*
  * Constants Calls
- *
  * @since 1.0.0 (if available)
  */
-define('WPDS_NAME', 'domain-swapper');
-define('WPDS_DIR', 'domain-swapper');
-define('WPDS_BASE', 'domain-swapper/domain-swapper.php');
-define('WPDS_URL', 'https://www.app.local/wp-content/plugins/domain-swapper/');
-define('WPDS_URI', 'https://www.app.local/wp-content/plugins/domain-swapper/');
-define('WPDS_PATH', '/usr/share/nginx/html/wp-content/plugins/domain-swapper/');
-define('WPDS_SLUG', 'domain-swapper');
-define('WPDS_BASENAME', 'domain-swapper');
-define('WPDS_VERSION', '1.0.6');
-define('WPDS_TEXT', 'domain-swapper');
-define('WPDS_PREFIX', 'wpds_');
 define('WPDS_OPTION', 'plugin_domain_swapper');
 
 /*
@@ -60,19 +48,19 @@ define('WPDS_OPTION', 'plugin_domain_swapper');
  *
  * @since 1.0.0 (if available)
  */
-register_activation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'activate']);
+register_activation_hook(__FILE__, ['WPDS\Ds\Main\ClassAdmin', 'activate']);
 
 /*
  * Default Plugin deactivate hooks. Started as a static class functions
  *
  * @since 1.0.0 (if available)
  */
-register_deactivation_hook(__FILE__, ['WP\Ds\Main\ClassAdmin', 'deactivate']);
+register_deactivation_hook(__FILE__, ['WPDS\Ds\Main\ClassAdmin', 'deactivate']);
 
 // Register to start the Plugin
 
-add_action('init', 'wp_ds_plugin_init', 80);
-add_action('admin_init', 'wp_ds_plugin_admin_init', 99);
+add_action('init', 'myridia_wpds_plugin_init', 80);
+add_action('admin_init', 'myridia_wpds_plugin_admin_init', 99);
 
 /**
  * Init the Admin Plugin .
@@ -81,7 +69,7 @@ add_action('admin_init', 'wp_ds_plugin_admin_init', 99);
  *
  * @since 1.0.0
  */
-function wp_ds_plugin_admin_init()
+function myridia_wpds_plugin_admin_init()
 {
     $plugin = new ClassAdmin();
     $plugin->register_settings();
@@ -95,7 +83,7 @@ function wp_ds_plugin_admin_init()
  *
  * @since 1.0.0
  */
-function wp_ds_plugin_init()
+function myridia_wpds_plugin_init()
 {
     if (defined('DOING_AJAX') && DOING_AJAX) {
         // error_log('.....ajax');
@@ -118,10 +106,10 @@ function wp_ds_plugin_init()
  * @param String $className
  */
 spl_autoload_register(function (string $className) {
-    if (false === strpos($className, 'WP\\Ds')) {
+    if (false === strpos($className, 'WPDS\\Ds')) {
         return;
     }
-    $className = str_replace('WP\\Ds\\', __DIR__.'/src/', $className);
+    $className = str_replace('WPDS\\Ds\\', __DIR__.'/src/', $className);
     $classFile = str_replace('\\', '/', $className).'.php';
     require_once $classFile;
 });

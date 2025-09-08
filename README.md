@@ -8,9 +8,20 @@ wordpress.This plugin let you do it.
 ## How to test the plugin
 The plugin is integrated into the WordPress CMS framework, what by itself is integrated into a web server, database and PHP engine. And all they need to be integrated into an operating system. To virtualize all this, we created a docker-compose file what will help you to run and virtualize all those services.
 
-## Steps to run the the docker-compose 
-*    have docker and docker-compose in your operation system
-*    start the docker-compose.yml file inside the folder dockers 
+## Steps to run the the docker-compose in the test folder 
+* have docker and docker-compose in your operation system
+* start the docker-compose.yml file inside the folder dockers 
+* enter the folder test
+* run docker-compose with 
+```
+docker-composer up
+```
+* open your browser with address http://127.0.0.1:5800/
+* inside the browser VNC you find firefox
+* there go to the Address https://www.app.local 
+* Admin: http://127.0.0.1:5800/
+* User: test
+* Password: test
 
 
 ## Developer Requirment Setup

@@ -1,6 +1,6 @@
 <?php
 
-namespace WP\DS\Main;
+namespace WPDS\DS\Main;
 
 /**
  * Class Frontend.

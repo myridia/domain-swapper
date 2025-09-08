@@ -1,6 +1,6 @@
 <?php
 
-namespace WP\Ds\Main;
+namespace WPDS\Ds\Main;
 
 /**
  * Main Admin Class.
