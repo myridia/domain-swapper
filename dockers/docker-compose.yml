@@ -103,11 +103,13 @@ services:
 
   chromium:
     container_name: chromium
-    image: docker-chromium
-    restart: always    
+    #image: docker-chromium
+    image: jlesage/firefox
+    restart: always
+    
     ports:
       - "5800:5800"
-      - "5900:5900"
+    #  - "5900:5900"
     extra_hosts:
       - "www.app.local:10.5.0.2"
       - "ww1.app.local:10.5.0.2"
@@ -116,8 +118,13 @@ services:
       - "foo.app.local:10.5.0.2"            
     environment:
       - TZ=Europe/London
-      - USER_ID=0
-      - GROUP_ID=0
+      - DARK_MODE=1
+      - FF_OPEN_URL="https://www.app.local"
+      #- USER_ID=0
+      #- GROUP_ID=0
+    volumes:
+      - "./appdata/firefox:/config:rw"
+
       
     networks:
       workgroup:

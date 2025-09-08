@@ -1,3 +1,11 @@
+dockers/appdata/firefox/log
+dockers/appdata/firefox/xdg
+dockers/appdata/firefox/profile/startupCache
+dockers/appdata/firefox/profile/storage
+dockers/appdata/firefox/profile/security_state
+dockers/appdata/firefox/profile/favicons.sqlite
+dockers/appdata/firefox/profile/cache2
+
 pages/db/*.json
 pages/env
 
