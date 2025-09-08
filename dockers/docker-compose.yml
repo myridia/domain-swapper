@@ -101,8 +101,8 @@ services:
 
 
 
-  chromium:
-    container_name: chromium
+  firefox:
+    container_name: firefox
     #image: docker-chromium
     image: jlesage/firefox
     restart: always
@@ -119,12 +119,10 @@ services:
     environment:
       - TZ=Europe/London
       - DARK_MODE=1
-      - FF_OPEN_URL="https://www.app.local"
       #- USER_ID=0
       #- GROUP_ID=0
     volumes:
       - "./appdata/firefox:/config:rw"
-
       
     networks:
       workgroup:
