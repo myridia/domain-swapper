@@ -46,30 +46,6 @@ class ClassAdmin
     }
 
     /**
-     * Pro Key test.
-     *
-     *  Generate a list of message_signed and save them to the plugin. As well save the sign_public key to the plugin.
-     *  But keep the sign_secrete and the messages/serial keys secret.
-     *  Let the Customer enter his key, it will be signed and the result must be in your saved list to confirm it.
-     *  https://www.php.net/manual/en/function.sodium-crypto-sign.php
-     *
-     * @since 1.0.0
-     */
-    public static function key()
-    {
-        $sign_pair = sodium_crypto_sign_keypair();
-        $sign_secret = sodium_crypto_sign_secretkey($sign_pair);
-        $sign_public = sodium_crypto_sign_publickey($sign_pair);
-        $message = '675234';
-        $message_signed = sodium_crypto_sign($message, $sign_secret);
-        $smessage = sodium_crypto_sign_open($message_signed, $sign_public);
-        // echo sodium_bin2hex(sodium_crypto_shorthash('a', '1434567890123456'));
-
-        // echo $smessage.'<br>';
-        // echo $message_signed.'<br>';
-    }
-
-    /**
      * Add Menu Setting.
      *
      * The Menu will appear under Settings
@@ -107,16 +83,6 @@ class ClassAdmin
             WPDS_OPTION
         );
         // https://developer.wordpress.org/reference/functions/add_settings_field/
-        add_settings_field(
-            'key',
-            __('Pro Key:', 'domain-swapper'),
-            [$this, 'field_key'],
-            WPDS_OPTION,
-            'section1',
-            [
-                'label_for' => 'plugin_domain_swapper[key]',
-            ]
-        );
 
         add_settings_field(
             'active',
@@ -235,39 +201,6 @@ class ClassAdmin
                 'type' => [],
                 'value' => [],
                 'checked' => [],
-            ],
-        ]);
-    }
-
-    /**
-     * Field Pro Key HTML output.
-     *
-     * Generate a text input field for the Plugin activation key
-     *
-     * @since 1.0.0
-     *
-     * @param array $args {
-     *                    Field array
-     *
-     * @var string label_for
-     *             }
-     *
-     * @return string $input
-     */
-    public function field_key($args)
-    {
-        $o = get_option(WPDS_OPTION);
-        $key = '';
-        if (isset($o['key'])) {
-            $key = $o['key'];
-        }
-        $html_content = "<input id='key' name='{$args['label_for']}' type='text' value='{$key}' />";
-        echo wp_kses($html_content, [
-            'input' => [
-                'id' => [],
-                'name' => [],
-                'type' => [],
-                'value' => [],
             ],
         ]);
     }
