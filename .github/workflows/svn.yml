@@ -4,14 +4,13 @@ on:
     tags:
      - "*"
 jobs:
-    tag:
-        if: github.repository_owner == 'myridia'
-        name: New tag
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@master
-            - name: Build
-              run: |
+  tag:
+   name: New tag
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@master
+     - name: Build
+             run: |
                   cd test/
                   echo "Publish"
             - name: WordPress Plugin Deploy
