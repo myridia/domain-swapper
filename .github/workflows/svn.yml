@@ -1,4 +1,4 @@
-name: Publish to WordPress.org
+name: Publish Wordpress Plugin
 on:
   push:
     tags:
