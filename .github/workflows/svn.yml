@@ -1,4 +1,4 @@
-name: Deploy to WordPress.org
+name: Publish to WordPress.org
 on:
   push:
     tags:
