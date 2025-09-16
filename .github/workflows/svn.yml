@@ -11,12 +11,11 @@ jobs:
       - uses: actions/checkout@master
       - name: Build
         run: |
-          cd test/
           echo "Publish"
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@master
         with:
-          dry-run: true
+          dry-run: false
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
