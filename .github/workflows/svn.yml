@@ -1,8 +1,9 @@
 name: Publish Wordpress Plugin
 on:
   push:
+    branches: ["main"]
     tags:
-      - "*"
+      - '*'
 jobs:
   tag:
     name: New tag
