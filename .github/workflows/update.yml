@@ -23,6 +23,6 @@ jobs:
 
       - name: Build
         run: |
-              ls ./test
+              ls ./test/wordpress/wp-content/plugins/domain-swapper
               
 
