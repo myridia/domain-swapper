@@ -36,7 +36,7 @@ jobs:
           svn add * --force
           svn status
           svn cp trunk tags/1.1.0
-          svn ci -m 'update' --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} --no-auth-cache
+          svn ci -m 'update' --non-interactive --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} --no-auth-cache
 
 
         
