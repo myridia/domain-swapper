@@ -4,19 +4,38 @@ on:
     branches:
     - main
 jobs:
-  trunk:
-    name: Push to trunk
+  deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./test/wordpress/wp-content/plugins
 
     steps:
-    - uses: actions/checkout@master
-    - name: WordPress.org plugin asset/readme update
-      uses: 10up/action-wordpress-plugin-deploy@stable
-      env:
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: domain-swapper
-          BUILD_DIR: ./test/wordpress/wp-content/plugins/domain-swapper
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SVN
+        run: sudo apt-get install -y subversion
+
+      - name: Configure variables
+        id: vars
+        run: |
+          echo "PLUGIN_SLUG=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
+          echo "SVN_REPO=https://plugins.svn.wordpress.org/${{ env.PLUGIN_SLUG }}" >> $GITHUB_ENV
+          echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Checkout SVN repo
+        run: svn checkout $SVN_REPO svn
+
+      - name: Copy plugin files (trunk)
+        run: |
+          rsync -r --exclude=.svn --exclude=.github . svn/trunk/
+
+      - name: Commit trunk changes
+        run: |
+          cd svn
+          svn add --force trunk --auto-props --parents --depth infinity
+          svn commit trunk -m "Update trunk to version $VERSION" --username ${{ secrets.WP_SVN_USERNAME }} --password ${{ secrets.WP_SVN_PASSWORD }}
+
+      - name: Tag new version
+        run: |
+          cd svn
+          svn copy trunk tags/$VERSION
+          svn commit tags/$VERSION -m "Tag version $VERSION" --username ${{ secrets.WP_SVN_USERNAME }} --password ${{ secrets.WP_SVN_PASSWORD }}
