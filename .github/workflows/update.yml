@@ -16,3 +16,4 @@ jobs:
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
         ASSETS_DIR: assets
         BUILD_DIR: ./test/wordpress/wp-content/plugins/domain-swapper
+        IGNORE_OTHER_FILES: true
