@@ -26,7 +26,7 @@ jobs:
 
       - name: Copy to trunk
         run: |
-          rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper wp/trunk/
+          rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper/ wp/trunk/
           cd wp
           svn status
         
