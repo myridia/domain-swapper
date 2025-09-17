@@ -35,9 +35,7 @@ jobs:
           cd wp 
           svn add * --force
           svn status
-          echo ${{ github.ref_name }} 
-          echo "${GITHUB_REF##*/}"
-          # svn cp trunk tags/1.1.0
+          grep "Stable Tag:" trun/readme.txt | cut -d' ' -f3
           # svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
 
 
