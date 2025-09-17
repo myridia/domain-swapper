@@ -1,3 +1,4 @@
+svn/domain-swapper
 test/appdata/firefox/log
 test/appdata/firefox/xdg
 test/appdata/firefox/profile/startupCache
