@@ -36,8 +36,7 @@ jobs:
           svn add * --force
           svn status
           echo ${{ github.ref_name }} 
-          echo $(git describe --tags --abbrev=0)
-
+          echo "${GITHUB_REF##*/}"
           # svn cp trunk tags/1.1.0
           # svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
 
