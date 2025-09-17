@@ -26,6 +26,6 @@ jobs:
 
       - name: Copy to trunk
         run: |
-          ls ./
+          ls ./svn
         
 
