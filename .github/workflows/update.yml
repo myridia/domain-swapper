@@ -22,7 +22,7 @@ jobs:
 
       - name: Checkout
         run: |
-              svn --force checkout https://plugins.svn.wordpress.org/domain-swapper 
+              svn --force checkout https://plugins.svn.wordpress.org/domain-swapper svn
 
       - name: Copy to trunk
         run: |
