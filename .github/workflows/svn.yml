@@ -12,11 +12,4 @@ jobs:
       - uses: actions/checkout@master
       - name: Build
         run: |
-          echo "Publish"
-      - name: WordPress Plugin Deploy
-        uses: 10up/action-wordpress-plugin-deploy@stable
-        env:
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: domain-swapper
-          BUILD_DIR: ./test/wordpress/wp-content/plugins/domain-swapper
+              sudo apt-get install -y subversion
