@@ -15,3 +15,4 @@ jobs:
       - name: Build
         run: |
               sudo apt-get install -y subversion
+              ls
