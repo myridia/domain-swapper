@@ -10,19 +10,13 @@ jobs:
     defaults:
       run:
         working-directory: ./test/wordpress/wp-content/plugins
-        
 
     steps:
     - uses: actions/checkout@master
     - name: WordPress.org plugin asset/readme update
-      uses: 10up/action-wordpress-plugin-asset-update@stable
-      with: 
-        path: ./test/wordpress/wp-content/plugins/
-
+      uses: 10up/action-wordpress-plugin-deploy@stable
       env:
-        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        ASSETS_DIR: assets
-        README_NAME: readme.txt
-        IGNORE_OTHER_FILES: true
-        GITHUB_WORKSPACE: ./test/wordpress/wp-content/plugins/
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SLUG: domain-swapper
+          BUILD_DIR: ./test/wordpress/wp-content/plugins/domain-swapper
