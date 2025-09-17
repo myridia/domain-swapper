@@ -22,13 +22,12 @@ jobs:
 
       - name: Checkout
         run: |
-              svn --force checkout https://plugins.svn.wordpress.org/domain-swapper svn
+              svn --force checkout https://plugins.svn.wordpress.org/domain-swapper wp
 
       - name: Copy to trunk
         run: |
-          ls ./test/wordpress/wp-content/plugins/domain-swapper
-          rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper svn/trunk/
-          cd svn
+          rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper wp/trunk/
+          cd wp
           svn status
         
 
