@@ -30,13 +30,15 @@ jobs:
           rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper/assets/ wp/
           
 
-      - name: Add and checkout
+      - name: Add and Commit
         run: |
           cd wp 
           svn add * --force
           svn status
           svn cp trunk tags/1.1.0
-          svn ci -m 'update' --non-interactive --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} --no-auth-cache
+          echo ${{ secrets.SVN_USERNAME }} 
+          echo ${{ secrets.SVN_PASSWORD }}
+         # svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
 
 
         
