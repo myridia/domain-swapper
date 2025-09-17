@@ -29,7 +29,8 @@ jobs:
           
       - name : Check Tag exists
         run: |
-          svn ls https://plugins.svn.wordpress.org/domain-swapper/tags 
+          svn ls https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag 
+
           
     
       - name: Checkout
