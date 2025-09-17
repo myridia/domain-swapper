@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./test/wordpress/wp-content/plugins/domain-swapper
+        working-directory: ./test/wordpress/wp-content/plugins
         
 
     steps:
