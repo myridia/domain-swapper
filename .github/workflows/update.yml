@@ -12,7 +12,12 @@ jobs:
         uses: actions/checkout@v4
         with: 
           path: ./test/wordpress/wp-content/plugins/domain-swapper
-      - name: Build
+      - name: Install
         run: |
               sudo apt-get install -y subversion
-              ls
+
+      - name: Build
+        run: |
+              ls ./
+              
+
