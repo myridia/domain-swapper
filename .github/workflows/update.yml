@@ -28,5 +28,7 @@ jobs:
         run: |
           ls ./test/wordpress/wp-content/plugins/domain-swapper
           rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper svn/trunk/
+          cd svn
+          svn status
         
 
