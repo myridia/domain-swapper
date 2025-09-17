@@ -12,7 +12,7 @@ svn add * --force
 
 ## Add a new Tag
 ```
-svn cps trunk tags/1.0.9
+svn ps trunk tags/1.0.9
 ```
 
 ## How to Commit 
