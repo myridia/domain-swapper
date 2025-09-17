@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Disable initramfs update
+        run: sudo sed -i 's/yes/no/g' /etc/initramfs-tools/update-initramfs.conf
+      - name: Disable man-db update
+        run: sudo rm -f /var/lib/man-db/auto-update
+  
       - name: Checkout code
         uses: actions/checkout@v4
         with: 
@@ -18,6 +23,6 @@ jobs:
 
       - name: Build
         run: |
-              ls ./
+              ls ./test
               
 
