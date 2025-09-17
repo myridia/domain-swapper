@@ -35,7 +35,8 @@ jobs:
           cd wp 
           svn add * --force
           svn status
-          grep "Stable Tag:" trunk/readme.txt | cut -d' ' -f3
+          tag=$(grep "Stable Tag:" trunk/readme.txt | cut -d' ' -f3)
+          echo $tag
           # svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
 
 
