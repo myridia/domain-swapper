@@ -26,6 +26,6 @@ jobs:
 
       - name: Copy to trunk
         run: |
-          ls ./svn
+          ls ./test/wordpress/wp-content/plugins/domain-swapper
         
 
