@@ -4,15 +4,16 @@ Tags: change domains, host switcher, dynamic host, multiplehosts, multihost
 Requires PHP: 8.2.0
 Requires at least: 6.7
 Tested up to: 6.8
-Stable Tag: 1.0.9
+Stable Tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Plugin URI: **https://domain-swapper.myridia.com/**
 
 Domain Swapper is a plugin which lets to access one  WordPress site with different domains.
 
 == Description ==
 
-Domain Swapper let you access 1 WordPress single site with multiple domains like domain1.foo.com, domain2.foo.com, domain3.foo.com etc...
+With Domain Swapper, you can access a single WordPress site using multiple domains, such as domain1.foo.com, domain2.foo.com, domain3.foo.com, etc.
 https://domain-swapper.myridia.com
 
 == Whom it will help? == 
