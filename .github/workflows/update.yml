@@ -28,8 +28,12 @@ jobs:
         run: |
           rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper/ wp/trunk/
           rsync -r --exclude=.svn --exclude=.github ./test/wordpress/wp-content/plugins/domain-swapper/assets/ wp/
-
           cd wp
+
+      - name: Add anc checkout
+        run: |
+          svn add * --force
           svn status
+
         
 
