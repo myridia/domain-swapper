@@ -14,6 +14,6 @@ jobs:
       env:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        ASSETS_DIR: assets
-        BUILD_DIR: ./test/wordpress/wp-content/plugins/domain-swapper
+        ASSETS_DIR: ./test/wordpress/wp-content/plugins/domain-swapper/assets
+        README_NAME: ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt
         IGNORE_OTHER_FILES: true
