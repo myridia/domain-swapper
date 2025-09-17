@@ -20,7 +20,21 @@ jobs:
       - name: Install
         run: |
               sudo apt-get install -y subversion
+              
+      - name: Set Tag
+        run: |
+          tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3)
+          echo $tag
 
+          
+      - name : Check Tag exists
+        run: |
+             svn ls svn ls svn://plugins.svn.wordpress.org/domain-swapper/tags/$tag
+
+
+             
+             
+             
       - name: Checkout
         run: |
               svn --force checkout https://plugins.svn.wordpress.org/domain-swapper wp
@@ -36,8 +50,6 @@ jobs:
           cd wp 
           svn add * --force
           svn status
-          tag=$(grep "Stable Tag:" trunk/readme.txt | cut -d' ' -f3)
-          echo $tag
           svn cp trunk tags/$tag
           
       - name: SVN commit  
