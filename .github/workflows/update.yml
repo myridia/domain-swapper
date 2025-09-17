@@ -25,4 +25,4 @@ jobs:
         ASSETS_DIR: assets
         README_NAME: readme.txt
         IGNORE_OTHER_FILES: true
-        GITHUB_WORKSPACE: ./test/wordpress/wp-content/plugins/domain-swapper
+        GITHUB_WORKSPACE: ./test/wordpress/wp-content/plugins/
