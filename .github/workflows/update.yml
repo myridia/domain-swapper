@@ -35,6 +35,7 @@ jobs:
           cd wp 
           svn add * --force
           svn status
+          echo ${{ github.ref_name }} 
           # svn cp trunk tags/1.1.0
           # svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
 
