@@ -48,8 +48,8 @@ jobs:
           # echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
           # echo $tag >> $GITHUB_ENV
           
-          exist=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME)
-          echo $exit 
+          e=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME)
+          echo $e 
           # svn cp trunk tags/$tag
           
       - name: SVN commit  
