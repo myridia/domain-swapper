@@ -51,11 +51,6 @@ jobs:
           cd wp 
           svn add * --force
           svn status
-          # tag=$(grep "Stable Tag:" ./trunk/readme.txt | cut -d' ' -f3)
-          # echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
-          # echo $tag >> $GITHUB_ENV
-          
-          echo $e 
           # svn cp trunk tags/$tag
           
       - name: SVN commit  
