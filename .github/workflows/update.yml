@@ -31,6 +31,8 @@ jobs:
           echo "OTAG_NAME=$otag" >> $GITHUB_ENV
           echo $OTAG_NAME
           echo $TAG_NAME
+          echo $otag
+          echo $tag 
 
       - name: Run deploy script
         run: |
