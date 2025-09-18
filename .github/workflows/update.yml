@@ -50,6 +50,13 @@ jobs:
               
 
      
+      - name: Get Tags from readme.txt and online tags 
+        run: |
+          # ls ./test/wordpress/wp-content/plugins/domain-swapper/
+          tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3) 
+          echo "TAG_NAME=$tag" >> $GITHUB_ENV
+          otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
+          echo "OTAG_NAME=$otag" >> $GITHUB_ENV
           
  
    
