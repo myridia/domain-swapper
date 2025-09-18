@@ -38,6 +38,7 @@ jobs:
           svn add * --force
           svn status
           tag=$(grep "Stable Tag:" ./trunk/readme.txt | cut -d' ' -f3)
+          echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
           # echo $tag >> $GITHUB_ENV
           
           # if svn ls https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag; then echo found else echo not found fi
