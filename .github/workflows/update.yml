@@ -48,7 +48,7 @@ jobs:
           # echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
           # echo $tag >> $GITHUB_ENV
           
-          e=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME)
+          e=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
           echo $e 
           # svn cp trunk tags/$tag
           
