@@ -48,7 +48,7 @@ jobs:
           # echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
           # echo $tag >> $GITHUB_ENV
           
-          # if svn ls https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag; then echo found else echo not found fi
+          svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME
 
           # svn cp trunk tags/$tag
           
