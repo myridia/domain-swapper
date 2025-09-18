@@ -30,6 +30,10 @@ jobs:
           otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
           echo "OTAG_NAME=$otag" >> $GITHUB_ENV
 
+      - name: Intentionally fail
+        run: exit 1
+
+
   job2:
     needs: job1
     
