@@ -30,7 +30,7 @@ jobs:
           otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
           echo "OTAG_NAME=$otag" >> $GITHUB_ENV
           echo $OTAG_NAME
-          3cho $TAG_NAME
+          echo $TAG_NAME
 
       - name: Run deploy script
         run: |
