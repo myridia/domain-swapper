@@ -20,6 +20,7 @@ jobs:
       - name: Get Tag from repository 
         run: |
           tag=$(grep "Stable Tag:" /test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3)
+          echo $tag
           echo "TAG_NAME=$tag" >> $GITHUB_ENV
           
       - name: Install
