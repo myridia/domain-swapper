@@ -17,16 +17,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install
+        run: |
+              sudo apt-get install -y subversion
+              
+
       - name: Get Tag from repository 
         run: |
           # ls ./test/wordpress/wp-content/plugins/domain-swapper/
           tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3) 
           echo "TAG_NAME=$tag" >> $GITHUB_ENV
+          otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
+          echo "OTAG_NAME=$otag" >> $GITHUB_ENV
+
+
           
           
-      - name: Install
-        run: |
-              sudo apt-get install -y subversion
+ 
    
     
       - name: Checkout
@@ -48,7 +55,6 @@ jobs:
           # echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
           # echo $tag >> $GITHUB_ENV
           
-          e=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
           echo $e 
           # svn cp trunk tags/$tag
           
