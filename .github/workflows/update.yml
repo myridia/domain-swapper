@@ -21,7 +21,6 @@ jobs:
         run: |
               sudo apt-get install -y subversion
    
-          
     
       - name: Checkout
         run: |
@@ -39,7 +38,9 @@ jobs:
           svn add * --force
           svn status
           tag=$(grep "Stable Tag:" ./trunk/readme.txt | cut -d' ' -f3)
-          if svn ls https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag; then echo found else echo not found fi
+          echo $tag >> $GITHUB_ENV
+          
+          #if svn ls https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag; then echo found else echo not found fi
 
 
           # svn cp trunk tags/$tag
