@@ -29,6 +29,8 @@ jobs:
           echo "TAG_NAME=$tag" >> $GITHUB_ENV
           otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
           echo "OTAG_NAME=$otag" >> $GITHUB_ENV
+          echo $OTAG_NAME
+          3cho $TAG_NAME
 
       - name: Run deploy script
         run: |
@@ -37,6 +39,7 @@ jobs:
            exit 1
           else
            echo "Tag not exists, continue" 
+           exit 1
           fi
 
   job2:
