@@ -26,7 +26,7 @@ jobs:
         run: |
           # ls ./test/wordpress/wp-content/plugins/domain-swapper/
           tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3) 
-          otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
+          otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag | sed 's#/*$##' )
           echo $otag
           echo $tag 
       
