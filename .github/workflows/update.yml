@@ -4,7 +4,7 @@ on:
     branches:
     - main
 jobs:
-  deploy:
+  job1:
     if: github.repository_owner == 'myridia'
     runs-on: ubuntu-latest
 
