@@ -17,6 +17,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Get Tag from repository 
+        run: |
+          tag=$(grep "Stable Tag:" /test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3)
+          echo "TAG_NAME=$tag" >> $GITHUB_ENV
+          
       - name: Install
         run: |
               sudo apt-get install -y subversion
@@ -37,8 +42,8 @@ jobs:
           cd wp 
           svn add * --force
           svn status
-          tag=$(grep "Stable Tag:" ./trunk/readme.txt | cut -d' ' -f3)
-          echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
+          # tag=$(grep "Stable Tag:" ./trunk/readme.txt | cut -d' ' -f3)
+          # echo "VARIABLE_NAME=$tag" >> $GITHUB_ENV
           # echo $tag >> $GITHUB_ENV
           
           # if svn ls https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag; then echo found else echo not found fi
@@ -48,5 +53,5 @@ jobs:
       - name: SVN commit  
         run: |
           # svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
-          echo $VARIABLE_NAME
+          echo $TAG_NAME
         
