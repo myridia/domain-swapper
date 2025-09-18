@@ -30,9 +30,14 @@ jobs:
           otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
           echo "OTAG_NAME=$otag" >> $GITHUB_ENV
 
-      - name: Intentionally fail
-        run: exit 1
-
+      - name: Run deploy script
+        run: |
+          if [ "${{ OTAG_NAME }}" = "${{ TAG_NAME }}" ]; then
+           echo "Tag already publish, break now"
+           exit 1
+          else
+           echo "Tag not exists, continue" 
+          fi
 
   job2:
     needs: job1
