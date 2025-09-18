@@ -32,7 +32,7 @@ jobs:
 
       - name: Run deploy script
         run: |
-          if [ "${{ OTAG_NAME }}" = "${{ TAG_NAME }}" ]; then
+          if [ "${OTAG_NAME}" = "${TAG_NAME}" ]; then
            echo "Tag already publish, break now"
            exit 1
           else
