@@ -32,7 +32,7 @@ jobs:
 
   job2:
     needs: job1
-    if: github.repository_owner == 'myridia'
+    if: $TAG_NAME != $OTAG_NAME 
     runs-on: ubuntu-latest
 
     steps:
