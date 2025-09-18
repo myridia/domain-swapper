@@ -42,11 +42,11 @@ jobs:
           if svn ls https://plugins.svn.wordpress.org/domain-swapper/tags | grep $tag; then echo found else echo not found fi
 
 
-          svn cp trunk tags/$tag
+          # svn cp trunk tags/$tag
           
       - name: SVN commit  
         run: |
-          svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
-
+          #svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
+          echo "end"
 
         
