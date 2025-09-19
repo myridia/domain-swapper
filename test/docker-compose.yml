@@ -46,7 +46,7 @@ services:
     container_name: db
     volumes:
       - db_ds:/var/lib/mysql
-      - "./log/mysql:/var/log/mysql"
+      #- "./log/mysql:/var/log/mysql"
       - "./init/:/docker-entrypoint-initdb.d"    
     ports:
      - "3306:3306"
