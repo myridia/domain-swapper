@@ -50,6 +50,14 @@ jobs:
   
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Get Tags 2 
+        run: |
+          tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3)    
+          echo "TAG_NAME=helllllo" >> $GITHUB_ENV 
+          echo "TAG_NAME"
+          echo "$TAG_NAME" 
+          echo $tag 
+          
 
       - name: Install
         run: |
@@ -57,15 +65,7 @@ jobs:
               
 
      
-      - name: Get Tags 2 
-        run: |
-          # ls ./test/wordpress/wp-content/plugins/domain-swapper/
-          tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3) 
-          
-          echo "TAG_NAME=helllllo" >> $GITHUB_ENV 
-          echo "TAG_NAME"
-          echo "$TAG_NAME" 
-          echo $tag 
+
           
     
       - name: Checkout
