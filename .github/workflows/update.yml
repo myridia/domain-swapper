@@ -83,7 +83,7 @@ jobs:
           cd wp 
           svn add * --force
           svn status
-          svn cp trunk tags/${{OTAG_NAME}} 
+          svn cp trunk tags/$OTAG_NAME 
           
       - name: SVN commit  
         run: |
