@@ -134,8 +134,11 @@ class ClassFrontend
     {
         ob_start(function ($html) {
             $html = str_replace($this->siteurl, $this->new_siteurl, $html);
-            $html = str_replace($this->old_domain, $this->new_domain, $html);
 
+            // Maybe it can taken out, wait and make more tests
+            // $html = str_replace($this->old_domain, $this->new_domain, $html);
+
+            // error_log($html);
             return $html;
         });
     }
