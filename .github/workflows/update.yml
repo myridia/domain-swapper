@@ -53,7 +53,7 @@ jobs:
       - name: Get Tags 2 
         run: |
           tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3)    
-          echo "TAG_NAME=helllllo" >> $GITHUB_ENV 
+          echo "TAG_NAME=helllllo" >> $GITHUB_ENV
           echo "TAG_NAME"
           echo "$TAG_NAME" 
           echo ${{ env.TAG_NAME }}
@@ -63,12 +63,7 @@ jobs:
       - name: Install
         run: |
               sudo apt-get install -y subversion
-              
-
-     
-
-          
-    
+ 
       - name: Checkout
         run: |
               svn --force checkout https://plugins.svn.wordpress.org/domain-swapper wp
