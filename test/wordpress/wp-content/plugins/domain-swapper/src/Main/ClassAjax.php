@@ -16,6 +16,7 @@ class ClassAjax
     private $new_siteurl;
     private $new_domain;
     private $old_domain;
+    private $active;
 
     /**
      * Init the Ajax Filter Hooks.
