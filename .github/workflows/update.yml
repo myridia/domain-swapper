@@ -82,14 +82,15 @@ jobs:
         run: |
           cd wp 
           svn add * --force
-          #svn status
           #svn cp trunk tags/$OTAG_NAME 
           
       - name: SVN commit  
         run: |
           #svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
+          echo "TAG_NAME"
           #echo $TAG_NAME
-          #echo $OTAG_NAME 
+          echo "OTAG_NAME"
+          echo $OTAG_NAME 
           ls wp/tags
           echo "xxxxxx"
           ls wp 
