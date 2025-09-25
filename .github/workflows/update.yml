@@ -64,7 +64,7 @@ jobs:
           echo "TAG_NAME=$tag" >> $GITHUB_ENV 
           
           echo "TAG_NAME"
-          echo ${TAG_NAME}
+          echo "$TAG_NAME"
           echo $tag
           
     
