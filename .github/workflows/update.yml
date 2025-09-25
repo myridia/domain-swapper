@@ -62,10 +62,9 @@ jobs:
           # ls ./test/wordpress/wp-content/plugins/domain-swapper/
           tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3) 
           echo "TAG=$tag" >> $GITHUB_ENV 
-          
           echo "TAG_NAME"
-          echo "$TAG"
-          echo $tag
+          echo "$TAG" 
+          echo $tag 
           
     
       - name: Checkout
