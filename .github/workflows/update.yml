@@ -87,7 +87,7 @@ jobs:
           
       - name: SVN commit  
         run: |
-          # svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
+          svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
           echo $TAG_NAME
           echo $OTAG_NAME 
         
