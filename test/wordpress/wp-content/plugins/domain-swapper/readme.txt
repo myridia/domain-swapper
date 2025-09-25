@@ -46,4 +46,6 @@ https://domain-swapper.myridia.com
 Yes, we really need any feedback and requests <a href="mailto:domain-swapper@myridia.com">email</a>.
 
 == Changelog ==
+1.0.10 Fix issue when switch fom subdomain to base domain 
+
 
