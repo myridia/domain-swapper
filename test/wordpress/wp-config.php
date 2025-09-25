@@ -15,7 +15,9 @@ define('SECURE_AUTH_SALT', 'n<*0exoUZ~F!f)$#XPKMB+[s7>MF>ZpWI[B$snSrWx1Y.:c#Zi]<
 define('LOGGED_IN_SALT', 'g&L3unW(BM1_`PcT,B5:vdbr/o=C>|/m [26-JVQ4rd+uv)TqjLHB85m`G.qVS/@');
 define('NONCE_SALT', 'WTUD/!0^`:A5G9Qa|rex^[frE-Sz2Xwc+>d -)R*2369 @}ORx,-n)>p=<}5 QUO');
 $table_prefix = 'wp_';
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('SCRIPT_DEBUG', true);
 if (!defined('ABSPATH')) {
     define('ABSPATH', __DIR__.'/');
 }

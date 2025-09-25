@@ -16,7 +16,7 @@ class ClassAjax
     private $new_siteurl;
     private $new_domain;
     private $old_domain;
-    private $activate;
+    private $active;
 
     /**
      * Init the Ajax Filter Hooks.
@@ -29,8 +29,7 @@ class ClassAjax
     {
         // error_log('...swap ajax calls');
         $this->set_domain_data();
-
-        if ($this->activate) {
+        if ($this->active) {
             if ($this->new_siteurl != $this->siteurl) {
                 add_filter('woocommerce_cart_item_thumbnail', [$this, 'swap_woocommerce_cart_item_thumbnail'], 10, 3);
                 add_filter('woocommerce_get_cart_url', [$this, 'swap_woocommerce_get_cart_url'], 10, 3);
@@ -52,10 +51,10 @@ class ClassAjax
     public function set_domain_data()
     {
         $o = get_option(WPDS_OPTION);
-        if ($o['activate']) {
-            $this->activate = 1;
+        if (isset($o['active'])) {
+            $this->active = 1;
         } else {
-            $this->activate = 0;
+            $this->active = 0;
 
             return;
         }
