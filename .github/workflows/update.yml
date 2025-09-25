@@ -65,7 +65,14 @@ jobs:
           otag=$(svn list https://plugins.svn.wordpress.org/domain-swapper/tags | grep $TAG_NAME | sed 's#/*$##' )
           echo "OTAG_NAME=$otag" >> $GITHUB_ENV
           
- 
+          echo "TAG_NAME"
+          echo $TAG_NAME
+          echo $tag
+          
+          echo "OTAG_NAME"
+          echo $OTAG_NAME 
+          echo $otag 
+          
    
     
       - name: Checkout
@@ -87,10 +94,7 @@ jobs:
       - name: SVN commit  
         run: |
           #svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
-          echo "TAG_NAME"
-          #echo $TAG_NAME
-          echo "OTAG_NAME"
-          echo $OTAG_NAME 
+
           ls wp/tags
           echo "xxxxxx"
           ls wp 
