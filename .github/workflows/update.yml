@@ -35,7 +35,6 @@ jobs:
            exit 1
           else
            echo "Tag not exists, continue" 
-           exit 1
           fi
 
   job2:
