@@ -21,7 +21,7 @@ jobs:
         run: |
               sudo apt-get install -y subversion
               
-      - name: Get Tags from readme.txt and online tags 
+      - name: Get Tags
         run: |
           # ls ./test/wordpress/wp-content/plugins/domain-swapper/
           tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3) 
@@ -57,13 +57,14 @@ jobs:
               
 
      
-      - name: Get Tags from readme.txt and online tags 
+      - name: Get Tags 2 
         run: |
           # ls ./test/wordpress/wp-content/plugins/domain-swapper/
           tag=$(grep "Stable Tag:" ./test/wordpress/wp-content/plugins/domain-swapper/readme.txt | cut -d' ' -f3) 
-          echo "TAG=helllllo" >> $GITHUB_ENV 
+          
+          echo "TAG_NAME=helllllo" >> $GITHUB_ENV 
           echo "TAG_NAME"
-          echo "$TAG" 
+          echo "$TAG_NAME" 
           echo $tag 
           
     
