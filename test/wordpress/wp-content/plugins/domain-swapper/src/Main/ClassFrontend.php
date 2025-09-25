@@ -16,7 +16,7 @@ class ClassFrontend
     private $new_siteurl;
     private $new_domain;
     private $old_domain;
-    private $activate;
+    private $active;
 
     /**
      * Init the Frontend Filter Hooks.
