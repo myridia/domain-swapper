@@ -75,7 +75,9 @@ jobs:
           
       - name: SVN commit  
         run: |
-          cd wp 
+          cd wp
+          ls 
           svn ci -m 'update' --non-interactive --no-auth-cache --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} 
+          
           echo "....end"
    
