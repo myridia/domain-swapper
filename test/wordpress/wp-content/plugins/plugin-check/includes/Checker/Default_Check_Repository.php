@@ -75,9 +75,11 @@ class Default_Check_Repository extends Empty_Check_Repository {
 				'enqueued_scripts_size'      => new Checks\Performance\Enqueued_Scripts_Size_Check(),
 				'enqueued_styles_size'       => new Checks\Performance\Enqueued_Styles_Size_Check(),
 				'code_obfuscation'           => new Checks\Plugin_Repo\Code_Obfuscation_Check(),
+				'plugin_content'             => new Checks\Plugin_Repo\Plugin_Content_Check(),
 				'file_type'                  => new Checks\Plugin_Repo\File_Type_Check(),
 				'plugin_header_fields'       => new Checks\Plugin_Repo\Plugin_Header_Fields_Check(),
 				'late_escaping'              => new Checks\Security\Late_Escaping_Check(),
+				'safe_redirect'              => new Checks\Security\Safe_Redirect_Check(),
 				'plugin_updater'             => new Checks\Plugin_Repo\Plugin_Updater_Check(),
 				'plugin_uninstall'           => new Checks\Plugin_Repo\Plugin_Uninstall_Check(),
 				'plugin_review_phpcs'        => new Checks\Plugin_Repo\Plugin_Review_PHPCS_Check(),
@@ -94,6 +96,9 @@ class Default_Check_Repository extends Empty_Check_Repository {
 				'non_blocking_scripts'       => new Checks\Performance\Non_Blocking_Scripts_Check(),
 				'offloading_files'           => new Checks\Plugin_Repo\Offloading_Files_Check(),
 				'setting_sanitization'       => new Checks\Plugin_Repo\Setting_Sanitization_Check(),
+				'prefixing'                  => new Checks\Plugin_Repo\Prefixing_Check(),
+				'direct_db'                  => new Checks\Security\Direct_DB_Check(),
+				'minified_files'             => new Checks\Plugin_Repo\Minified_Files_Check(),
 			)
 		);
 

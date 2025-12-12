@@ -10,7 +10,6 @@
 
 namespace PluginCheckCS\PluginCheck\Sniffs\CodeAnalysis;
 
-use PHP_CodeSniffer\Util\Tokens;
 use PHPCSUtils\Utils\MessageHelper;
 use PHPCSUtils\Utils\PassedParameters;
 use PHPCSUtils\Utils\TextStrings;

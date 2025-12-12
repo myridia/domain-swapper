@@ -11,7 +11,6 @@
 namespace PluginCheckCS\PluginCheck\Sniffs\CodeAnalysis;
 
 use PHPCSUtils\Utils\MessageHelper;
-use PHPCSUtils\Utils\PassedParameters;
 use WordPressCS\WordPress\AbstractFunctionRestrictionsSniff;
 use WordPressCS\WordPress\Helpers\MinimumWPVersionTrait;
 
