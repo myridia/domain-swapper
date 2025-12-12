@@ -1,8 +1,8 @@
 === Plugin Check (PCP) ===
 
 Contributors:      wordpressdotorg
-Tested up to:      6.8
-Stable tag:        1.6.0
+Tested up to:      6.9
+Stable tag:        1.7.0
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Tags:              plugin best practices, testing, accessibility, performance, security
@@ -67,6 +67,26 @@ To be approved in the WordPress.org plugin directory, a plugin must typically pa
 In any case, passing the checks in this tool likely helps to achieve a smooth plugin review process, but is no guarantee that a plugin will be approved in the WordPress.org plugin directory.
 
 == Changelog ==
+
+= 1.7.0 =
+
+* Enhancement - Add Minified File Detection Check to identify and handle minified files in plugins.
+* Enhancement - Implement check for insecure use of wp_verify_nonce() to improve security validation.
+* Enhancement - Add direct database query sniff to detect direct database calls without using WordPress functions.
+* Enhancement - Add prefixing check to ensure proper function and class name prefixing.
+* Enhancement - Update localhost sniff regex to improve detection of localhost URLs including *.local domains.
+* Enhancement - Disallow runtime checks when custom user table constants are defined for better compatibility.
+* Enhancement - Add forbidden functions check to detect usage of disallowed PHP functions.
+* Enhancement - New check for wp_safe_redirect to encourage use of WordPress safe redirect function.
+* Enhancement - Improve mismatched text domain check for better internationalization validation.
+* Enhancement - Detect links that request five-star reviews to enforce plugin directory guidelines.
+* Enhancement - Add The Unlicense to GPL-compatible license check.
+* Enhancement - Improve localhost sniff code for more accurate detection.
+* Fix - Ignore vendor_prefixed and vendor-prefixed folders in checks to prevent false positives.
+* Fix - Handle possible empty element in scanner to prevent PHP warnings.
+* Fix - Hide error output in scanner for cleaner output.
+* Fix - Call ReflectionProperty::setAccessible() only in older PHP versions for better PHP 8.1+ compatibility.
+* Fix - Prevent deletion of custom WordPress tables during cleanup in test environment.
 
 = 1.6.0 =
 
@@ -150,7 +170,7 @@ In any case, passing the checks in this tool likely helps to achieve a smooth pl
 * Enhancement - Improved the use of localhost URLs in the Plugin.
 * Enhancement - Documented checks in the plugin.
 * Enhancement - Increased severity for Code obfuscation checks.
-* Enhancement - Diffentiate between no existent readme and default readme file.
+* Enhancement - Differentiate between non-existent readme and default readme file.
 * Enhancement - Encourage developers to use native functions for loading images in templates.
 * Enhancement - Added a check for not allowing include libraries already in WordPress core.
 * Enhancement - Warning for usage of query_posts() in favor of WP_Query.

@@ -93,6 +93,14 @@
 				<element key="create_function" value="null"/>
 				<element key="eval" value="null"/>
 				<element key="str_rot13" value="null"/>
+				<element key="_cleanup_header_comment" value="null"/>
+				<element key="_get_plugin_data_markup_translate" value="null"/>
+				<element key="_transition_post_status" value="null"/>
+				<element key="_wp_post_revision_fields" value="null"/>
+				<element key="do_shortcode_tag" value="null"/>
+				<element key="get_post_type_labels" value="null"/>
+				<element key="wp_get_sidebars_widgets" value="null"/>
+				<element key="wp_get_widget_defaults" value="null"/>
 			</property>
 		</properties>
 		<type>error</type>

@@ -185,7 +185,7 @@ abstract class Abstract_File_Check implements Static_Check {
 
 			preg_match_all( $pattern, $contents, $matches, PREG_OFFSET_CAPTURE );
 
-			if ( is_array( $matches ) && ! empty( $matches ) ) {
+			if ( ! empty( $matches ) ) {
 				foreach ( $matches[0] as $match ) {
 					$line   = 0;
 					$column = 0;

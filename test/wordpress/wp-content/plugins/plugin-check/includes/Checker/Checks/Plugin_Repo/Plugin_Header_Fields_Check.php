@@ -13,6 +13,7 @@ use WordPress\Plugin_Check\Checker\Check_Result;
 use WordPress\Plugin_Check\Checker\Static_Check;
 use WordPress\Plugin_Check\Traits\Amend_Check_Result;
 use WordPress\Plugin_Check\Traits\License_Utils;
+use WordPress\Plugin_Check\Traits\Mode_Aware;
 use WordPress\Plugin_Check\Traits\Stable_Check;
 use WordPress\Plugin_Check\Traits\URL_Utils;
 use WordPress\Plugin_Check\Traits\Version_Utils;
@@ -29,6 +30,7 @@ class Plugin_Header_Fields_Check implements Static_Check {
 	use Stable_Check;
 	use URL_Utils;
 	use Version_Utils;
+	use Mode_Aware;
 
 	/**
 	 * Gets the categories for the check.
@@ -100,23 +102,26 @@ class Plugin_Header_Fields_Check implements Static_Check {
 					7
 				);
 			} else {
-				$valid_chars_count = preg_match_all( '/[a-z0-9]/i', $plugin_header['Name'] );
+				// Check for unsupported plugin name only in 'new' mode.
+				if ( $this->is_new_mode( $result ) ) {
+					$valid_chars_count = preg_match_all( '/[a-z0-9]/i', $plugin_header['Name'] );
 
-				if ( intval( $valid_chars_count ) < 5 ) {
-					$this->add_result_error_for_file(
-						$result,
-						sprintf(
-							/* translators: %s: plugin header field */
-							__( 'The "%s" header in the plugin file is not valid. It needs to contain at least 5 latin letters (a-Z) and/or numbers. This is necessary because the initial plugin slug is generated from the name.', 'plugin-check' ),
-							esc_html( $labels['Name'] )
-						),
-						'plugin_header_unsupported_plugin_name',
-						$plugin_main_file,
-						0,
-						0,
-						'https://developer.wordpress.org/plugins/plugin-basics/header-requirements/#header-fields',
-						7
-					);
+					if ( intval( $valid_chars_count ) < 5 ) {
+						$this->add_result_error_for_file(
+							$result,
+							sprintf(
+								/* translators: %s: plugin header field */
+								__( 'The "%s" header in the plugin file is not valid. It needs to contain at least 5 latin letters (a-Z) and/or numbers. This is necessary because the initial plugin slug is generated from the name.', 'plugin-check' ),
+								esc_html( $labels['Name'] )
+							),
+							'plugin_header_unsupported_plugin_name',
+							$plugin_main_file,
+							0,
+							0,
+							'https://developer.wordpress.org/plugins/plugin-basics/header-requirements/#header-fields',
+							7
+						);
+					}
 				}
 			}
 		}
@@ -537,18 +542,7 @@ class Plugin_Header_Fields_Check implements Static_Check {
 	 * @return string[] Array of file header values keyed by header name.
 	 */
 	private function get_plugin_data( $plugin_file, $default_headers ) {
-		$plugin_data = get_file_data( $plugin_file, $default_headers, 'plugin' );
-
-		// If no text domain is defined fall back to the plugin slug.
-		if ( ! $plugin_data['TextDomain'] ) {
-			$plugin_slug = dirname( plugin_basename( $plugin_file ) );
-
-			if ( '.' !== $plugin_slug && ! str_contains( $plugin_slug, '/' ) ) {
-				$plugin_data['TextDomain'] = $plugin_slug;
-			}
-		}
-
-		return $plugin_data;
+		return get_file_data( $plugin_file, $default_headers, 'plugin' );
 	}
 
 	/**

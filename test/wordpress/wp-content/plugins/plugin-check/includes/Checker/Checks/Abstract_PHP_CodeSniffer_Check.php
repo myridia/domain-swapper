@@ -245,9 +245,19 @@ abstract class Abstract_PHP_CodeSniffer_Check implements Static_Check {
 			 */
 			$reflected_phpcs_config = new \ReflectionClass( Config::class );
 			$overridden_defaults    = $reflected_phpcs_config->getProperty( 'overriddenDefaults' );
-			$overridden_defaults->setAccessible( true );
+
+			/*
+			 * The setAccessible function has no effect in PHP >= 8.1, and it is marked as deprecated in PHP 8.5.
+			 * Since the tests are also run on PHP 7.4 and 8.0, we can only call the function if the php version is lower than 8.1.
+			*/
+			if ( version_compare( PHP_VERSION, '8.1.0', '<' ) ) {
+				$overridden_defaults->setAccessible( true );
+			}
 			$overridden_defaults->setValue( $reflected_phpcs_config, array() );
-			$overridden_defaults->setAccessible( false );
+
+			if ( version_compare( PHP_VERSION, '8.1.0', '<' ) ) {
+				$overridden_defaults->setAccessible( false );
+			}
 		}
 	}
 }

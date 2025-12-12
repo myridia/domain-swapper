@@ -212,8 +212,8 @@ class File_Type_Check extends Abstract_File_Check {
 	 * @param array        $files  List of absolute file paths.
 	 */
 	protected function look_for_hidden_files( Check_Result $result, array $files ) {
-		// Any files outside of 'vendor' or 'node_modules' directories that start with a period.
-		$hidden_files = self::filter_files_by_regex( $files, '/^((?!\/vendor\/|\/node_modules\/).)*\/\.\w+(\.\w+)*$/' );
+		// Any files outside of 'vendor' or 'vendor_prefixed' or 'vendor-prefixed' or 'node_modules' directories that start with a period.
+		$hidden_files = self::filter_files_by_regex( $files, '/^((?!\/vendor\/|\/node_modules\/|\/vendor_prefixed\/|\/vendor-prefixed\/).)*\/\.\w+(\.\w+)*$/' );
 		if ( $hidden_files ) {
 			foreach ( $hidden_files as $file ) {
 				$this->add_result_error_for_file(

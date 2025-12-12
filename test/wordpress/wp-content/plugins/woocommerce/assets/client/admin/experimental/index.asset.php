@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('moment', 'react', 'react-dom', 'wc-components', 'wp-components', 'wp-element', 'wp-i18n', 'wp-keycodes', 'wp-primitives'), 'version' => '14fc2a1aea2400ad37be');
+<?php return array('dependencies' => array('moment', 'react', 'react-dom', 'wc-components', 'wc-sanitize', 'wp-components', 'wp-element', 'wp-i18n', 'wp-keycodes', 'wp-primitives'), 'version' => 'c71a90b972056f1df64a');

@@ -16,7 +16,7 @@ class ClassAdmin
     public function __construct()
     {
         $this->options = [
-            'include' => ['ww1.app.local', 'ww2.app.local', 'ww3.app.local', 'foo.bar.local'],
+            'include' => ['ww1.app.local', 'ww2.app.local', 'ww3.app.local', 'foo.bar.local', '', '', '', '', ''],
         ];
     }
 
@@ -28,7 +28,7 @@ class ClassAdmin
     public static function activate()
     {
         $options = [
-            'include' => ['ww1.app.local', 'ww2.app.local', 'ww3.app.local', 'foo.bar.local'],
+            'include' => ['ww1.app.local', 'ww2.app.local', 'ww3.app.local', 'foo.bar.local', '', '', '', '', ''],
         ];
         if (false == get_option(WPDS_OPTION)) {
             update_option(WPDS_OPTION, $options);
@@ -237,7 +237,7 @@ class ClassAdmin
             }
         } else {
             /* example 1 */
-            for ($i = 1; $i <= 5; ++$i) {
+            for ($i = 1; $i <= 10; ++$i) {
                 $html_content = "<input id='key' name='{$args['label_for']}' type='text'  /><br>";
                 echo wp_kses($html_content, ['br' => [],
                     'input' => [
