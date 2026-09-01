@@ -1,3 +1,5 @@
+<img src="domain-swapper.svg" alt="domain-swapper" width="120">
+
 # ![domain-swapper](pages/public/assets/img/logo.png) Domain-Swapper
 
 # The Domain Swapper Plugin lets you use multiple domain names.
